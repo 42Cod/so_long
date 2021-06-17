@@ -18,7 +18,7 @@ void    first_read(t_map *map, char **argv, char **line)
 {
     int fd;
 
-    map = initialize_struct_map();
+    initialize_struct_map(map);
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
         exit (EXIT_FAILURE);
@@ -41,31 +41,21 @@ void    second_read(char **map2d, t_map *map, char **argv, char **line)
 /* Besoin d'initialiser la structure qui permettra de tout free */
 int     main(int argc, char **argv)
 {
+    (void)argv;
     t_mem   *mem;
     char    *line;
 
     line = NULL;
     mem = initialize_mem();
-    /*
-    t_map   *map;
-    char    **map2d;
-    int     l;
-    char    *line;
-
-    line = NULL;
-    map = NULL;
-    map2d = NULL;
-    l = 1;
-    */
     if (argc == 2)
     {
         first_read(mem->map, argv, &line);
+        //Probleme dans le gnl
+        //printf("mem->map->lines : %i\n", mem->map->lines);
+        //mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
+        //second_read(mem->map2d, mem->map, argv, &line);
         /*
-        map2d = (char **)malloc(sizeof(char *) * (map->lines + 1));
-        if (!map2d)
-            exit (EXIT_FAILURE);
-        second_read(map2d, map, argv, &line);
-        check_map_walls(map2d, map);
+        check_map_walls(mem->map2d, mem->map);
         graphics_init(map2d, map);
         */
         /* fonctions de free */

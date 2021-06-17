@@ -43,8 +43,6 @@ SRCS = ./srcs/parsing/handle_2d_map.c \
 		./srcs/render/graphics.c \
 		./srcs/print/print.c \
 
-
-
 OBJS = ${SRCS:.c=.o}
 
 NAME = libsolong.a

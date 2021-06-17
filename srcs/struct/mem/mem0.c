@@ -19,7 +19,6 @@ t_mem	*initialize_mem(void)
 	t_mem	*mem;
 
 	mem = (t_mem *)malloc(sizeof(t_mem));
-
 	mem->player = (t_player *)malloc(sizeof(t_player));
 	mem->collectibles = (t_collectible_list *)malloc(sizeof(t_collectible_list));
 	mem->collectibles->first = (t_collectible_elem *)malloc(sizeof(t_collectible_elem));
@@ -28,9 +27,9 @@ t_mem	*initialize_mem(void)
 	/*data a revoir*/
 	mem->data = initialize_data();
 	mem->map = (t_map *)malloc(sizeof(t_map));
-	mem->map2d = (char **)malloc(sizeof(char));
+	mem->map2d = NULL;
 	if (!mem || !mem->player || !mem->collectibles || !mem->collectibles->first
-		|| !mem->exits || !mem->exits->first || !mem->map || !mem->map2d)
+		|| !mem->exits || !mem->exits->first || !mem->map)
 		exit (EXIT_FAILURE);
 	return (mem);
 }

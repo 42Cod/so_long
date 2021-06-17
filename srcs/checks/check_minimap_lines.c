@@ -61,21 +61,17 @@ int		is_emptyline(char *line)
 	return (ERROR);
 }
 
-/* refaire la fonction pour eviter de faire un buffer */
+/* Determine le nombre de lignes sur la machine et check les erreurs de chars */
 int		get_next_line_minimap(int fd, char **line, t_map *map)
 {
 	static char *s;
 	int			b_read;
 	char		*buffer;
-	int			max_col;
-	static int	started_minimap;
 
-	max_col = 0;
 	error_gnl(fd, line, map);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buffer)
 		error_malloc(map);
-	/* ajouter buffer a la structure qui contiendra tous les elements malloqués */
 	b_read = BUFFER_SIZE;
 	while (b_read != 0 && !(ft_hasnewline(s)))
 	{
@@ -84,16 +80,14 @@ int		get_next_line_minimap(int fd, char **line, t_map *map)
 		buffer[b_read] = '\0';
 		s = gnl_strjoin(s, buffer);
 	}
-	if (valid_char_mini_map(s[0]) == SUCCESS && s[0] != '\n')
-	{
-		started_minimap++;
-	}
 	free(buffer);
-	*line = ft_newline_minimap(s, started_minimap);
+	*line = ft_newline_minimap(s);
 	map->lines++;
 	max_x(*line, map);
 	if (check_mini_map_chars(*line, map) == ERROR)
 	{
+		/*fonction de free*/
+		ft_putstr_fd("Error.\nBad character is map.\n", 2);
 		exit(DONE);
 	}
 	s = ft_prep_s(s);

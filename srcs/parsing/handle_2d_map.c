@@ -12,6 +12,7 @@
 
 #include "../../so_long.h"
 
+/* Determine la plus grande valeur des colonnes */
 void	max_x(char *line, t_map *map)
 {
 	int res;

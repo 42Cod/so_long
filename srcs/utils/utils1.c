@@ -69,25 +69,16 @@ char	*ft_newline(char *s)
 	return (new_line);
 }
 
-char	*ft_newline_minimap(char *s, int l)
+char	*ft_newline_minimap(char *s)
 {
 	char	*new_line;
 	int		i;
-	(void)l;
 
 	if (!s)
 		return (NULL);
 	i = 0;
 	while (s[i] && s[i] != '\n')
 		i++;
-	/* Les lignes vides ne doivent pas etre interdites ?*/
-	/*
-	if (s[i] == '\n' && l > 0)
-	{
-		printf("Error, forbidden empty line in map.\n");
-		exit (ERROR);
-	}
-	*/
 	if (!(new_line = (char *)malloc(sizeof(char) * (i + 1))))
 		return (NULL);
 	i = 0;
@@ -131,7 +122,7 @@ int		get_next_line_2d(int fd, char **line, t_map *map, char **map2d)
 		s = gnl_strjoin(s, buffer);
 	}
 	free(buffer);
-	*line = ft_newline_minimap(s, i);
+	*line = ft_newline_minimap(s);
 	if ((*line[0] == '1' || *line[0] == ' '))
 	{
 		map2d[i] = ft_strdup_2d(*line, map, i);

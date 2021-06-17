@@ -28,7 +28,7 @@
 # define ERROR -1
 # define DONE 0
 # define SUCCESS 1
-# define BUFFER_SIZE 1
+# define BUFFER_SIZE 10
 # define MINIMAP 20
 
 //COLORS
@@ -102,8 +102,6 @@ typedef struct	s_map
 {
 	int			lines;
 	int			col_max;
-	//t_player	player;
-	/* faire les structures pour les autres elements */
 }				t_map;
 
 /* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
@@ -204,8 +202,9 @@ char	*ft_prep_s(char *s);
 char	*gnl_strjoin(char *s1, char *s2);
 
 //utils1.c
+//remettre tout au propre !
 char	*ft_newline(char *s);
-char	*ft_newline_minimap(char *s, int l);
+char	*ft_newline_minimap(char *s);
 int		ft_isalnum(int c);
 int		get_next_line_2d(int fd, char **line, t_map *map, char **map2d);
 
@@ -218,7 +217,7 @@ int		c_atoi(t_map *map, char *line, int *res, int *i);
 
 //struct
 void	printstruct (t_map *map);
-t_map 	*initialize_struct_map();
+//t_map 	*initialize_struct_map();
 
 //nouvelles
 void	handle_args_error(int fd, char **argv, t_map *map, char **line);
@@ -240,6 +239,15 @@ bool	is_empty_e_list(t_exit_list *lst);
 int		e_list_length(t_exit_list *lst);
 void	push_end_e_list(t_exit_list *lst, int x, int y);
 void	free_e_list(t_exit_list *lst);
+
+//map
+void	initialize_struct_map(t_map *map);
+
+//mem0.c
+t_mem	*initialize_mem(void);
+
+//data.c
+t_data	*initialize_data(void);
 
 #endif
 

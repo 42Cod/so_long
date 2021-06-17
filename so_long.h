@@ -162,7 +162,7 @@ int		check_mini_map_chars(char *line, t_map *map);
 int		is_emptyline(char *line);
 
 //check_minimap.c
-int     check_cub_extension(char *str);
+int     check_so_long_extension(char *str);
 int		minimap_ok(t_map *map);
 int     check_map(char *map, char *argv);
 int     valid_char_mini_map(char c);
@@ -214,6 +214,10 @@ t_map 	*initialize_struct();
 //nouvelles
 void	handle_args_error(int fd, char **argv, t_map *map, char **line);
 void	handle_fd_errors(int fd, t_map *map);
+void	ft_putstr_fd(char *s, int fd);
+void	error_gnl(int fd, char **line, t_map *map);
+void	error_malloc(t_map *map);
+void	error_read(t_map *map, char *buffer, int b_read);
 
 #endif
 

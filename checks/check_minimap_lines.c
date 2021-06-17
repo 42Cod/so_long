@@ -36,8 +36,9 @@ int check_mini_map_chars(char *line, t_map *map)
 	{
 		if (valid_char_mini_map(line[i]) == ERROR)
 		{
-			printf("There is an invalid char in minimap.\n");
-			return (ERROR);
+			ft_putstr_fd("Error.\nThere is an invalid char in minimap.\n", 2);
+			/* fonction de free */
+			exit (EXIT_FAILURE);
 		}
 		i++;
 	}
@@ -60,6 +61,7 @@ int		is_emptyline(char *line)
 	return (ERROR);
 }
 
+/* refaire la fonction pour eviter de faire un buffer */
 int		get_next_line_minimap(int fd, char **line, t_map *map)
 {
 	static char *s;
@@ -68,24 +70,17 @@ int		get_next_line_minimap(int fd, char **line, t_map *map)
 	int			max_col;
 	static int	started_minimap;
 
-	if (description_ok(map) != SUCCESS)
-	{
-		printf("Error.\nMissing description.");
-		exit (ERROR);
-	}
 	max_col = 0;
-	if (fd < 0 || fd > OPEN_MAX || !line)
-		return (ERROR);
-	if (!(buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
-		return (ERROR);
+	error_gnl(fd, line, map);
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buffer)
+		error_malloc(map);
+	/* ajouter buffer a la structure qui contiendra tous les elements malloqués */
 	b_read = BUFFER_SIZE;
 	while (b_read != 0 && !(ft_hasnewline(s)))
 	{
-		if ((b_read = read(fd, buffer, BUFFER_SIZE)) == -1)
-		{
-			free(buffer);
-			return (ERROR);
-		}
+		b_read = read(fd, buffer, BUFFER_SIZE);
+		error_read(map, buffer, b_read);
 		buffer[b_read] = '\0';
 		s = gnl_strjoin(s, buffer);
 	}
@@ -104,7 +99,9 @@ int		get_next_line_minimap(int fd, char **line, t_map *map)
 	s = ft_prep_s(s);
 	if (b_read == 0)
 		return (DONE);
+	/* a refaire
 	if (minimap_ok(map))
 		return (SUCCESS);
+	*/
 	return (DONE);
 }

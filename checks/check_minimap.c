@@ -12,13 +12,13 @@
 
 #include "../so_long.h"
 
-int     check_cub_extension(char *str)
+int     check_so_long_extension(char *str)
 {
     int     i;
     char    *ext;
     int      j;
 
-    ext = ft_strdup(".cub");
+    ext = ft_strdup(".ber");
     i = 0;
     j = 0;
     while (str[i] != '.' && str[i])
@@ -31,19 +31,18 @@ int     check_cub_extension(char *str)
             j++;
         }
         if (j == 4 && str[i] == '\0')
-        {
             return (SUCCESS);
-        }
     }
     free(ext);
     return (ERROR);
 }
 
 /* A reprendre */
+/* Attention au \n et aux ' ' dans la map */
 int		valid_char_mini_map(char c)
 {
-	if (c == '0' || c == '1' || c == '2' || c == 'N'
-		|| c == 'S' || c == 'E' || c == 'W' || c == '\n' || c == ' ')
+	if (c == '0' || c == '1' || c == 'C' || c == 'E'
+		|| c == 'P' || c == '\n' || c == ' ')
 		return (SUCCESS);
 	return (ERROR);
 }

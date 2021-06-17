@@ -98,7 +98,7 @@ int		check_map_walls(char **map2d, t_map *map)
 		while (j < map->col_max && map2d[i][j] != '\0')
 		{
 			j++;
-			if (is_player_char(map2d[i][j], map) == SUCCESS)
+			if (map2d[i][j] == 'P')
 				check_player++;
 			if (check_player >= 1)
 			{

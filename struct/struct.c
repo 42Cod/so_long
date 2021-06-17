@@ -12,21 +12,6 @@
 
 #include "../so_long.h"
 
-/* A supprimer */
-void	printstruct (t_map *map)
-{
-	printf("Resolution length: %d\n", map->r.length);
-	printf("Resolution width: %d\n", map->r.width);
-	printf("Field R : %d\n", map->f.r);
-	printf("Field G : %d\n", map->f.g);
-	printf("Field B : %d\n", map->f.b);
-	printf("lines : %d\n", map->lines);
-	printf("columns max : %d\n", map->col_max);
-	printf("Player position y : %f\n", map->player.y);
-	printf("Player position x : %f\n", map->player.x);
-	printf("Player orientation : %c\n", map->player.orientation);
-}
-
 t_map	*initialize_struct(void)
 {
 	t_map *map;

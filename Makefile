@@ -18,7 +18,6 @@
 #-Llmlx_Linux  -lmlx -lXext –lX11
 
 SRCS = ./parsing/handle_2d_map.c \
-		./parsing/get_rgb_definitions.c \
 		./checks/check_map_definition.c \
 		./checks/check_map_walls.c \
 		./checks/check_minimap.c \
@@ -29,12 +28,14 @@ SRCS = ./parsing/handle_2d_map.c \
 		./utils/utils0.c \
 		./utils/utils1.c \
 		./utils/utils2.c \
+		./utils/utils3.c \
 		./main.c \
 		./render/graphics.c \
 		./render/keyboard_inputs.c \
 		./render/player.c \
 		./render/draw.c \
 		./free/free.c \
+		./error_handling/error0.c \
 
 OBJS = ${SRCS:.c=.o}
 

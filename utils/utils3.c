@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_rgb_definitions.c                              :+:      :+:    :+:   */
+/*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/13 18:35:12 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/04/23 10:54:51 by mahautlatin      ###   ########.fr       */
+/*   Created: 2021/06/17 13:32:51 by malatini          #+#    #+#             */
+/*   Updated: 2021/06/17 13:32:52 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-/* A renommer */
-int		count_commas(char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
 	int i;
-	int found;
 
 	i = 0;
-	found = 0;
-	while (str[i])
+	if (fd < 0 || !s)
+		return ;
+	while (s[i])
 	{
-		if (str[i] == ',')
-			found++;
+		write(fd, &s[i], 1);
 		i++;
 	}
-	if (found == 2)
-		return (SUCCESS);
-	printf("Missing or too many commas.\n");
-	exit (ERROR);
 }

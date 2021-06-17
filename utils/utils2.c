@@ -56,6 +56,7 @@ int		ft_isspace(char c)
 	return (ERROR);
 }
 
+/*
 int	c_atoi(t_map *map, char *line, int *res, int *i)
 {
 	int	len;
@@ -84,3 +85,4 @@ int	c_atoi(t_map *map, char *line, int *res, int *i)
 	}
 	return (*res * sign);
 }
+*/

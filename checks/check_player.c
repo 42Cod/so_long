@@ -12,6 +12,7 @@
 
 #include "../so_long.h"
 
+/*
 int		is_player_char(char c, t_map *map)
 {
 	if (c == 'S' || c == 'W' || c == 'E' || c == 'N')
@@ -31,3 +32,4 @@ int		is_player_char(char c, t_map *map)
 	}
 	return (ERROR);
 }
+*/

@@ -13,11 +13,12 @@
 #include "./so_long.h"
 
 /* Initialisation de la structure map */
+/* + renseignement des autres structures */
 void    first_read(t_map *map, char **argv, char **line)
 {
     int fd;
 
-    map = initialize_struct();
+    map = initialize_struct_map();
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
         exit (EXIT_FAILURE);
@@ -37,8 +38,15 @@ void    second_read(char **map2d, t_map *map, char **argv, char **line)
     close(fd);
 }
 
+/* Besoin d'initialiser la structure qui permettra de tout free */
 int     main(int argc, char **argv)
 {
+    t_mem   *mem;
+    char    *line;
+
+    line = NULL;
+    mem = initialize_mem();
+    /*
     t_map   *map;
     char    **map2d;
     int     l;
@@ -48,9 +56,10 @@ int     main(int argc, char **argv)
     map = NULL;
     map2d = NULL;
     l = 1;
+    */
     if (argc == 2)
     {
-        first_read(map, argv, &line);
+        first_read(mem->map, argv, &line);
         /*
         map2d = (char **)malloc(sizeof(char *) * (map->lines + 1));
         if (!map2d)

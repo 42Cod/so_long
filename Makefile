@@ -17,25 +17,33 @@
 #attention aux regles pour compiler la lib minilibx
 #-Llmlx_Linux  -lmlx -lXext –lX11
 
-SRCS = ./parsing/handle_2d_map.c \
-		./checks/check_map_definition.c \
-		./checks/check_map_walls.c \
-		./checks/check_minimap.c \
-		./checks/check_player.c \
-		./checks/check_minimap_lines.c \
-		./struct/struct.c \
-		./utils_mlx/colors.c \
-		./utils/utils0.c \
-		./utils/utils1.c \
-		./utils/utils2.c \
-		./utils/utils3.c \
+SRCS = ./srcs/parsing/handle_2d_map.c \
+		./srcs/checks/check_map_definition.c \
+		./srcs/checks/check_map_walls.c \
+		./srcs/checks/check_minimap.c \
+		./srcs/checks/check_player.c \
+		./srcs/render/keyboard_inputs.c \
+		./srcs/render/player.c \
+		./srcs/render/draw.c \
+		./srcs/render/graphics.c \
+		./srcs/checks/check_minimap_lines.c \
+		./srcs/utils/utils0.c \
+		./srcs/utils/utils1.c \
+		./srcs/utils/utils2.c \
+		./srcs/utils/utils3.c \
+		./srcs/free/free.c \
+		./srcs/struct/exits/exits0.c \
+		./srcs/struct/collectibles/collectibles0.c \
+		./srcs/struct/player/player0.c \
+		./srcs/struct/map/map.c \
+		./srcs/struct/data/data.c \
+		./srcs/struct/mem/mem0.c \
+		./srcs/error_handling/error0.c \
 		./main.c \
-		./render/graphics.c \
-		./render/keyboard_inputs.c \
-		./render/player.c \
-		./render/draw.c \
-		./free/free.c \
-		./error_handling/error0.c \
+		./srcs/render/graphics.c \
+		./srcs/print/print.c \
+
+
 
 OBJS = ${SRCS:.c=.o}
 

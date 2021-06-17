@@ -1,0 +1,81 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/04/08 15:46:34 by malatini          #+#    #+#             */
+/*   Updated: 2021/04/08 15:46:36 by malatini         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../so_long.h"
+//Gestion fine des erreurs
+
+/* des free doivent etre ajoutés */
+/* idealement faire une structure pour pouvoir tout free a la fin */
+void	handle_args_error(int fd, char **argv, t_map *map, char **line)
+{
+	(void)map;
+	(void)line;
+
+	if (fd == -1 && check_so_long_extension(argv[1]) == ERROR)
+    {
+		ft_putstr_fd("Error.\nIncorrect map file specified.\n", 2);
+		/* fonction de free - exit */
+        exit (ERROR);
+    }
+	/*
+	if (read_all_map_lines(fd, &line, map) == ERROR)
+    	return (ERROR);
+	*/
+}
+
+void	handle_fd_errors(int fd, t_map *map)
+{
+	(void)fd;
+	(void)map;
+	if (fd < 0)
+    {
+		ft_putstr_fd("Error.\nCould not open the file.\n", 2);
+        exit (ERROR);
+    }
+	/* A rechecker */
+    if (map->lines == 0|| map->col_max == 0)
+    {
+		ft_putstr_fd("Error.\nInvalid map.", 2);
+        exit (ERROR);
+    }
+}
+
+void	error_gnl(int fd, char **line, t_map *map)
+{
+	(void)map;
+	if (fd < 0 || fd > OPEN_MAX || !line)
+	{
+		ft_putstr_fd("Error.\nSomething went wrong while getting next line.\n", 2);
+		/* fonction de free et d exit */
+		exit (EXIT_FAILURE);
+	}
+}
+
+void	error_malloc(t_map *map)
+{
+	(void)map;
+	ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
+	/* fonction de free */
+	exit (EXIT_FAILURE);
+}
+
+void	error_read(t_map *map, char *buffer, int b_read)
+{
+	(void)map;
+	(void)buffer;
+	if (b_read < 0)
+	{
+		ft_putstr_fd("Error.\nError during reading.\n", 2);
+		free(buffer);
+		exit (EXIT_FAILURE);
+	}
+}

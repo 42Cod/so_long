@@ -17,9 +17,9 @@
 /* revoir l init du player */
 
 /* a mettre dans le fichier de la structure du player ? */
-int		is_player_char(char c, t_mem *mem, int i, int j)
+int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 {
-	if (c == 'P')
+	if (map2d[i][j]== 'P')
 	{
 		if (mem->player->is_found == true)
 		{

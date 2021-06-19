@@ -31,8 +31,8 @@ t_mem	*initialize_mem(void)
 	mem->map = (t_map *)malloc(sizeof(t_map));
 	/* le malloc sera fait plus tard */
 	mem->map2d = NULL;
-	if (!mem || !mem->player || !mem->collectibles || !mem->collectibles->first
-		|| !mem->exits || !mem->exits->first || !mem->map)
+	if (!mem || !mem->player || !mem->collectibles || !mem->collectibles
+		|| !mem->exits || !mem->exits|| !mem->map)
 		exit (EXIT_FAILURE);
 	return (mem);
 }

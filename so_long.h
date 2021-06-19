@@ -79,7 +79,8 @@ typedef struct			s_exit_elem
 typedef struct			s_exit_list
 {
 	t_exit_elem			*first;
-	bool				is_touched;
+	//Pas terrible, on pourra l enlever
+	bool				is_empty;
 }						t_exit_list;
 
 /* STRUCTURES MINILIB */
@@ -186,7 +187,7 @@ int		mini_map_all_chars(int fd, char *buffer);
 char	**clean_2dmap(t_map *map, char **map2d);
 
 //check_player.c
-int		is_player_char(char c, t_mem *mem, int i, int j);
+int		is_player_char(t_mem *mem, char **map2d, int i, int j);
 
 //check_textures.c
 int		check_texture_definition(t_map *map, char *line);
@@ -232,13 +233,13 @@ void	error_read(t_map *map, char *buffer, int b_read);
 //collectibles0.c
 bool	is_empty_c_list(t_collectible_list *lst);
 int		c_list_length(t_collectible_list *lst);
-void	push_end_c_list(t_collectible_list *lst, int x, int y);
+void	push_end_c_list(t_mem *mem, int x, int y);
 void	free_c_list(t_collectible_list *lst);
 
 //exits0.c
 bool	is_empty_e_list(t_exit_list *lst);
 int		e_list_length(t_exit_list *lst);
-void	push_end_e_list(t_exit_list *lst, int x, int y);
+void	push_end_e_list(t_mem *mem, int x, int y);
 void	free_e_list(t_exit_list *lst);
 
 //map
@@ -278,3 +279,8 @@ void	init_collectibles_list(t_collectible_list *lst);
 
 //exits
 void	init_exits_list(t_exit_list *lst);
+int		is_exit_char(t_mem *mem, char **map2d, int i, int j);
+
+//checks elements
+void	check_elements(t_mem *mem);
+int		is_collectible_char(t_mem *mem, char **map2d, int i, int j);

@@ -15,16 +15,14 @@
 /* a rechecker */
 void	init_exits_list(t_exit_list *lst)
 {
-	t_exit_elem *first;
-
-	first = NULL;
 	lst->first = NULL;
+	lst->is_empty = true;
 }
 
 /* Indique si une liste est vide ou non */
 bool	is_empty_e_list(t_exit_list *lst)
 {
-	if (lst->first == NULL)
+	if (lst->first == NULL && lst->is_empty == true)
 		return (true);
 	return (false);
 }
@@ -48,11 +46,13 @@ int		e_list_length(t_exit_list *lst)
 }
 
 /* Fonction permettant d'ajouter un élément à la fin de la stack a */
-void	push_end_e_list(t_exit_list *lst, int x, int y)
+void	push_end_e_list(t_mem *mem, int x, int y)
 {
 	t_exit_elem	*elem;
 	t_exit_elem	*temp;
 
+	if (mem->exits->is_empty == true)
+		mem->exits->is_empty = false;
 	elem = (t_exit_elem *)malloc(sizeof(t_exit_elem));
 	/* Revoir la gestion des erreurs
 	if (!elem)
@@ -60,6 +60,7 @@ void	push_end_e_list(t_exit_list *lst, int x, int y)
 	*/
 	elem->pos_x = x;
 	elem->pos_y = y;
+	elem->is_touched = false;
 	/*
 	if (elem == NULL)
 	{
@@ -67,13 +68,13 @@ void	push_end_e_list(t_exit_list *lst, int x, int y)
 		return ;
 	}
 	*/
-	if (!lst->first)
+	if (!mem->exits->first)
 	{
 		elem->next = NULL;
-		lst->first = elem;
+		mem->exits->first = elem;
 		return ;
 	}
-	temp = lst->first;
+	temp = mem->exits->first;
 	while (temp->next)
 		temp = temp->next;
 	temp->next = elem;

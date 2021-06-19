@@ -40,64 +40,7 @@
 # define LIGHT_BLACK 0x00FFFFFF
 # define BLACK 0x000001
 
-/* structure des "personnages"*/
-typedef struct s_player
-{
-	float	x;
-	float	y;
-	float	turnDirection;
-	float	walkDirection;
-	float	moveSpeed;
-}				t_player;
-
-typedef struct					s_collectible_elem
-{
-	int 						pos_x;
-	int							pos_y;
-	struct s_collectible_elem	*next;
-}								t_collectible_elem;
-
-typedef struct			s_collectible_list
-{
-	t_collectible_elem	*first;
-}						t_collectible_list;
-
-typedef struct			s_exit_elem
-{
-	int					pos_x;
-	int					pos_y;
-	struct s_exit_elem	*next;
-}						t_exit_elem;
-
-typedef struct			s_exit_list
-{
-	t_exit_elem			*first;
-}						t_exit_list;
-
-/* Structure de la minmimap */
-
-/* STRUCTURES MINILIB */
-typedef struct s_shape
-{
-	int	x;
-	int y;
-	int width;
-	int height;
-}				t_shape;
-
-//Pour afficher les images, 42 docs
-typedef struct  s_data {
-	void		*img;
-	void		*mlx;
-	void		*mlx_win;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	//int			endian;
-	//char		**map2d;
-	//t_map		*map;
-}				t_data;
-
+/* map, parsing */
 typedef struct	s_map
 {
 	int			lines;
@@ -114,6 +57,67 @@ typedef struct	s_mem
 	t_map				*map;
 	char				**map2d;
 }				t_mem;
+
+/* structure des "personnages"*/
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	float	walk_direction;
+	float	move_speed;
+}				t_player;
+
+typedef struct					s_collectible_elem
+{
+	int 						pos_x;
+	int							pos_y;
+	bool						is_touched;
+	struct s_collectible_elem	*next;
+}								t_collectible_elem;
+
+typedef struct			s_collectible_list
+{
+	t_collectible_elem	*first;
+	bool				is_empty;
+}						t_collectible_list;
+
+typedef struct			s_exit_elem
+{
+	int					pos_x;
+	int					pos_y;
+	bool				is_touched;
+	struct s_exit_elem	*next;
+}						t_exit_elem;
+
+typedef struct			s_exit_list
+{
+	t_exit_elem			*first;
+	bool				is_touched;
+}						t_exit_list;
+
+/* Structure de la minmimap */
+
+/* STRUCTURES MINILIB */
+typedef struct s_shape
+{
+	int	x;
+	int y;
+	int width;
+	int height;
+}				t_shape;
+
+//Pour afficher les images, 42 docs
+//revoir
+typedef struct  s_data {
+	void		*img;
+	void		*mlx;
+	void		*mlx_win;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+}				t_data;
+
 //draw.c
 //int		draw_fow(t_data *img, int color);
 void	print_square_outlines(t_data *img, int x, int y, int color);
@@ -253,3 +257,12 @@ t_data	*initialize_data(void);
 
 //a replacer
 int		description_ok(t_map *map);
+
+//free
+void	free_mem(t_mem *mem);
+
+//print
+void	print_map(t_map *map);
+void	print_player(t_player *player);
+void	print_collectible_list(t_collectible_list	*lst);
+void print_collectible_list(t_exit_list *lst);

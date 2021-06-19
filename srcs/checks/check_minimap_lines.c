@@ -93,9 +93,9 @@ int		get_next_line_minimap(int fd, char **line, t_map *map)
 	s = ft_prep_s(s);
 	if (b_read == 0)
 		return (DONE);
-	/* a refaire
+		/*
 	if (minimap_ok(map))
 		return (SUCCESS);
 	*/
-	return (DONE);
+	return (SUCCESS);
 }

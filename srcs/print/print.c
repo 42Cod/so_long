@@ -29,3 +29,52 @@ void	printstruct (t_map *map)
 }
 */
 
+void	print_map(t_map *map)
+{
+	printf("lines %i\n", map->lines);
+	printf("col_max = %i\n", map->col_max);
+}
+
+void	print_player(t_player *player)
+{
+	printf("x : %f\n", player->x);
+	printf("y : %f\n", player->y);
+	printf("walk direction : %f\n", player->walk_direction);
+	printf("move speed : %f\n", player->move_speed);
+}
+
+void	print_collectible_list(t_collectible_list	*lst)
+{
+	t_collectible_elem *elem;
+
+	elem = lst->first;
+	int i = 0;
+	while (elem)
+	{
+		printf("-----elem %i--------\n", i);
+		printf("pos_x : %i\n", elem->pos_x);
+		printf("pos_y : %i\n", elem->pos_y);
+		/* Attention s'il est touched il ne faudra plus l afficher */
+		printf("is touched : %i\n", elem->is_touched);
+		elem = elem->next;
+		i++;
+	}
+}
+
+void print_collectible_list(t_exit_list *lst)
+{
+	t_exit_elem *elem;
+
+	elem = lst->first;
+	int i = 0;
+	while (elem)
+	{
+		printf("-----exit %i--------\n", i);
+		printf("pos_x : %i\n", elem->pos_x);
+		printf("pos_y : %i\n", elem->pos_y);
+		/* Attention s'il est touched il ne faudra plus l afficher */
+		printf("is touched : %i\n", elem->is_touched);
+		elem = elem->next;
+		i++;
+	}
+}

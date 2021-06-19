@@ -14,6 +14,7 @@
 
 /* Initialisation de la structure map */
 /* + renseignement des autres structures */
+/* Vérifie qu'il n'y a pas de mauvaise char */
 void    first_read(t_map *map, char **argv, char **line)
 {
     int fd;
@@ -65,5 +66,6 @@ int     main(int argc, char **argv)
         ft_putstr_fd("Error.\nWrong number of arguments.\n", 2);
         /* fonction de free - exit */
     }
+    free_mem(mem);
     return (0);
 }

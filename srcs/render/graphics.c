@@ -12,6 +12,7 @@
 
 #include "../../so_long.h"
 
+/* toutes les fonctions a revoir !*/
 /*
 void	rect(t_data *img, t_shape rect, int color)
 {
@@ -29,7 +30,7 @@ void	rect(t_data *img, t_shape rect, int color)
 }
 */
 
-/* a reprendre
+/*
 int		render_next_frame(t_data *img)
 {
 	//verifier que la minimap peut etre affichee
@@ -65,26 +66,25 @@ int		render_next_frame(t_data *img)
 }
 */
 
-/*
-int		graphics_init(char **map2d, t_map *map)
+
+int		g_init(t_mem *mem)
 {
+	void	*mlx;
 	t_data	img;
 
-	// img.map2d = map2d;
-	// img.map = map;
-	img.mlx = mlx_init();
-	//Voir si on devrait faire ca ailleurs
-	//init_player_rotationAngle(&img);
-	img.mlx_win = mlx_new_window(img.mlx, map->r.length, map->r.width, "Hello!");
-	img.img = mlx_new_image(img.mlx, map->r.length, map->r.width);
-	//Tutoriel 42 docs
+	mlx = mlx_init();
+	mem->data = &img;
+	img.img = mlx_new_image(mlx, 1920, 1080);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	/*
+	mem->data->img = mlx_new_image(mlx, R_LENGTH, R_WIDTH);
+	mem->data->addr = mlx_get_data_addr(mem->data->img, );
+	//mem->data->img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	mlx_put_image_to_window(img.mlx, img.mlx_win, img.img, 0, 0);
 	mlx_loop_hook(img.mlx, render_next_frame, &img);
-	//Gestion des évènements clavier, à checker
 	mlx_hook(img.mlx_win, 2, 1L << 0, key_hook, &img);
 	mlx_hook(img.mlx_win, 3, 1L << 1, key_unhook, &img);
 	mlx_loop(img.mlx);
+	*/
 	return (SUCCESS);
 }
-*/

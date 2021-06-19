@@ -25,3 +25,21 @@ void	ft_putstr_fd(char *s, int fd)
 		i++;
 	}
 }
+
+void	max_x(char *line, t_map *map)
+{
+	int res;
+	int i;
+
+	res = 0;
+	i = 0;
+	while (line[i] && line[i] != '\n')
+	{
+		if (valid_char_mini_map(line[i]))
+			res++;
+		i++;
+	}
+	/* Attention revoir potentiellement la gestion de colonnes */
+	if (res > map->col_max)
+		map->col_max = res;
+}

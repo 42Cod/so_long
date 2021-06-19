@@ -13,6 +13,7 @@
 #include "../../../so_long.h"
 
 /* voir la doc de la minilib ! */
+/* supprimer eventuellement */
 t_data	*initialize_data(void)
 {
 	t_data *data;

@@ -51,38 +51,6 @@ char	*ft_strstr(const char *haystack, const char *needle)
 int		ft_isspace(char c)
 {
 	if (c == ' ')
-	//c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
 		return (SUCCESS);
 	return (ERROR);
 }
-
-/*
-int	c_atoi(t_map *map, char *line, int *res, int *i)
-{
-	int	len;
-	(void)map;
-	int sign;
-
-	sign = 1;
-	while (line[*i] == ' ' && line[*i] )
-		(*i)++;
-	while ((line[*i] == '-' || line[*i] == '+') && line[*i])
-	{
-		if (line [*i] == '-')
-			sign = -sign;
-		(*i)++;
-	}
-	len = ft_strlen(line) - 1;
-	while (ft_isdigit(line[*i]) && line[*i] && *i < len)
-	{
-		*res = *res * 10 + line[*i] - '0';
-		(*i)++;
-	}
-	if (line[*i] != '\0' && ft_isalpha(line[*i]) && line[*i] != ' ')
-	{
-		printf("Invalid char mentionned in RGB.\n");
-		exit (ERROR);
-	}
-	return (*res * sign);
-}
-*/

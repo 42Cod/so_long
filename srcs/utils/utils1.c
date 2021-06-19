@@ -31,15 +31,6 @@ char	*ft_strdup_2d(char *s1, t_map *map, int l)
 		cpy[i] = '1';
 		else
 			cpy[i] = s1[i];
-	/* reprendre le calcul de la presence du player */
-	/*
-		if (is_player_char(s1[i], map) == SUCCESS &&
-			valid_char_mini_map(s1[i + 1]) == ERROR && map->defs.player == true)
-		{
-			printf("Too many players found. Exit.\n");
-			exit(ERROR);
-		}
-	*/
 		i++;
 	}
 	cpy[i] = '\0';
@@ -98,8 +89,7 @@ int		ft_isalnum(int c)
 	return (0);
 }
 
-//a spliter, à mettre dans un meilleur dossier
-//t_map *map, char **map2d
+//a spliter ?
 int		get_next_line_2d(int fd, char **line, t_mem *mem)
 {
 	static char	*s;

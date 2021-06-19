@@ -93,6 +93,7 @@ void	draw_map(t_data *img, char **map2d)
 	}
 }
 
+/*
 int		render_next_frame(t_data *img)
 {
 	//faire un rectangle noir de la taille de la resolution?
@@ -100,10 +101,8 @@ int		render_next_frame(t_data *img)
 	//voir condition pour orientation
 	if (img->map->player.walkDirection != 0)
 		update_player_position(img);
-	/*
-	if (img->map->player.rotationAngle != 0)
-		update_player_orientation(img);
-	*/
+	//if (img->map->player.rotationAngle != 0)
+	//	update_player_orientation(img);
 	//update_player(img);
 	draw_player(img, RED);
 	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
@@ -111,39 +110,5 @@ int		render_next_frame(t_data *img)
 	//sleep(2);
 	//rintf("COUCOU !!!!\n");
 	return (0);
-}
-
-/*
-int		graphics_init(char **map2d, t_map *map)
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-	//img.map2d = (char **)malloc(sizeof(char) * map->lines + 1);
-	img.map2d = map2d;
-	//Est-ce qu'il faut malloquer ou pas?
-	//if (!img.map2d)
-	//	return (0);
-	//img.map = (t_map *)malloc(sizeof(map) + 1);
-	img.map = map;
-	//if (!img.map)
-	//	return (0);
-	mlx = mlx_init();
-	img.mlx = mlx;
-	init_player_rotationAngle(&img);
-	//printf("rotation speed 1 = %f\n", img.map->player.rotationSpeed);
-	//printf("rotation angle 1 = %f\n", img.map->player.rotationAngle);
-	//printf("Position du joueur : %f, %f\n", map->player.x, map->player.y);
-	//printf("Position du joueur : %f, %f\n", img.map->player.x, img.map->player.y);
-	mlx_win = mlx_new_window(mlx, map->r.length, map->r.width, "Hello world!");
-	img.mlx_win = mlx_win;
-	img.img = mlx_new_image(mlx, map->r.length, map->r.width);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop_hook(mlx, render_next_frame, &img);
-	mlx_hook(mlx_win, 2, 1L << 0, key_hook, &img);
-	mlx_hook(mlx_win, 3, 1L << 1, key_unhook, &img);
-	mlx_loop(mlx);
-	return (SUCCESS);
 }
 */

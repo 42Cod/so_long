@@ -12,14 +12,14 @@
 
 #include "../../so_long.h"
 
-//touches a gerer : W, A, S, D
-//esc ferme la fenetre et quitte le programme proprement
-//pareil pour la croix
+/*
+touches a gerer : W, A, S, D
+w is up - 6
+a is left - 12
+s is down  - 1
+d is right - 2
+*/
 
-//w is up - 6
-//a is left - 12
-//s is down  - 1
-//d is right - 2
 /*
 int		key_hook(int keycode, t_data *img)
 {
@@ -49,9 +49,7 @@ int		key_hook(int keycode, t_data *img)
 	//printf("Player position : x: %i, y: %i.\n", img->map->player.x, img->map->player.y);
 	return (SUCCESS);
 }
-*/
 
-/*
 int		key_unhook(int keycode, t_data *img)
 {
 	if (keycode == 6)
@@ -76,9 +74,8 @@ int		key_unhook(int keycode, t_data *img)
 	}
 	return (keycode);
 }
-*/
 
-/*
+
 int	cub_close(int keycode, t_vars *vars)
 {
 	(void)keycode;

@@ -39,6 +39,18 @@
 # define LIGHT_BLACK 0x00FFFFFF
 # define BLACK 0x000001
 
+# define R_LENGTH 600
+# define R_WIDTH 400
+
+/* STRUCTURES MINILIB */
+typedef struct	s_data {
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_data;
+
 typedef struct	s_map
 {
 	int	lines;
@@ -83,7 +95,7 @@ typedef struct			s_exit_list
 	bool				is_empty;
 }						t_exit_list;
 
-/* STRUCTURES MINILIB */
+/* vu pour faire un rectangle/carre */
 typedef struct s_shape
 {
 	int	x;
@@ -91,19 +103,6 @@ typedef struct s_shape
 	int width;
 	int height;
 }				t_shape;
-
-//Pour afficher les images, 42 docs
-//revoir
-typedef struct  s_data {
-	void		*img;
-	void		*mlx;
-	void		*mlx_win;
-	char		*addr;
-	int			bits_per_pixel;
-	int			line_length;
-	int			endian;
-}				t_data;
-
 
 /* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
 typedef struct	s_mem
@@ -125,7 +124,7 @@ void	fill_square(t_data *img, int x, int y, int color);
 
 //graphics.c
 int		render_next_frame(t_data *img);
-int		graphics_init(char **map2d, t_map *map);
+int		g_init(t_mem *mem);
 
 //keyboard_inputs.c
 int		key_unhook(int keycode, t_data *img);
@@ -136,9 +135,6 @@ int		update_player_position(t_data *img);
 int		update_player_orientation(t_data *img);
 int		init_player_rotationAngle(t_data *img);
 void	draw_player(t_data *img, int color);
-
-// PARSING
-//int		get_next_line_description(int fd, char **line, t_map *map);
 
 //a refaire
 //int		description_ok(t_map *map);
@@ -175,7 +171,6 @@ int		check_map_walls(char **map2d, t_map *map);
 int		check_lines_minimap(t_map *map, char *line, int l);
 int		mini_map_all_chars(int fd, char *buffer);
 int		check_mini_map_chars(char *line, t_map *map);
-int		is_emptyline(char *line);
 
 //check_minimap.c
 int     check_so_long_extension(char *str);
@@ -260,7 +255,7 @@ void	print_map(t_map *map);
 void	print_player(t_player *player);
 void	print_collectible_list(t_collectible_list	*lst);
 void	print_exit_list(t_exit_list *lst);
-void	print_collectibles_stack(t_mem *mem);
+void	print_collectible_stack(t_mem *mem);
 void	print_exit_stack(t_mem *mem);
 
 //autre

@@ -27,12 +27,15 @@ t_mem	*initialize_mem(void)
 	init_exits_list(mem->exits);
 	//mem->exits->first = (t_exit_elem *)malloc(sizeof(t_exit_elem));
 	/*data a revoir*/
-	mem->data = initialize_data();
+	/* initialize data a supprimer idealement */
+	//mem->data = initialize_data();
 	mem->map = (t_map *)malloc(sizeof(t_map));
 	/* le malloc sera fait plus tard */
 	mem->map2d = NULL;
-	if (!mem || !mem->player || !mem->collectibles || !mem->collectibles
-		|| !mem->exits || !mem->exits|| !mem->map)
+	if (!mem || !mem->player || !mem->collectibles || !mem->exits || !mem->map)// || !mem->data
+	{
+		//free
 		exit (EXIT_FAILURE);
+	}
 	return (mem);
 }

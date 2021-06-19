@@ -15,6 +15,7 @@
 //checker que les touches utilisees soient bien correctes + ne pas sortir de la map + collision des murs
 //faire une fonction pour "rationnaliser le rotation angle" pour qu'il soit toujours entre 0 et 2PI
 //prendre la position de départ et la position d'arrivee et faire une interpolation
+/*
 int		update_player_position(t_data *img)
 {
 	printf("X = %i, Y = %i\n", (int)img->map->player.x, (int)img->map->player.y);
@@ -36,11 +37,11 @@ int		update_player_position(t_data *img)
 	//img->map->player.x += sin(img->map->player.rotationAngle) * moveStep;
 	return (SUCCESS);
 }
+*/
 
+/*
 int		update_player_orientation(t_data *img)
 {
-	/* A refaire */
-	//printf("rotation angle = %f\n", img->map->player.rotationAngle);
 	return (SUCCESS);
 }
 
@@ -70,7 +71,6 @@ void 	draw_player(t_data *img, int color)
 	//draw_line(img, (img->map->player.x * MINIMAP) - MINIMAP / 2, (img->map->player.y * MINIMAP) - MINIMAP / 2, img->map);
 }
 
-/*
 int init_player_rotationAngle(t_data *img)
 {
 	//orientation vers le sud
@@ -101,9 +101,7 @@ int init_player_rotationAngle(t_data *img)
 	}
 	return (SUCCESS);
 }
-*.
 
-/*
 void	draw_line(t_data *img, int x, int y, t_map *map)
 {
 	(void)map;

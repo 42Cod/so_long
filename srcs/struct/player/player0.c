@@ -20,3 +20,22 @@ void	init_player(t_mem *mem)
 	mem->player->move_speed = 0.3;
 	mem->player->is_found = 0;
 }
+
+int		is_player_char(t_mem *mem, char **map2d, int i, int j)
+{
+	if (map2d[i][j]== 'P')
+	{
+		if (mem->player->is_found == true)
+		{
+			//rediriger vers les erreurs
+			ft_putstr_fd("Error.\nToo many players found.\n", 2);
+			//free
+			exit (EXIT_FAILURE);
+		}
+		mem->player->is_found = true;
+		mem->player->x = i;
+		mem->player->y = j;
+		return (SUCCESS);
+	}
+	return (ERROR);
+}

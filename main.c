@@ -12,7 +12,23 @@
 
 #include "./so_long.h"
 
-/* Initialisation de la structure map qui permettra de créer la char **map2d*/
+void	initialize_struct_map(t_map *map)
+{
+	map->lines = 0;
+	map->col_max = 0;
+}
+
+int		initialize_2dmap(int fd, char **line,t_mem *mem)
+{
+	int read_ret;
+
+	read_ret = 1;
+	while (read_ret != 0)
+		read_ret = get_next_line_2d(fd, line, mem);
+	return (SUCCESS);
+}
+
+/* Initialisation de la structure map qui permettra de créer la char **map2d */
 void    first_read(t_map *map, char **argv, char **line)
 {
     int fd;
@@ -51,24 +67,17 @@ int     main(int argc, char **argv)
     {
         first_read(mem->map, argv, &line);
         mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
-        /* Initialisation de la map2d */
         second_read(&line, argv, mem);
         print_map2d(mem->map2d, mem);
         check_elements(mem);
-        //fonction pour remplir la pile de collectible
-        //fonction pour remplir la pile de exit
-        //fonction de verif du player
-        //check_map_walls(mem->map2d, mem->map);
-        /*
-        graphics_init(map2d, map);
-        */
-        /* free */
+        print_collectible_stack(mem);
+        print_exit_stack(mem);
+        check_map_walls(mem->map2d, mem->map);
+        g_init(mem);
     }
     else
-    {
         ft_putstr_fd("Error.\nWrong number of arguments.\n", 2);
-        /* fonction de free - exit */
-    }
+    /*revoir le free */
     free_mem(mem);
     return (0);
 }

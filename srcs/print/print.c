@@ -81,16 +81,18 @@ void	print_map2d(char **map2d, t_mem *mem)
 	}
 }
 
-void	print_collectibles_stack(t_mem *mem)
+void	print_collectible_stack(t_mem *mem)
 {
 	t_collectible_elem *elem;
 
 	elem = mem->collectibles->first;
+	printf("--------collectibles stack---------\n");
 	while (elem)
 	{
 		printf("pos x : %i\n", elem->pos_x);
 		printf("pos y : %i\n", elem->pos_y);
 		printf("is touched : %i\n", elem->is_touched);
+		printf("---------------------------------\n");
 		elem = elem->next;
 	}
 }
@@ -100,11 +102,13 @@ void	print_exit_stack(t_mem *mem)
 	t_exit_elem *elem;
 
 	elem = mem->exits->first;
+	printf("--------exit stack---------\n");
 	while (elem)
 	{
 		printf("pos x : %i\n", elem->pos_x);
 		printf("pos y : %i\n", elem->pos_y);
 		printf("is touched : %i\n", elem->is_touched);
+		printf("---------------------------------\n");
 		elem = elem->next;
 	}
 }

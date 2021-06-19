@@ -17,10 +17,9 @@
 #attention aux regles pour compiler la lib minilibx
 #-Llmlx_Linux  -lmlx -lXext –lX11
 
-SRCS = ./srcs/parsing/handle_2d_map.c \
+SRCS =	./main.c \
 		./srcs/checks/check_map_walls.c \
 		./srcs/checks/check_minimap.c \
-		./srcs/checks/check_player.c \
 		./srcs/checks/check_elements.c \
 		./srcs/render/keyboard_inputs.c \
 		./srcs/render/player.c \
@@ -36,14 +35,11 @@ SRCS = ./srcs/parsing/handle_2d_map.c \
 		./srcs/struct/collectibles/collectibles0.c \
 		./srcs/struct/collectibles/collectibles1.c \
 		./srcs/struct/player/player0.c \
-		./srcs/struct/map/map.c \
 		./srcs/struct/data/data.c \
 		./srcs/struct/mem/mem0.c \
 		./srcs/error_handling/error0.c \
 		./srcs/error_handling/error1.c \
-		./srcs/render/graphics.c \
 		./srcs/free/free.c \
-		./main.c \
 		./srcs/print/print.c \
 
 OBJS = ${SRCS:.c=.o}

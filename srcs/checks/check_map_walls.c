@@ -12,6 +12,8 @@
 
 #include "../../so_long.h"
 
+/* revoir toute la gestion d erreur ! */
+/* Verifie que la ligne passee en paramètre contient uniquement des murs */
 int		is_full_walls(char *line)
 {
 	int	i;
@@ -88,34 +90,19 @@ int		check_map_walls(char **map2d, t_map *map)
 	(void)map2d;
 	int i;
 	int j;
-	//int check_player;
 
 	i = 0;
 	j = 0;
-	//check_player = 0;
 	while (map2d[i] != NULL)
 	{
 		j = 0;
 		while (j < map->col_max && map2d[i][j] != '\0')
 		{
 			j++;
-			/*
-			if (map2d[i][j] == 'P')
-				check_player++;
-			if (check_player >= 1)
-			{
-				printf("Error.\n Too many players.");
-				exit (ERROR);
-			}
-			*/
 			if (map2d[i][j] == '0')
-			{
 				check_zero_neighbors(map2d, map, i, j);
-			}
 			else if (map2d[i][j] == ' ')
-			{
 				check_space_neighbors(map2d, map, i, j);
-			}
 		}
 		i++;
 	}

@@ -26,27 +26,17 @@ void	max_x(char *line, t_map *map)
 			res++;
 		i++;
 	}
+	/* Attention revoir potentiellement la gestion de colonnes */
 	if (res > map->col_max)
-	{
 		map->col_max = res;
-	}
 }
 
-int		initialize_2dmap(int fd, char **line, t_map *map, char **map2d)
+int		initialize_2dmap(int fd, char **line,t_mem *mem)
 {
 	int read_ret;
 
 	read_ret = 1;
-	/*
-	if (description_ok(map) != SUCCESS)
-	{
-		printf("Error.\n Missing data in description.\n");
-		exit (ERROR);
-	}
-	*/
 	while (read_ret != 0)
-	{
-		read_ret = get_next_line_2d(fd, line, map, map2d);
-	}
+		read_ret = get_next_line_2d(fd, line, mem);
 	return (SUCCESS);
 }

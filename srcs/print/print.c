@@ -61,3 +61,22 @@ void print_exit_list(t_exit_list *lst)
 		i++;
 	}
 }
+
+void	print_map2d(char **map2d, t_mem *mem)
+{
+	int i = 0;
+	int j = 0;
+	if (!map2d || !mem || !(*map2d))
+		return ;
+	while (i < mem->map->lines && j < mem->map->col_max && map2d[i][j])
+	{
+		while (j < mem->map->col_max && map2d[i][j])
+		{
+			printf("[%c]", map2d[i][j]);
+			j++;
+		}
+		j = 0;
+		printf("\n");
+		i++;
+	}
+}

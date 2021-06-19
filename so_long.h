@@ -31,7 +31,6 @@
 # define BUFFER_SIZE 10
 # define MINIMAP 20
 
-//COLORS
 # define SILVER 0xC0C0C0
 # define WHITE 0xFFFFFF
 # define BLUE 0x778899
@@ -40,14 +39,13 @@
 # define LIGHT_BLACK 0x00FFFFFF
 # define BLACK 0x000001
 
-/* map, parsing */
 typedef struct	s_map
 {
-	int			lines;
-	int			col_max;
+	int	lines;
+	int	col_max;
 }				t_map;
 
-typedef struct s_player
+typedef struct	s_player
 {
 	float	x;
 	float	y;
@@ -55,13 +53,13 @@ typedef struct s_player
 	float	move_speed;
 }				t_player;
 
-typedef struct					s_collectible_elem
+typedef struct	s_collectible_elem
 {
 	int 						pos_x;
 	int							pos_y;
 	bool						is_touched;
 	struct s_collectible_elem	*next;
-}								t_collectible_elem;
+}				t_collectible_elem;
 
 typedef struct			s_collectible_list
 {
@@ -138,7 +136,7 @@ int		init_player_rotationAngle(t_data *img);
 void	draw_player(t_data *img, int color);
 
 // PARSING
-int		get_next_line_description(int fd, char **line, t_map *map);
+//int		get_next_line_description(int fd, char **line, t_map *map);
 
 //a refaire
 //int		description_ok(t_map *map);
@@ -147,7 +145,7 @@ int		check_empty_line(char *line);
 
 //handle_2d_map.c
 char	*ft_strdup_2d(char *s1, t_map *map, int l);
-int		initialize_2dmap(int fd, char **argv, t_map *map, char **map2d);
+int		initialize_2dmap(int fd, char **argv, t_mem *mem);
 int		get_next_line_minimap(int fd, char **line, t_map *map);
 void	max_x(char *line, t_map *map);
 
@@ -171,7 +169,7 @@ int		check_one_neighbors(char **map2d, t_map *map, int i, int j);
 int		check_map_walls(char **map2d, t_map *map);
 
 //check_minimap_lines.c
-int		check_map_walls(char **map2d, t_map *map);
+//int		check_map_walls(char **map2d, t_map *map);
 int		check_lines_minimap(t_map *map, char *line, int l);
 int		mini_map_all_chars(int fd, char *buffer);
 int		check_mini_map_chars(char *line, t_map *map);
@@ -208,7 +206,7 @@ char	*gnl_strjoin(char *s1, char *s2);
 char	*ft_newline(char *s);
 char	*ft_newline_minimap(char *s);
 int		ft_isalnum(int c);
-int		get_next_line_2d(int fd, char **line, t_map *map, char **map2d);
+int		get_next_line_2d(int fd, char **line, t_mem *mem);
 
 //utils2.c
 int		ft_isalpha(int c);
@@ -265,6 +263,7 @@ void	print_player(t_player *player);
 void	print_collectible_list(t_collectible_list	*lst);
 void	print_exit_list(t_exit_list *lst);
 
-
 //autre
 int		is_empty_line(char *str);
+void	print_map2d(char **map2d, t_mem *mem);
+void	handle_error_gnl2(char *line, t_mem *mem, int i);

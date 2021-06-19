@@ -12,9 +12,7 @@
 
 #include "./so_long.h"
 
-/* Initialisation de la structure map */
-/* + renseignement des autres structures */
-/* Vérifie qu'il n'y a pas de mauvaise char */
+/* Initialisation de la structure map qui permettra de créer la char **map2d*/
 void    first_read(t_map *map, char **argv, char **line)
 {
     int fd;
@@ -30,13 +28,13 @@ void    first_read(t_map *map, char **argv, char **line)
 }
 
 /*Initialisation de la char **map2d */
-void    second_read(char **map2d, t_map *map, char **argv, char **line)
+void    second_read(char **line, char **argv, t_mem *mem)
 {
     int fd;
 
     fd = open(argv[1], O_RDONLY);
-    handle_fd_errors(fd, map);
-    initialize_2dmap(fd, line, map, map2d);
+    handle_fd_errors(fd, mem->map);
+    initialize_2dmap(fd, line, mem);
     close(fd);
 }
 
@@ -52,15 +50,15 @@ int     main(int argc, char **argv)
     if (argc == 2)
     {
         first_read(mem->map, argv, &line);
-        //Probleme dans le gnl
-        //printf("mem->map->lines : %i\n", mem->map->lines);
-        //mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
-        //second_read(mem->map2d, mem->map, argv, &line);
+        mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
+        /* Initialisation de la map2d */
+        second_read(&line, argv, mem);
+        print_map2d(mem->map2d, mem);
         /*
         check_map_walls(mem->map2d, mem->map);
         graphics_init(map2d, map);
         */
-        /* fonctions de free */
+        /* free */
     }
     else
     {

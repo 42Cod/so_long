@@ -17,16 +17,16 @@ int		is_empty_line(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i]== '\0') //&& ft_strlen(str) == 1
+	if (str[i]== '\0')
 		return (SUCCESS);
 	return (ERROR);
 }
 
 int     check_so_long_extension(char *str)
 {
-    int     i;
-    char    *ext;
-    int      j;
+    int		i;
+    char	*ext;
+    int		j;
 
     ext = ft_strdup(".ber");
     i = 0;
@@ -47,8 +47,6 @@ int     check_so_long_extension(char *str)
     return (ERROR);
 }
 
-/* A reprendre */
-/* Attention au \n et aux ' ' dans la map */
 int		valid_char_mini_map(char c)
 {
 	if (c == '0' || c == '1' || c == 'C' || c == 'E'

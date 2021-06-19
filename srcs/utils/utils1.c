@@ -99,16 +99,16 @@ int		ft_isalnum(int c)
 }
 
 //a spliter, à mettre dans un meilleur dossier
-int		get_next_line_2d(int fd, char **line, t_map *map, char **map2d)
+//t_map *map, char **map2d
+int		get_next_line_2d(int fd, char **line, t_mem *mem)
 {
 	static char	*s;
 	int			b_read;
 	char		*buffer;
-	static int i;
+	static int	i;
 
-	if (fd < 0 || fd > OPEN_MAX || !line)
-		return (ERROR);
-	if (!(buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1))))
+	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (fd < 0 || fd > OPEN_MAX || !line || !buffer)
 		return (ERROR);
 	b_read = BUFFER_SIZE;
 	while (b_read != 0 && !(ft_hasnewline(s)))
@@ -123,17 +123,13 @@ int		get_next_line_2d(int fd, char **line, t_map *map, char **map2d)
 	}
 	free(buffer);
 	*line = ft_newline_minimap(s);
-	if ((*line[0] == '1' || *line[0] == ' '))
+	handle_error_gnl2(*line, mem, i);
+	if (*line[0] == '1' || *line[0] == ' ')
 	{
-		map2d[i] = ft_strdup_2d(*line, map, i);
+		mem->map2d[i] = ft_strdup_2d(*line, mem->map, i);
 		i++;
 	}
-	else if (*line[0] == '0')
-	{
-		printf("Error.\nMap line staring with a 0. Missing wall(s).\n");
-		exit (ERROR);
-	}
-	map2d[i] = NULL;
+	mem->map2d[i] = NULL;
 	s = ft_prep_s(s);
 	if (b_read == 0)
 		return (DONE);

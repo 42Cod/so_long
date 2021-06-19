@@ -30,7 +30,6 @@ SRCS = ./srcs/parsing/handle_2d_map.c \
 		./srcs/utils/utils1.c \
 		./srcs/utils/utils2.c \
 		./srcs/utils/utils3.c \
-		./srcs/free/free.c \
 		./srcs/struct/exits/exits0.c \
 		./srcs/struct/collectibles/collectibles0.c \
 		./srcs/struct/player/player0.c \
@@ -38,8 +37,10 @@ SRCS = ./srcs/parsing/handle_2d_map.c \
 		./srcs/struct/data/data.c \
 		./srcs/struct/mem/mem0.c \
 		./srcs/error_handling/error0.c \
-		./main.c \
+		./srcs/error_handling/error1.c \
 		./srcs/render/graphics.c \
+		./srcs/free/free.c \
+		./main.c \
 		./srcs/print/print.c \
 
 OBJS = ${SRCS:.c=.o}

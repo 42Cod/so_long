@@ -217,10 +217,6 @@ char	*ft_strstr(const char *haystack, const char *needle);
 int		ft_isspace(char c);
 int		c_atoi(t_map *map, char *line, int *res, int *i);
 
-//struct
-void	printstruct (t_map *map);
-//t_map 	*initialize_struct_map();
-
 //nouvelles
 void	handle_args_error(int fd, char **argv, t_map *map, char **line);
 void	handle_fd_errors(int fd, t_map *map);
@@ -264,6 +260,8 @@ void	print_map(t_map *map);
 void	print_player(t_player *player);
 void	print_collectible_list(t_collectible_list	*lst);
 void	print_exit_list(t_exit_list *lst);
+void	print_collectibles_stack(t_mem *mem);
+void	print_exit_stack(t_mem *mem);
 
 //autre
 int		is_empty_line(char *str);

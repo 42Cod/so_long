@@ -12,23 +12,6 @@
 
 #include "../../so_long.h"
 
-/* A supprimer */
-/*
-void	printstruct (t_map *map)
-{
-	printf("Resolution length: %d\n", map->r.length);
-	printf("Resolution width: %d\n", map->r.width);
-	printf("Field R : %d\n", map->f.r);
-	printf("Field G : %d\n", map->f.g);
-	printf("Field B : %d\n", map->f.b);
-	printf("lines : %d\n", map->lines);
-	printf("columns max : %d\n", map->col_max);
-	printf("Player position y : %f\n", map->player.y);
-	printf("Player position x : %f\n", map->player.x);
-	printf("Player orientation : %c\n", map->player.orientation);
-}
-*/
-
 void	print_map(t_map *map)
 {
 	printf("lines %i\n", map->lines);
@@ -61,7 +44,7 @@ void	print_collectible_list(t_collectible_list	*lst)
 	}
 }
 
-void print_collectible_list(t_exit_list *lst)
+void print_exit_list(t_exit_list *lst)
 {
 	t_exit_elem *elem;
 

@@ -12,6 +12,16 @@
 
 #include "../../so_long.h"
 
+int		is_empty_line(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i]== '\0') //&& ft_strlen(str) == 1
+		return (SUCCESS);
+	return (ERROR);
+}
+
 int     check_so_long_extension(char *str)
 {
     int     i;

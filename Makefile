@@ -18,7 +18,6 @@
 #-Llmlx_Linux  -lmlx -lXext –lX11
 
 SRCS = ./srcs/parsing/handle_2d_map.c \
-		./srcs/checks/check_map_definition.c \
 		./srcs/checks/check_map_walls.c \
 		./srcs/checks/check_minimap.c \
 		./srcs/checks/check_player.c \

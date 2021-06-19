@@ -26,6 +26,7 @@ void    first_read(t_map *map, char **argv, char **line)
     handle_args_error(fd, argv, map, line);
     read_all_map_lines(fd, line, map);
     close(fd);
+    print_map(map);
 }
 
 /*Initialisation de la char **map2d */

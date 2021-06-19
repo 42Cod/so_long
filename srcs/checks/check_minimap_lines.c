@@ -61,6 +61,17 @@ int		is_emptyline(char *line)
 	return (ERROR);
 }
 
+int		read_all_map_lines(int fd, char **line, t_map *map)
+{
+	int	ret;
+
+	ret = 1;
+	/* faire un free a line a chaque fois ? */
+	while (ret != 0)
+		ret = get_next_line_minimap(fd, line, map);
+	return (SUCCESS);
+}
+
 /* Determine le nombre de lignes sur la machine et check les erreurs de chars */
 int		get_next_line_minimap(int fd, char **line, t_map *map)
 {
@@ -82,7 +93,8 @@ int		get_next_line_minimap(int fd, char **line, t_map *map)
 	}
 	free(buffer);
 	*line = ft_newline_minimap(s);
-	map->lines++;
+	if (is_empty_line(*line) == -1)
+		map->lines++;
 	max_x(*line, map);
 	if (check_mini_map_chars(*line, map) == ERROR)
 	{

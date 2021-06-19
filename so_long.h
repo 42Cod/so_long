@@ -47,18 +47,6 @@ typedef struct	s_map
 	int			col_max;
 }				t_map;
 
-/* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
-typedef struct	s_mem
-{
-	t_player			*player;
-	t_collectible_list	*collectibles;
-	t_exit_list			*exits;
-	t_data				*data;
-	t_map				*map;
-	char				**map2d;
-}				t_mem;
-
-/* structure des "personnages"*/
 typedef struct s_player
 {
 	float	x;
@@ -95,8 +83,6 @@ typedef struct			s_exit_list
 	bool				is_touched;
 }						t_exit_list;
 
-/* Structure de la minmimap */
-
 /* STRUCTURES MINILIB */
 typedef struct s_shape
 {
@@ -117,6 +103,18 @@ typedef struct  s_data {
 	int			line_length;
 	int			endian;
 }				t_data;
+
+
+/* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
+typedef struct	s_mem
+{
+	t_player			*player;
+	t_collectible_list	*collectibles;
+	t_exit_list			*exits;
+	t_data				*data;
+	t_map				*map;
+	char				**map2d;
+}				t_mem;
 
 //draw.c
 //int		draw_fow(t_data *img, int color);
@@ -265,4 +263,8 @@ void	free_mem(t_mem *mem);
 void	print_map(t_map *map);
 void	print_player(t_player *player);
 void	print_collectible_list(t_collectible_list	*lst);
-void print_collectible_list(t_exit_list *lst);
+void	print_exit_list(t_exit_list *lst);
+
+
+//autre
+int		is_empty_line(char *str);

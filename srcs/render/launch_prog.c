@@ -24,35 +24,35 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 }
 
 //faire une fonction full square et une fonction empty square
-void	print_square_outlines(t_data *img, int x, int y, int color)
+void	print_square_outlines(t_mem *mem, int x, int y, int color)
 {
 	int i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(img, x + i, y, color);
+		my_mlx_pixel_put(mem->data, x + i, y, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(img, x + i, y + MINIMAP, color);
+		my_mlx_pixel_put(mem->data, x + i, y + MINIMAP, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(img, x, y + i, color);
+		my_mlx_pixel_put(mem->data, x, y + i, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(img, x + MINIMAP, y + i, color);
+		my_mlx_pixel_put(mem->data, x + MINIMAP, y + i, color);
 		i++;
 	}
 }
 
-void	fill_square(t_data *img, int x, int y, int color)
+void	fill_square(t_mem *mem, int x, int y, int color)
 {
 	int i = 0;
 	int j = 0;
@@ -61,30 +61,28 @@ void	fill_square(t_data *img, int x, int y, int color)
 		j = 0;
 		while (j < MINIMAP)
 		{
-			my_mlx_pixel_put(img, x + i, y + j, color);
+			my_mlx_pixel_put(mem->data, x + i, y + j, color);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	draw_map(t_data *img, char **map2d)
+void	draw_map(t_mem *mem)
 {
-	//Mettre dans une fonction separee
 	int x = 1, y = 1;
 	int i = 0, j = 0;
-	while (map2d[i])
+	while (mem->map2d[i])
 	{
 		x = 1;
-		//Pour les lignes
 		j = 0;
-		while (map2d[i][j])
+		while (mem->map2d[i][j])
 		{
-			if (map2d[i][j] == '1')
-				fill_square(img, x, y, BLUE);
+			if (mem->map2d[i][j] == '1')
+				fill_square(mem, x, y, BLUE);
 			else
-				fill_square(img, x, y, WHITE);
-			print_square_outlines(img, x, y, SILVER);
+				fill_square(mem, x, y, WHITE);
+			print_square_outlines(mem, x, y, SILVER);
 			x += MINIMAP;
 			j++;
 		}
@@ -92,23 +90,3 @@ void	draw_map(t_data *img, char **map2d)
 		i++;
 	}
 }
-
-/*
-int		render_next_frame(t_data *img)
-{
-	//faire un rectangle noir de la taille de la resolution?
-	draw_map(img, img->map2d);
-	//voir condition pour orientation
-	if (img->map->player.walkDirection != 0)
-		update_player_position(img);
-	//if (img->map->player.rotationAngle != 0)
-	//	update_player_orientation(img);
-	//update_player(img);
-	draw_player(img, RED);
-	mlx_put_image_to_window(img->mlx, img->mlx_win, img->img, 0, 0);
-	mlx_do_sync(img->mlx);
-	//sleep(2);
-	//rintf("COUCOU !!!!\n");
-	return (0);
-}
-*/

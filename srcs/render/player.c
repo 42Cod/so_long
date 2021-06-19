@@ -42,10 +42,10 @@ int		update_player_orientation(t_data *img)
 	//printf("rotation angle = %f\n", img->map->player.rotationAngle);
 	return (SUCCESS);
 }
+*/
 
-void 	draw_player(t_data *img, int color)
+void 	draw_player(t_mem *mem, int color)
 {
-	my_mlx_pixel_put(img, (img->map->player.x * MINIMAP), (img->map->player.y * MINIMAP), color);
+	my_mlx_pixel_put(mem->data, (mem->player->x * MINIMAP), (mem->player->y * MINIMAP), color);
 	//draw_fow(img, color);
 }
-*/

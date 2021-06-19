@@ -25,6 +25,7 @@ SRCS =	./main.c \
 		./srcs/render/player.c \
 		./srcs/render/draw.c \
 		./srcs/render/graphics.c \
+		./srcs/render/launch_prog.c \
 		./srcs/checks/check_minimap_lines.c \
 		./srcs/utils/utils0.c \
 		./srcs/utils/utils1.c \
@@ -45,7 +46,7 @@ SRCS =	./main.c \
 OBJS = ${SRCS:.c=.o}
 
 NAME = libsolong.a
-CC = gcc -g -fsanitize=address
+CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 PROG = so_long

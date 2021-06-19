@@ -12,6 +12,7 @@
 
 #include "../../so_long.h"
 
+/* Attention doublon launch prog
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -63,28 +64,4 @@ void	print_square_outlines(t_data *img, int x, int y, int color)
 		i++;
 	}
 }
-
-//voir pour centrer la map ? (a revoir)
-void	draw_map(t_data *img, char **map2d)
-{
-	int x = 1, y = 1;
-	int i = 0, j = 0;
-	while (map2d[i])
-	{
-		x = 1;
-		j = 0;
-		while (map2d[i][j])
-		{
-			if (map2d[i][j] == '1')
-				fill_square(img, x, y, LIGHT_BLACK);
-			else
-				fill_square(img, x, y, GREY);
-			print_square_outlines(img, x, y, BLACK);
-			x += MINIMAP;
-			j++;
-		}
-		y += MINIMAP;
-		i++;
-	}
-}
-
+*/

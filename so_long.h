@@ -29,7 +29,7 @@
 # define DONE 0
 # define SUCCESS 1
 # define BUFFER_SIZE 10
-# define MINIMAP 20
+# define MINIMAP 5
 
 # define SILVER 0xC0C0C0
 # define WHITE 0xFFFFFF
@@ -39,8 +39,8 @@
 # define LIGHT_BLACK 0x00FFFFFF
 # define BLACK 0x000001
 
-# define R_LENGTH 600
-# define R_WIDTH 400
+# define R_LENGTH 1500
+# define R_WIDTH 1000
 
 /* STRUCTURES MINILIB */
 typedef struct	s_data {
@@ -117,24 +117,24 @@ typedef struct	s_mem
 
 //draw.c
 //int		draw_fow(t_data *img, int color);
-void	print_square_outlines(t_data *img, int x, int y, int color);
-void	draw_map(t_data *img, char **map2d);
+void	print_square_outlines(t_mem *mem, int x, int y, int color);
+void	draw_map(t_mem *mem);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	fill_square(t_data *img, int x, int y, int color);
+void	fill_square(t_mem *mem, int x, int y, int color);
 
 //graphics.c
-int		render_next_frame(t_data *img);
+int		render_next_frame(t_mem *mem);
 int		g_init(t_mem *mem);
 
 //keyboard_inputs.c
-int		key_unhook(int keycode, t_data *img);
-int		key_hook(int keycode, t_data *img);
+int		key_unhook(int keycode, t_mem *mem);
+int		key_hook(int keycode, t_mem *mem);
 
 //player.c
 int		update_player_position(t_data *img);
 int		update_player_orientation(t_data *img);
 int		init_player_rotationAngle(t_data *img);
-void	draw_player(t_data *img, int color);
+void	draw_player(t_mem *mem, int color);
 
 //a refaire
 //int		description_ok(t_map *map);

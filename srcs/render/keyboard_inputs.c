@@ -20,62 +20,71 @@ s is down  - 1
 d is right - 2
 */
 
-/*
-int		key_hook(int keycode, t_data *img)
+int		key_hook(int keycode, t_mem *mem)
 {
+	(void)mem;
 	if (keycode == 6)
 	{
-		img->map->player.walkDirection = +0.5;
-		printf("walkDirection = %f\n", img->map->player.walkDirection);
+		printf("pressed w\n");
+		//img->map->player.walkDirection = +0.5;
+		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
 	else if (keycode == 12)
 	{
-		img->map->player.turnDirection = -0.5;
-		printf("turnDirection = %f\n", img->map->player.turnDirection);
+		printf("pressed a\n");
+		//img->map->player.turnDirection = -0.5;
+		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
 	else if (keycode == 1)
 	{
+		printf("pressed s\n");
 		//recule
-		img->map->player.walkDirection = -0.5;
-		printf("walkDirection = %f\n", img->map->player.walkDirection);
+		//img->map->player.walkDirection = -0.5;
+		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
 	else if (keycode == 2)
 	{
-		img->map->player.turnDirection = +0.5;
-		printf("turnDirection = %f\n", img->map->player.turnDirection);
+		printf("pressed d\n");
+		//img->map->player.turnDirection = +0.5;
+		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
-	printf("Player position : x: %f, y: %f.\n", img->map->player.x, img->map->player.y);
+	//printf("Player position : x: %f, y: %f.\n", img->map->player.x, img->map->player.y);
 	//update_player(img);
 	//printf("Player position : x: %i, y: %i.\n", img->map->player.x, img->map->player.y);
 	return (SUCCESS);
 }
 
-int		key_unhook(int keycode, t_data *img)
+int		key_unhook(int keycode, t_mem *mem)
 {
+	(void)mem;
 	if (keycode == 6)
 	{
-		img->map->player.walkDirection = 0;
-		printf("walkDirection = %f\n", img->map->player.walkDirection);
+		printf("pressed w\n");
+		//img->map->player.walkDirection = 0;
+		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
 	else if (keycode == 12)
 	{
-		img->map->player.turnDirection = 0;
-		printf("turnDirection = %f\n", img->map->player.turnDirection);
+		printf("pressed a\n");
+		//img->map->player.turnDirection = 0;
+		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
 	else if (keycode == 1)
 	{
-		img->map->player.walkDirection = 0;
-		printf("walkDirection = %f\n", img->map->player.walkDirection);
+		printf("pressed s\n");
+		//img->map->player.walkDirection = 0;
+		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
 	else if (keycode == 2)
 	{
-		img->map->player.turnDirection = 0;
-		printf("turnDirection = %f\n", img->map->player.turnDirection);
+		printf("pressed d\n");
+		//img->map->player.turnDirection = 0;
+		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
 	return (keycode);
 }
 
-
+/*
 int	cub_close(int keycode, t_vars *vars)
 {
 	(void)keycode;

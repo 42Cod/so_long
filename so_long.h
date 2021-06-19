@@ -49,8 +49,9 @@ typedef struct	s_player
 {
 	float	x;
 	float	y;
-	float	walk_direction;
+	char	walk_direction;
 	float	move_speed;
+	bool	is_found;
 }				t_player;
 
 typedef struct	s_collectible_elem
@@ -185,7 +186,7 @@ int		mini_map_all_chars(int fd, char *buffer);
 char	**clean_2dmap(t_map *map, char **map2d);
 
 //check_player.c
-int		is_player_char(char c, t_map *map);
+int		is_player_char(char c, t_mem *mem, int i, int j);
 
 //check_textures.c
 int		check_texture_definition(t_map *map, char *line);
@@ -267,3 +268,13 @@ void	print_exit_list(t_exit_list *lst);
 int		is_empty_line(char *str);
 void	print_map2d(char **map2d, t_mem *mem);
 void	handle_error_gnl2(char *line, t_mem *mem, int i);
+
+//player0
+
+void	init_player(t_mem *mem);
+
+//collectibles
+void	init_collectibles_list(t_collectible_list *lst);
+
+//exits
+void	init_exits_list(t_exit_list *lst);

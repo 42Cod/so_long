@@ -54,8 +54,12 @@ int     main(int argc, char **argv)
         /* Initialisation de la map2d */
         second_read(&line, argv, mem);
         print_map2d(mem->map2d, mem);
+        check_elements(mem);
+        //fonction pour remplir la pile de collectible
+        //fonction pour remplir la pile de exit
+        //fonction de verif du player
+        //check_map_walls(mem->map2d, mem->map);
         /*
-        check_map_walls(mem->map2d, mem->map);
         graphics_init(map2d, map);
         */
         /* free */

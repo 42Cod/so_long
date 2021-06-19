@@ -22,7 +22,7 @@ void	print_player(t_player *player)
 {
 	printf("x : %f\n", player->x);
 	printf("y : %f\n", player->y);
-	printf("walk direction : %f\n", player->walk_direction);
+	printf("walk direction : %c\n", player->walk_direction);
 	printf("move speed : %f\n", player->move_speed);
 }
 

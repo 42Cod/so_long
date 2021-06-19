@@ -11,3 +11,12 @@
 /* ************************************************************************** */
 
 #include "../../../so_long.h"
+
+void	init_player(t_mem *mem)
+{
+	mem->player->x = 0;
+	mem->player->y = 0;
+	mem->player->walk_direction = '0';
+	mem->player->move_speed = 0.3;
+	mem->player->is_found = 0;
+}

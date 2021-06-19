@@ -12,24 +12,26 @@
 
 #include "../../so_long.h"
 
-/*
-int		is_player_char(char c, t_map *map)
+/* fonction a rappeler - changer de fichier */
+/* revoir la fonction qui verifie qu il n y a pas deux players */
+/* revoir l init du player */
+
+/* a mettre dans le fichier de la structure du player ? */
+int		is_player_char(char c, t_mem *mem, int i, int j)
 {
-	if (c == 'S' || c == 'W' || c == 'E' || c == 'N')
+	if (c == 'P')
 	{
-		map->player.orientation = c;
-		map->player_c = c;
-		// A verifier
-		if (c == 'S')
-			map->player.orientation = (M_PI * 3) / 2;
-		else if (c == 'N')
-			map->player.orientation = M_PI / 2;
-		else if (c == 'E')
-			map->player.orientation = 0;
-		else
-			map->player.orientation  = (double)M_PI;
+		if (mem->player->is_found == true)
+		{
+			//rediriger vers les erreurs
+			ft_putstr_fd("Error.\nToo many players found.\n", 2);
+			//free
+			exit (EXIT_FAILURE);
+		}
+		mem->player->is_found = true;
+		mem->player->x = i;
+		mem->player->y = j;
 		return (SUCCESS);
 	}
 	return (ERROR);
 }
-*/

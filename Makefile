@@ -21,6 +21,7 @@ SRCS = ./srcs/parsing/handle_2d_map.c \
 		./srcs/checks/check_map_walls.c \
 		./srcs/checks/check_minimap.c \
 		./srcs/checks/check_player.c \
+		./srcs/checks/check_elemets.c \
 		./srcs/render/keyboard_inputs.c \
 		./srcs/render/player.c \
 		./srcs/render/draw.c \
@@ -32,6 +33,7 @@ SRCS = ./srcs/parsing/handle_2d_map.c \
 		./srcs/utils/utils3.c \
 		./srcs/struct/exits/exits0.c \
 		./srcs/struct/collectibles/collectibles0.c \
+		./srcs/struct/collectibles/collectibles1.c \
 		./srcs/struct/player/player0.c \
 		./srcs/struct/map/map.c \
 		./srcs/struct/data/data.c \

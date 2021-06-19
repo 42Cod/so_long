@@ -12,6 +12,15 @@
 
 #include "../../../so_long.h"
 
+/* a rechecker */
+void	init_exits_list(t_exit_list *lst)
+{
+	t_exit_elem *first;
+
+	first = NULL;
+	lst->first = NULL;
+}
+
 /* Indique si une liste est vide ou non */
 bool	is_empty_e_list(t_exit_list *lst)
 {

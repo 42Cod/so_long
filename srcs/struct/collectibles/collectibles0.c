@@ -12,6 +12,15 @@
 
 #include "../../../so_long.h"
 
+/* a rechecker */
+void	init_collectibles_list(t_collectible_list *lst)
+{
+	t_collectible_elem *first;
+
+	first = NULL;
+	lst->first = NULL;
+}
+
 /* Indique si une liste est vide ou non */
 bool	is_empty_c_list(t_collectible_list *lst)
 {

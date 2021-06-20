@@ -46,6 +46,6 @@ int		update_player_orientation(t_data *img)
 
 void 	draw_player(t_mem *mem, int color)
 {
-	my_mlx_pixel_put(mem->data, (mem->player->x * MINIMAP), (mem->player->y * MINIMAP), color);
+	my_mlx_pixel_put(&mem->data, (mem->player->x * MINIMAP), (mem->player->y * MINIMAP), color);
 	//draw_fow(img, color);
 }

@@ -51,6 +51,12 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
+typedef struct	s_vars {
+	void	*mlx;
+	void	*win;
+}				t_vars;
+
+/* STRUCTURES PERSO */
 typedef struct	s_map
 {
 	int	lines;
@@ -96,6 +102,7 @@ typedef struct			s_exit_list
 }						t_exit_list;
 
 /* vu pour faire un rectangle/carre */
+/*
 typedef struct s_shape
 {
 	int	x;
@@ -103,6 +110,7 @@ typedef struct s_shape
 	int width;
 	int height;
 }				t_shape;
+*/
 
 /* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
 typedef struct	s_mem
@@ -110,7 +118,8 @@ typedef struct	s_mem
 	t_player			*player;
 	t_collectible_list	*collectibles;
 	t_exit_list			*exits;
-	t_data				*data;
+	t_data				data;
+	t_vars				vars;
 	t_map				*map;
 	char				**map2d;
 }				t_mem;

@@ -30,6 +30,7 @@ void	rect(t_data *img, t_shape rect, int color)
 }
 */
 
+/*
 int		render_next_frame(t_mem *mem)
 {
 	//verifier que la minimap peut etre affichee
@@ -38,23 +39,17 @@ int		render_next_frame(t_mem *mem)
 		draw_map(mem);
 	return (0);
 }
-
+*/
 
 int		g_init(t_mem *mem)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-
-	mlx = mlx_init();
-	mem->data = &img;
-	mlx_win = mlx_new_window(mlx, R_LENGTH, R_WIDTH, "So long");
-	mem->data->img = mlx_new_image(mlx, R_LENGTH, R_WIDTH);
-	mem->data->addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-//mlx_put_image_to_window(mlx, mlx_win, mem->data->img, 0, 0);
-	my_mlx_pixel_put(&img, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	mem->vars.mlx = mlx_init();
+	mem->vars.win = mlx_new_window(mem->vars.mlx, R_LENGTH, R_WIDTH, "So long");
+	mem->data.img = mlx_new_image(mem->vars.mlx, R_LENGTH, R_WIDTH);
+	mem->data.addr = mlx_get_data_addr(mem->data.img, &mem->data.bits_per_pixel, &mem->data.line_length, &mem->data.endian);
+	my_mlx_pixel_put(&mem->data, 5, 5, 0x00FF0000);
+	mlx_put_image_to_window(mem->vars.mlx, mem->vars.win, mem->data.img, 0, 0);
+	mlx_loop(mem->vars.mlx);
 	/*
 	mlx_loop_hook(mlx, render_next_frame, &mem);
 	mlx_hook(mlx_win, 2, 1L << 0, key_hook, &mem);

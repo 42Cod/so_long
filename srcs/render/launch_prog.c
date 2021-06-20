@@ -29,25 +29,25 @@ void	print_square_outlines(t_mem *mem, int x, int y, int color)
 	int i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(mem->data, x + i, y, color);
+		my_mlx_pixel_put(&mem->data, x + i, y, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(mem->data, x + i, y + MINIMAP, color);
+		my_mlx_pixel_put(&mem->data, x + i, y + MINIMAP, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(mem->data, x, y + i, color);
+		my_mlx_pixel_put(&mem->data, x, y + i, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(mem->data, x + MINIMAP, y + i, color);
+		my_mlx_pixel_put(&mem->data, x + MINIMAP, y + i, color);
 		i++;
 	}
 }
@@ -61,7 +61,7 @@ void	fill_square(t_mem *mem, int x, int y, int color)
 		j = 0;
 		while (j < MINIMAP)
 		{
-			my_mlx_pixel_put(mem->data, x + i, y + j, color);
+			my_mlx_pixel_put(&mem->data, x + i, y + j, color);
 			j++;
 		}
 		i++;

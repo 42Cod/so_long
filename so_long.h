@@ -29,7 +29,7 @@
 # define DONE 0
 # define SUCCESS 1
 # define BUFFER_SIZE 10
-# define MINIMAP 5
+# define MINIMAP 50
 
 # define SILVER 0xC0C0C0
 # define WHITE 0xFFFFFF
@@ -38,9 +38,6 @@
 # define GREY 0x0029292B
 # define LIGHT_BLACK 0x00FFFFFF
 # define BLACK 0x000001
-
-# define R_LENGTH 1500
-# define R_WIDTH 1000
 
 /* STRUCTURES MINILIB */
 typedef struct	s_data {
@@ -118,8 +115,8 @@ typedef struct	s_mem
 	t_player			*player;
 	t_collectible_list	*collectibles;
 	t_exit_list			*exits;
-	t_data				data;
-	t_vars				vars;
+	t_data				*data;
+	t_vars				*vars;
 	t_map				*map;
 	char				**map2d;
 }				t_mem;

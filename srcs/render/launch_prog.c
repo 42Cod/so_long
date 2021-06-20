@@ -13,7 +13,6 @@
 #include "../../so_long.h"
 
 //ces fonctions a part la derniere ne correspond pas vraiment au nom
-
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -29,25 +28,25 @@ void	print_square_outlines(t_mem *mem, int x, int y, int color)
 	int i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(&mem->data, x + i, y, color);
+		my_mlx_pixel_put(mem->data, x + i, y, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(&mem->data, x + i, y + MINIMAP, color);
+		my_mlx_pixel_put(mem->data, x + i, y + MINIMAP, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(&mem->data, x, y + i, color);
+		my_mlx_pixel_put(mem->data, x, y + i, color);
 		i++;
 	}
 	i = 0;
 	while (i < MINIMAP)
 	{
-		my_mlx_pixel_put(&mem->data, x + MINIMAP, y + i, color);
+		my_mlx_pixel_put(mem->data, x + MINIMAP, y + i, color);
 		i++;
 	}
 }
@@ -61,7 +60,7 @@ void	fill_square(t_mem *mem, int x, int y, int color)
 		j = 0;
 		while (j < MINIMAP)
 		{
-			my_mlx_pixel_put(&mem->data, x + i, y + j, color);
+			my_mlx_pixel_put(mem->data, x + i, y + j, color);
 			j++;
 		}
 		i++;
@@ -75,9 +74,11 @@ void	draw_map(t_mem *mem)
 	while (mem->map2d[i])
 	{
 		x = 1;
+		//printf("[%c]\n", mem->map2d[i][j]);
 		j = 0;
 		while (mem->map2d[i][j])
 		{
+			//printf("[%c]", mem->map2d[i][j]);
 			if (mem->map2d[i][j] == '1')
 				fill_square(mem, x, y, BLUE);
 			else
@@ -86,6 +87,7 @@ void	draw_map(t_mem *mem)
 			x += MINIMAP;
 			j++;
 		}
+		printf("\n");
 		y += MINIMAP;
 		i++;
 	}

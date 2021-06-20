@@ -32,7 +32,10 @@ t_mem	*initialize_mem(void)
 	mem->map = (t_map *)malloc(sizeof(t_map));
 	/* le malloc sera fait plus tard */
 	mem->map2d = NULL;
-	if (!mem || !mem->player || !mem->collectibles || !mem->exits || !mem->map)// || !mem->data
+	mem->data = (t_data *)malloc(sizeof(t_data));
+	mem->vars = (t_vars *)malloc(sizeof(t_vars));
+	if (!mem || !mem->player || !mem->collectibles || !mem->exits || !mem->map
+		|| ! mem->data || !mem->vars)
 	{
 		//free
 		exit (EXIT_FAILURE);

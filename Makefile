@@ -23,7 +23,6 @@ SRCS =	./main.c \
 		./srcs/checks/check_elements.c \
 		./srcs/render/keyboard_inputs.c \
 		./srcs/render/player.c \
-		./srcs/render/draw.c \
 		./srcs/render/graphics.c \
 		./srcs/render/launch_prog.c \
 		./srcs/checks/check_minimap_lines.c \
@@ -46,7 +45,7 @@ SRCS =	./main.c \
 OBJS = ${SRCS:.c=.o}
 
 NAME = libsolong.a
-CC = gcc
+CC = gcc -fsanitize=address
 CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 PROG = so_long

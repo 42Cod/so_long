@@ -30,31 +30,33 @@ void	rect(t_data *img, t_shape rect, int color)
 }
 */
 
-/*
 int		render_next_frame(t_mem *mem)
 {
-	//verifier que la minimap peut etre affichee
-	if (mem->map->lines * MINIMAP < R_LENGTH &&
-		mem->map->col_max * MINIMAP < R_WIDTH)
-		draw_map(mem);
+	//revoir les conditions
+	draw_map(mem);
+	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+
 	return (0);
 }
-*/
 
 int		g_init(t_mem *mem)
 {
-	mem->vars.mlx = mlx_init();
-	mem->vars.win = mlx_new_window(mem->vars.mlx, R_LENGTH, R_WIDTH, "So long");
-	mem->data.img = mlx_new_image(mem->vars.mlx, R_LENGTH, R_WIDTH);
-	mem->data.addr = mlx_get_data_addr(mem->data.img, &mem->data.bits_per_pixel, &mem->data.line_length, &mem->data.endian);
-	my_mlx_pixel_put(&mem->data, 5, 5, 0x00FF0000);
-	mlx_put_image_to_window(mem->vars.mlx, mem->vars.win, mem->data.img, 0, 0);
-	mlx_loop(mem->vars.mlx);
-	/*
-	mlx_loop_hook(mlx, render_next_frame, &mem);
-	mlx_hook(mlx_win, 2, 1L << 0, key_hook, &mem);
-	mlx_hook(mlx_win, 3, 1L << 1, key_unhook, &mem);
-	mlx_loop(mlx);
-	*/
+	int res_x;
+	int	res_y;
+
+
+	mem->vars->mlx = mlx_init();
+	mlx_get_screen_size(mem->vars->mlx, &res_x, &res_y);
+	//Si la taille irait avec la resolution screen ?
+	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->lines * MINIMAP, mem->map->col_max * MINIMAP, "So long");
+	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->lines * MINIMAP, mem->map->col_max * MINIMAP);
+	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
+	//my_mlx_pixel_put(&mem->data, 5, 5, 0x00FF0000);
+	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	/* fonction toujours utilisee mais uniquement pour le render */
+	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);
+	//mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
+	//mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
+	mlx_loop(mem->vars->mlx);
 	return (SUCCESS);
 }

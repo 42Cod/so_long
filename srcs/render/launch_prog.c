@@ -12,7 +12,27 @@
 
 #include "../../so_long.h"
 
-//ces fonctions a part la derniere ne correspond pas vraiment au nom
+void set_pixel(t_data *data, int x, int y, int color)
+{
+	*(unsigned int*)(data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8))) = color;
+}
+
+void	set_background(t_data *data)
+{
+	int i = 0;
+	int y = 0;
+	while (i < data->height)
+	{
+		y = 0;
+		while (y < data->width)
+		{
+			set_pixel(data, i, y, SAND);
+			y++;
+		}
+		i++;
+	}
+}
+
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
@@ -20,6 +40,11 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	//On utilise par 8 a cause du nombre de bits dans un byte
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+int get_pixel(t_data *img, int x, int y)
+{
+	return(*(int*)(img->addr + (y * img->line_length + (x * (img->bits_per_pixel / 8)))));
 }
 
 //faire une fonction full square et une fonction empty square
@@ -72,23 +97,8 @@ void	draw_map(t_mem *mem)
 	int x = 1, y = 1;
 	int i = 0, j = 0;
 
-	/*IMAGE DE FOND */
-	/*
-	while (mem->map2d[i])
-	{
-		x = 1;
-		j = 0;
-		while (mem->map2d[i][j])
-		{
-			fill_square(mem, x, y, WHITE);
-			print_square_outlines(mem, x, y, SILVER);
-			x += MINIMAP;
-			j++;
-		}
-		y += MINIMAP;
-		i++;
-	}
-	*/
+	/* faire un fond de couleur */
+	set_background(mem->data->img);
 	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 
 	x = 1;
@@ -105,14 +115,30 @@ void	draw_map(t_mem *mem)
 			//printf("[%c]", mem->map2d[i][j]);
 			//c est un mur
 			if (mem->map2d[i][j] == '1')
-			{
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->img_floor->img, j * MINIMAP, i * MINIMAP);
-			}
 			else
-			{
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->img_bottom->img, j * MINIMAP, i * MINIMAP);
-			}
+			x += MINIMAP;
+			j++;
+		}
+		y += MINIMAP;
+		i++;
+	}
 
+	x = 1;
+	y = 1;
+	i = 0;
+	j = 0;
+
+	//player + collectibles
+	while (mem->map2d[i])
+	{
+		x = 1;
+		j = 0;
+		while (mem->map2d[i][j])
+		{
+			if (mem->map2d[i][j] == 'P')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->img_player->img, j * MINIMAP, i * MINIMAP);
 			x += MINIMAP;
 			j++;
 		}

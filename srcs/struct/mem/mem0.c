@@ -33,6 +33,7 @@ t_mem	*initialize_mem(void)
 	/* le malloc sera fait plus tard */
 	mem->map2d = NULL;
 	mem->data = (t_data *)malloc(sizeof(t_data));
+	mem->img_bush = (t_data *)malloc(sizeof(t_data));
 	mem->vars = (t_vars *)malloc(sizeof(t_vars));
 	if (!mem || !mem->player || !mem->collectibles || !mem->exits || !mem->map
 		|| ! mem->data || !mem->vars)

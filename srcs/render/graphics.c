@@ -34,8 +34,10 @@ int		render_next_frame(t_mem *mem)
 {
 	//revoir les conditions
 	draw_map(mem);
-	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 
+	//Attention a faire une regle pour l os
+	mlx_do_sync(mem->vars->mlx);
 	return (0);
 }
 
@@ -48,9 +50,18 @@ int		g_init(t_mem *mem)
 	mem->vars->mlx = mlx_init();
 	mlx_get_screen_size(mem->vars->mlx, &res_x, &res_y);
 	//Si la taille irait avec la resolution screen ?
-	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->lines * MINIMAP, mem->map->col_max * MINIMAP, "So long");
-	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->lines * MINIMAP, mem->map->col_max * MINIMAP);
+	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->col_max * MINIMAP, mem->map->lines * MINIMAP, "So long");
+	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * MINIMAP, mem->map->lines * MINIMAP);
 	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
+
+	char	*bush_path;
+
+	bush_path = "./srcs/textures/bush.xpm";
+
+	mem->img_bush->img = mlx_xpm_file_to_image(mem->vars->mlx, bush_path, &(mem->img_bush->width), &(mem->img_bush->height));
+	mem->img_bush->addr = mlx_get_data_addr(mem->img_bush->img, &mem->img_bush->bits_per_pixel, &mem->img_bush->line_length, &mem->img_bush->endian);
+
+
 	//my_mlx_pixel_put(&mem->data, 5, 5, 0x00FF0000);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	/* fonction toujours utilisee mais uniquement pour le render */

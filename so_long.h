@@ -46,6 +46,8 @@ typedef struct	s_data {
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int 	height;
 }				t_data;
 
 typedef struct	s_vars {
@@ -116,6 +118,7 @@ typedef struct	s_mem
 	t_collectible_list	*collectibles;
 	t_exit_list			*exits;
 	t_data				*data;
+	t_data				*img_bush;
 	t_vars				*vars;
 	t_map				*map;
 	char				**map2d;

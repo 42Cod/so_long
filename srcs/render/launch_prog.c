@@ -71,6 +71,8 @@ void	draw_map(t_mem *mem)
 {
 	int x = 1, y = 1;
 	int i = 0, j = 0;
+
+
 	while (mem->map2d[i])
 	{
 		x = 1;
@@ -79,8 +81,12 @@ void	draw_map(t_mem *mem)
 		while (mem->map2d[i][j])
 		{
 			//printf("[%c]", mem->map2d[i][j]);
+			//c est un mur
 			if (mem->map2d[i][j] == '1')
-				fill_square(mem, x, y, BLUE);
+			{
+				//fill_square(mem, x, y, BLUE);
+			}
+
 			else
 				fill_square(mem, x, y, WHITE);
 			print_square_outlines(mem, x, y, SILVER);
@@ -91,4 +97,34 @@ void	draw_map(t_mem *mem)
 		y += MINIMAP;
 		i++;
 	}
+
+	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+
+	x = 1;
+	y = 1;
+	i = 0;
+	j = 0;
+
+	while (mem->map2d[i])
+	{
+		x = 1;
+		//printf("[%c]\n", mem->map2d[i][j]);
+		j = 0;
+		while (mem->map2d[i][j])
+		{
+			//printf("[%c]", mem->map2d[i][j]);
+			//c est un mur
+			if (mem->map2d[i][j] == '1')
+			{
+				//fill_square(mem, x, y, BLUE);
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->img_bush->img, j * MINIMAP, i * MINIMAP);
+			}
+			x += MINIMAP;
+			j++;
+		}
+		printf("\n");
+		y += MINIMAP;
+		i++;
+	}
+
 }

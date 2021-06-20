@@ -29,7 +29,7 @@
 # define DONE 0
 # define SUCCESS 1
 # define BUFFER_SIZE 10
-# define MINIMAP 50
+# define MINIMAP 31 
 
 # define SILVER 0xC0C0C0
 # define WHITE 0xFFFFFF
@@ -118,7 +118,8 @@ typedef struct	s_mem
 	t_collectible_list	*collectibles;
 	t_exit_list			*exits;
 	t_data				*data;
-	t_data				*img_bush;
+	t_data				*img_floor;
+	t_data				*img_bottom;
 	t_vars				*vars;
 	t_map				*map;
 	char				**map2d;

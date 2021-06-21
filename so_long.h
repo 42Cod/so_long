@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/21 13:41:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 14:21:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,10 @@
 # define MINIMAP 31
 # define R_LENGTH 800
 # define R_WIDTH 600
+# define A 97
+# define W 119
+# define D 100
+# define S 115
 
 /* COLORS */
 # define SAND 0xF5DCA0
@@ -304,3 +308,4 @@ void	init_floor_images(t_mem *mem);
 void	init_bottom_images(t_mem *mem);
 void	update_map(t_mem *mem);
 void	so_long_loop(t_mem *mem);
+void	set_background(t_data *data, t_mem *mem);

@@ -6,39 +6,19 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/21 13:46:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 14:35:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-/* toutes les fonctions a revoir !*/
-/*
-void	rect(t_data *img, t_shape rect, int color)
-{
-	int i;
-	int j;
-
-	i = rect.x;
-	//Condition a revoir
-	while (i < rect.x + rect.width && i < img->map->col_max * MINIMAP)
-	{
-		j = rect.y;
-		//void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-		my_mlx_pixel_put(img, i, j, color);
-	}
-}
-*/
-
 int		render_next_frame(t_mem *mem)
 {
 	(void)mem;
 	draw_map(mem);
+	//update_map(mem);
 	//revoir les conditions
 	//update_map(mem);
-
-	//Attention a faire une regle pour l os
-	mlx_do_sync(mem->vars->mlx);
 	return (0);
 }
 
@@ -72,3 +52,21 @@ void	so_long_loop(t_mem *mem)
 	mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
 	mlx_loop(mem->vars->mlx);
 }
+
+/* toutes les fonctions a revoir !*/
+/*
+void	rect(t_data *img, t_shape rect, int color)
+{
+	int i;
+	int j;
+
+	i = rect.x;
+	//Condition a revoir
+	while (i < rect.x + rect.width && i < img->map->col_max * MINIMAP)
+	{
+		j = rect.y;
+		//void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+		my_mlx_pixel_put(img, i, j, color);
+	}
+}
+*/

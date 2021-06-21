@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/21 14:36:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 15:34:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,28 +89,72 @@ void		draw_background(t_mem *mem)
 	}
 }
 
+/*Va permettre d afficher chaque texture a une taille adaptee a la fenetre */
+void	scale_img(t_data *data, int i, int j, t_mem *mem)
+{
+	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, data->img, j * MINIMAP, i * MINIMAP);
+	(void)data;
+	(void)i;
+	(void)j;
+	(void)mem;
+	int res_x;
+	int res_y;
+	int x;
+	int y;
+	int color;
+
+	x = 0;
+	y = 0;
+	while (x <= i)
+	{
+		while (y <= j)
+		{
+			y++;
+			if (x == i && y == j)
+			{
+				res_x = (int)(((y * mem->map->col_length)) * data->width);
+				res_y = (int)(((x * mem->map->col_length)) * data->height);
+			}
+			color = get_pixel(data, res_x, res_y);
+			if (color != (int)BLACK)
+				set_pixel(data, j + y, i + x, color);
+		}
+		x++;
+	}
+}
+
+
 void	draw_map(t_mem *mem)
 {
 
 	//set_background(mem->data->img);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 
-
-
 	draw_background(mem);
 	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
-	/*
-	int x = 1, y = 1;
-	int i = 0, j = 0;
-
-	x = 1;
-	y = 1;
-	i = 0;
-	j = 0;
+	//int x = 1, y = 1;
+	int i = 0, j;
 
 	while (mem->map2d[i])
 	{
-		x = 1;
+		j = 0;
+		while (mem->map2d[i][j])
+		{
+			if (mem->map2d[i][j] == '1')
+				//scale_img(mem->floor, i, j, mem);
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
+			else
+				//scale_img(mem->bottom, i, j, mem);
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
+			j++;
+		}
+		i++;
+	}
+
+
+	/*
+	while (mem->map2d[i])
+	{
 		j = 0;
 		while (mem->map2d[i][j])
 		{
@@ -118,10 +162,8 @@ void	draw_map(t_mem *mem)
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
 			else
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
-			x += MINIMAP;
 			j++;
 		}
-		y += MINIMAP;
 		i++;
 	}
 	*/

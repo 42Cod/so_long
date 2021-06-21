@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/21 14:21:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 15:20:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@
 # define SUCCESS 1
 # define BUFFER_SIZE 10
 # define MINIMAP 31
-# define R_LENGTH 800
-# define R_WIDTH 600
+# define R_LENGTH 1200
+# define R_WIDTH 800
 # define A 97
 # define W 119
 # define D 100
@@ -39,6 +39,7 @@
 
 /* COLORS */
 # define SAND 0xF5DCA0
+# define BLACK 0xFF000000
 
 /* HOOKS */
 /*
@@ -71,6 +72,8 @@ typedef struct	s_vars {
 typedef struct	s_map
 {
 	int	lines;
+	int line_length;
+	int col_length;
 	int	col_max;
 }				t_map;
 

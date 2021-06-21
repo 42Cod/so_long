@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mem0.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:08:49 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/17 18:08:51 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/21 15:16:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,11 @@ void	init_bottom_images(t_mem *mem)
 	}
 	mem->bottom->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/sol.xpm", &(mem->bottom->width), &(mem->bottom->height));
 	mem->bottom->addr = mlx_get_data_addr(mem->bottom->img, &(mem->bottom->bits_per_pixel), &(mem->bottom->line_length), &(mem->bottom->endian));
+}
+
+/* pas mis dans le .h car fonction trop courte, peut etre utilisee directe*/
+/* pas bonne */
+void	set_line_length(t_mem *mem)
+{
+	mem->map->line_length = R_LENGTH / mem->map->lines;
 }

@@ -10,13 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Penser a compiler la libft lors de la compilation du reste !
-#test:
-#    gcc main.c -Lminilibx-linux/ -lmlx_Linux -lX11 -lXext -lm
-
-#attention aux regles pour compiler la lib minilibx
-#-Llmlx_Linux  -lmlx -lXext –lX11
-
 SRCS =	./main.c \
 		./srcs/checks/check_map_walls.c \
 		./srcs/checks/check_minimap.c \
@@ -42,19 +35,38 @@ SRCS =	./main.c \
 		./srcs/free/free.c \
 		./srcs/print/print.c \
 
-OBJS = ${SRCS:.c=.o}
+OBJS 		= ${SRCS:.c=.o}
 
-NAME = libsolong.a
-CC = gcc -fsanitize=address
-CFLAGS = -Wall -Wextra -Werror -g
-RM = rm -f
-PROG = so_long
+UNAME		:= $(shell uname)
+
+PATH_MLX	= mlx
+L_SOLONG	= libsolong.a
+CC 			= gcc
+CFLAGS		= -Wall -Wextra -Werror
+RM			= rm -f
+NAME		= so_long
+LIB			= libso_long.a
+
+ifeq ($(UNAME), Darwin)
+FLAGS = -Imlx -L${PATH_MLX} -lmlx -framework OpenGL -framework AppKit
+LINUX = false
+else
+FLAGS= -Imlx -Lmlx -lmlx -lm -lbsd -lXext -lX11 -Wl,-rpath=./bass/,-rpath=./mlx/,-rpath=./delay/
+FLAGS_BONUS = -Ibass -Lbass -lbass -Idelay -Ldelay -ldelay ${FLAGS}
+LINUX = true
+endif
 
 all: 		${NAME}
 
-$(NAME):	$(OBJS)
+.c.o:
+			${CC} ${CFLAGS} -Imlx -Ibass -c $< -o ${<:.c=.o}
+
+${LIB}:		$(OBJS)
 			ar -rc $(NAME) $(OBJS)
-libft:
+
+$(NAME): 	${LIB} $(OBJS_DEFAULT)
+			make -C $(PATH_MLX)
+			${CC} $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
 
 clean:
 			${RM} ${OBJS}
@@ -64,7 +76,11 @@ fclean: 	clean
 
 re: 		fclean all
 
-test: 		clean ${NAME}
-			${CC} $(CFLAGS) -o $(PROG) $(OBJS)  -L. ${NAME} -Lmlx -lmlx -framework OpenGL -framework AppKit | cat -e
-
 .PHONY:		all clean fclean re
+
+# Penser a compiler la libft lors de la compilation du reste !
+#test:
+#    gcc main.c -Lminilibx-linux/ -lmlx_Linux -lX11 -lXext -lm
+
+#attention aux regles pour compiler la lib minilibx
+#-Llmlx_Linux  -lmlx -lXext –lX11

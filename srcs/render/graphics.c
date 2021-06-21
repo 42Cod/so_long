@@ -69,8 +69,8 @@ int		g_init(t_mem *mem)
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	/* fonction toujours utilisee mais uniquement pour le render */
 	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);
-	//mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
-	//mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
+	mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
+	mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
 	mlx_loop(mem->vars->mlx);
 	return (SUCCESS);
 }

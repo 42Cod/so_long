@@ -37,10 +37,12 @@
 # define SAND 0xF5DCA0
 
 /* HOOKS */
+/*
 # define A 97
 # define W 119
 # define D 100
 # define S 115
+*/
 # define RIGHT 65361
 # define LEFR 65363
 # define ESC 65307

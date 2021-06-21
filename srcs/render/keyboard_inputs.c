@@ -23,31 +23,34 @@ d is right - 2
 int		key_hook(int keycode, t_mem *mem)
 {
 	(void)mem;
-	if (keycode == 6)
+	printf("hey code is %i\n", keycode);
+	/*
+	if (keycode == W)
 	{
 		printf("pressed w\n");
-		//img->map->player.walkDirection = +0.5;
+		mem->player->y -= mem->player->move_speed;
 		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
-	else if (keycode == 12)
+	else if (keycode == A)
 	{
 		printf("pressed a\n");
 		//img->map->player.turnDirection = -0.5;
 		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
-	else if (keycode == 1)
+	else if (keycode == S)
 	{
 		printf("pressed s\n");
 		//recule
 		//img->map->player.walkDirection = -0.5;
 		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
-	else if (keycode == 2)
+	else if (keycode == D)
 	{
 		printf("pressed d\n");
 		//img->map->player.turnDirection = +0.5;
 		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
+	*/
 	//printf("Player position : x: %f, y: %f.\n", img->map->player.x, img->map->player.y);
 	//update_player(img);
 	//printf("Player position : x: %i, y: %i.\n", img->map->player.x, img->map->player.y);

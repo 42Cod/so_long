@@ -35,7 +35,6 @@ int		render_next_frame(t_mem *mem)
 	//revoir les conditions
 	draw_map(mem);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
-
 	//Attention a faire une regle pour l os
 	mlx_do_sync(mem->vars->mlx);
 	return (0);
@@ -60,14 +59,12 @@ int		g_init(t_mem *mem)
 	mem->vars->win = mlx_new_window(mem->vars->mlx, R_LENGTH, R_WIDTH, "So long");
 	mem->data->img = mlx_new_image(mem->vars->mlx, R_LENGTH, R_WIDTH);
 	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
-
-	mem->img_floor->img = mlx_xpm_file_to_image(mem->vars->mlx, floor_path, &(mem->img_floor->width), &(mem->img_floor->height));
-	mem->img_bottom->img = mlx_xpm_file_to_image(mem->vars->mlx, bottom_path, &(mem->img_bottom->width), &(mem->img_bottom->height));
-	mem->img_player->img = mlx_xpm_file_to_image(mem->vars->mlx, player_path, &(mem->img_player->width), &(mem->img_player->height));
-
-	mem->img_floor->addr = mlx_get_data_addr(mem->img_floor->img, &mem->img_floor->bits_per_pixel, &mem->img_floor->line_length, &mem->img_floor->endian);
-	mem->img_bottom->addr = mlx_get_data_addr(mem->img_bottom->img, &mem->img_bottom->bits_per_pixel, &mem->img_bottom->line_length, &mem->img_bottom->endian);
-	mem->img_player->addr = mlx_get_data_addr(mem->img_player->img, &mem->img_player->bits_per_pixel, &mem->img_player->line_length, &mem->img_player->endian);
+	/* je ne sais pas ou les mettre ? */
+    init_player_images(mem);
+	init_floor_images(mem);
+	init_exit_images(mem);
+	init_collectibles_images(mem);
+	init_bottom_images(mem);
 
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	/* fonction toujours utilisee mais uniquement pour le render */

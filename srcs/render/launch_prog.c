@@ -98,9 +98,12 @@ void	draw_map(t_mem *mem)
 	int i = 0, j = 0;
 
 	/* faire un fond de couleur */
+	/*
 	set_background(mem->data->img);
 	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	*/
 
+	/*
 	x = 1;
 	y = 1;
 	i = 0;
@@ -113,7 +116,6 @@ void	draw_map(t_mem *mem)
 		while (mem->map2d[i][j])
 		{
 			//printf("[%c]", mem->map2d[i][j]);
-			//c est un mur
 			if (mem->map2d[i][j] == '1')
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->img_floor->img, j * MINIMAP, i * MINIMAP);
 			else
@@ -124,6 +126,7 @@ void	draw_map(t_mem *mem)
 		y += MINIMAP;
 		i++;
 	}
+	*/
 
 	x = 1;
 	y = 1;
@@ -137,8 +140,18 @@ void	draw_map(t_mem *mem)
 		j = 0;
 		while (mem->map2d[i][j])
 		{
+			if (mem->map2d[i][j] == '1')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
+			else
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
+			/*
 			if (mem->map2d[i][j] == 'P')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->img_player->img, j * MINIMAP, i * MINIMAP);
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->player->img[0].img, j * MINIMAP, i * MINIMAP);
+			else if (mem->map2d[i][j] == 'C')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
+			else if (mem->map2d[i][j] == 'E')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
+			*/
 			x += MINIMAP;
 			j++;
 		}

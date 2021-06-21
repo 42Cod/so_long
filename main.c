@@ -73,6 +73,7 @@ int     main(int argc, char **argv)
         print_collectible_stack(mem);
         print_exit_stack(mem);
         check_map_walls(mem->map2d, mem->map);
+
         g_init(mem);
     }
     else

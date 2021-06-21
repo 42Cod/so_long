@@ -39,3 +39,14 @@ int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 	}
 	return (ERROR);
 }
+
+/* Faire une boucle pour que ce soit plus intelligent */
+void init_player_images(t_mem *mem)
+{
+	mem->player->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1.xpm", &(mem->player->img[0].width), &(mem->player->img[0].height));
+	mem->player->img[0].addr = mlx_get_data_addr(mem->player->img[0].img, &(mem->player->img[0].bits_per_pixel), &(mem->player->img[0].line_length), &(mem->player->img[0].endian));
+	mem->player->img[1].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse2.xpm", &(mem->player->img[1].width), &(mem->player->img[1].height));
+	mem->player->img[1].addr = mlx_get_data_addr(mem->player->img[1].img, &(mem->player->img[1].bits_per_pixel), &(mem->player->img[1].line_length), &(mem->player->img[1].endian));
+	mem->player->img[2].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse3.xpm", &(mem->player->img[2].width), &(mem->player->img[2].height));
+	mem->player->img[2].addr = mlx_get_data_addr(mem->player->img[2].img, &(mem->player->img[2].bits_per_pixel), &(mem->player->img[2].line_length), &(mem->player->img[2].endian));
+}

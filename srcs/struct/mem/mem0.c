@@ -33,9 +33,6 @@ t_mem	*initialize_mem(void)
 	/* le malloc sera fait plus tard */
 	mem->map2d = NULL;
 	mem->data = (t_data *)malloc(sizeof(t_data));
-	mem->img_floor = (t_data *)malloc(sizeof(t_data));
-	mem->img_bottom = (t_data *)malloc(sizeof(t_data));
-	mem->img_player = (t_data *)malloc(sizeof(t_data));
 	mem->vars = (t_vars *)malloc(sizeof(t_vars));
 	if (!mem || !mem->player || !mem->collectibles || !mem->exits || !mem->map
 		|| ! mem->data || !mem->vars)
@@ -44,4 +41,32 @@ t_mem	*initialize_mem(void)
 		exit (EXIT_FAILURE);
 	}
 	return (mem);
+}
+
+void	init_floor_images(t_mem *mem)
+{
+	mem->floor = (t_data *)malloc(sizeof(t_data));
+	if (!(mem->floor))
+	{
+		//A modifier
+		ft_putstr_fd("Error during memory allocation.\n", 2);
+		//free
+		exit (EXIT_FAILURE);
+	}
+	mem->floor->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/dalle0.xpm", &(mem->floor->width), &(mem->floor->height));
+	mem->floor->addr = mlx_get_data_addr(mem->floor->img, &(mem->floor->bits_per_pixel), &(mem->floor->line_length), &(mem->floor->endian));
+}
+
+void	init_bottom_images(t_mem *mem)
+{
+	mem->bottom = (t_data *)malloc(sizeof(t_data));
+	if (!(mem->bottom))
+	{
+		//A modifier
+		ft_putstr_fd("Error during memory allocation.\n", 2);
+		//free
+		exit (EXIT_FAILURE);
+	}
+	mem->bottom->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/sol.xpm", &(mem->bottom->width), &(mem->bottom->height));
+	mem->bottom->addr = mlx_get_data_addr(mem->bottom->img, &(mem->bottom->bits_per_pixel), &(mem->bottom->line_length), &(mem->bottom->endian));
 }

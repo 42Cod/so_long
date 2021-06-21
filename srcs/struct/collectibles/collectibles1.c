@@ -23,3 +23,10 @@ int	is_collectible_char(t_mem *mem, char **map2d, int i, int j)
 	}
 	return (ERROR);
 }
+
+/* faire une boucle pour que ca fonctionne sur tous les elements */
+void init_collectibles_images(t_mem *mem)
+{
+	mem->collectibles->first->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/collectibles.xpm", &(mem->collectibles->first->img[0].width), &(mem->collectibles->first->img[0].height));
+	mem->collectibles->first->img[0].addr = mlx_get_data_addr(mem->collectibles->first->img[0].img, &(mem->collectibles->first->img[0].bits_per_pixel), &(mem->collectibles->first->img[0].line_length), &(mem->collectibles->first->img[0].endian));
+}

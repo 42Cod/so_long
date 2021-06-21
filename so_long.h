@@ -29,11 +29,21 @@
 # define DONE 0
 # define SUCCESS 1
 # define BUFFER_SIZE 10
-# define MINIMAP 32
+# define MINIMAP 31
 # define R_LENGTH 800
 # define R_WIDTH 600
 
+/* COLORS */
 # define SAND 0xF5DCA0
+
+/* HOOKS */
+# define A 97
+# define W 119
+# define D 100
+# define S 115
+# define RIGHT 65361
+# define LEFR 65363
+# define ESC 65307
 
 /* STRUCTURES MINILIB */
 typedef struct	s_data {
@@ -60,6 +70,7 @@ typedef struct	s_map
 
 typedef struct	s_player
 {
+	t_data	img[3];
 	float	x;
 	float	y;
 	char	walk_direction;
@@ -69,6 +80,7 @@ typedef struct	s_player
 
 typedef struct	s_collectible_elem
 {
+	t_data						img[1];
 	int 						pos_x;
 	int							pos_y;
 	bool						is_touched;
@@ -83,6 +95,7 @@ typedef struct			s_collectible_list
 
 typedef struct			s_exit_elem
 {
+	t_data				img[1];
 	int					pos_x;
 	int					pos_y;
 	bool				is_touched;
@@ -92,9 +105,22 @@ typedef struct			s_exit_elem
 typedef struct			s_exit_list
 {
 	t_exit_elem			*first;
-	//Pas terrible, on pourra l enlever
 	bool				is_empty;
 }						t_exit_list;
+
+/* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
+typedef struct	s_mem
+{
+	t_player			*player;
+	t_collectible_list	*collectibles;
+	t_exit_list			*exits;
+	t_data				*data;
+	t_data				*floor;
+	t_data				*bottom;
+	t_vars				*vars;
+	t_map				*map;
+	char				**map2d;
+}				t_mem;
 
 /* vu pour faire un rectangle/carre */
 /*
@@ -106,21 +132,6 @@ typedef struct s_shape
 	int height;
 }				t_shape;
 */
-
-/* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
-typedef struct	s_mem
-{
-	t_player			*player;
-	t_collectible_list	*collectibles;
-	t_exit_list			*exits;
-	t_data				*data;
-	t_data				*img_floor;
-	t_data				*img_bottom;
-	t_data				*img_player;
-	t_vars				*vars;
-	t_map				*map;
-	char				**map2d;
-}				t_mem;
 
 //draw.c
 //int		draw_fow(t_data *img, int color);
@@ -284,3 +295,8 @@ int		is_exit_char(t_mem *mem, char **map2d, int i, int j);
 //checks elements
 void	check_elements(t_mem *mem);
 int		is_collectible_char(t_mem *mem, char **map2d, int i, int j);
+void	init_player_images(t_mem *mem);
+void	init_collectibles_images(t_mem *mem);
+void	init_exit_images(t_mem *mem);
+void	init_floor_images(t_mem *mem);
+void	init_bottom_images(t_mem *mem);

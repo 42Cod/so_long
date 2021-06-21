@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   graphics.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/04/23 13:53:58 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/21 12:26:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		render_next_frame(t_mem *mem)
 	update_map(mem);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	//Attention a faire une regle pour l os
-	mlx_do_sync(mem->vars->mlx);
+	//mlx_do_sync(mem->vars->mlx);
 	return (0);
 }
 

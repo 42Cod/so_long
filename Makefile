@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/04/23 11:18:31 by mahautlatin      ###   ########.fr        #
+#    Updated: 2021/06/21 12:24:45 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ OBJS 		= ${SRCS:.c=.o}
 
 UNAME		:= $(shell uname)
 
-PATH_MLX	= mlx
+PATH_MLX	= mlx_mac
 L_SOLONG	= libsolong.a
 CC 			= gcc
 CFLAGS		= -Wall -Wextra -Werror
@@ -52,7 +52,6 @@ FLAGS = -Imlx -L${PATH_MLX} -lmlx -framework OpenGL -framework AppKit
 LINUX = false
 else
 FLAGS= -Imlx -Lmlx -lmlx -lm -lbsd -lXext -lX11 -Wl,-rpath=./bass/,-rpath=./mlx/,-rpath=./delay/
-FLAGS_BONUS = -Ibass -Lbass -lbass -Idelay -Ldelay -ldelay ${FLAGS}
 LINUX = true
 endif
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/23 10:48:58 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/21 13:35:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ int     main(int argc, char **argv)
         print_collectible_stack(mem);
         print_exit_stack(mem);
         check_map_walls(mem->map2d, mem->map);
-
         g_init(mem);
     }
     else

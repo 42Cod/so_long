@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/21 13:31:27 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 13:46:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ void	rect(t_data *img, t_shape rect, int color)
 
 int		render_next_frame(t_mem *mem)
 {
+	(void)mem;
+	draw_map(mem);
 	//revoir les conditions
-	update_map(mem);
-	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	//update_map(mem);
+
 	//Attention a faire une regle pour l os
-	//mlx_do_sync(mem->vars->mlx);
+	mlx_do_sync(mem->vars->mlx);
 	return (0);
 }
 
@@ -58,12 +60,15 @@ int		g_init(t_mem *mem)
 	init_exit_images(mem);
 	init_collectibles_images(mem);
 	init_bottom_images(mem);
-	draw_map(mem);
-	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	so_long_loop(mem);
 	/* fonction toujours utilisee mais uniquement pour le render */
-	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);
-	//mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
-	//mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
-	mlx_loop(mem->vars->mlx);
 	return (SUCCESS);
+}
+
+void	so_long_loop(t_mem *mem)
+{
+	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);
+	mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
+	mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
+	mlx_loop(mem->vars->mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/21 13:18:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 13:41:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,3 +303,4 @@ void	init_exit_images(t_mem *mem);
 void	init_floor_images(t_mem *mem);
 void	init_bottom_images(t_mem *mem);
 void	update_map(t_mem *mem);
+void	so_long_loop(t_mem *mem);

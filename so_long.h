@@ -300,3 +300,4 @@ void	init_collectibles_images(t_mem *mem);
 void	init_exit_images(t_mem *mem);
 void	init_floor_images(t_mem *mem);
 void	init_bottom_images(t_mem *mem);
+void	update_map(t_mem *mem);

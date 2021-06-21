@@ -33,7 +33,7 @@ void	rect(t_data *img, t_shape rect, int color)
 int		render_next_frame(t_mem *mem)
 {
 	//revoir les conditions
-	draw_map(mem);
+	update_map(mem);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	//Attention a faire une regle pour l os
 	mlx_do_sync(mem->vars->mlx);
@@ -65,7 +65,7 @@ int		g_init(t_mem *mem)
 	init_exit_images(mem);
 	init_collectibles_images(mem);
 	init_bottom_images(mem);
-
+	draw_map(mem);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	/* fonction toujours utilisee mais uniquement pour le render */
 	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);

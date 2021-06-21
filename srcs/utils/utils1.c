@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:18:58 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/23 10:53:12 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/21 13:20:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int		get_next_line_2d(int fd, char **line, t_mem *mem)
 	static int	i;
 
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (fd < 0 || fd > OPEN_MAX || !line || !buffer)
+	if (fd < 0 || !line || !buffer)
 		return (ERROR);
 	b_read = BUFFER_SIZE;
 	while (b_read != 0 && !(ft_hasnewline(s)))

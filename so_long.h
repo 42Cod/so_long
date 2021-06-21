@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/21 12:26:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 13:18:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
-#include <math.h>
+# include <math.h>
+# include "./mlx/mlx.h"
 
 # define ERROR -1
 # define DONE 0

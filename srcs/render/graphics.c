@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/21 12:26:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/21 13:31:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ int		g_init(t_mem *mem)
 {
 	int res_x;
 	int	res_y;
-	char	*floor_path;
-	char	*bottom_path;
-	char	*player_path;
-
-	floor_path = "./srcs/textures/dalle0.xpm";
-	bottom_path = "./srcs/textures/sol.xpm";
-	player_path = "./srcs/textures/nageuse1.xpm";
 
 	mem->vars->mlx = mlx_init();
 	mlx_get_screen_size(mem->vars->mlx, &res_x, &res_y);
@@ -69,8 +62,8 @@ int		g_init(t_mem *mem)
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	/* fonction toujours utilisee mais uniquement pour le render */
 	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);
-	mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
-	mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
+	//mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
+	//mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
 	mlx_loop(mem->vars->mlx);
 	return (SUCCESS);
 }

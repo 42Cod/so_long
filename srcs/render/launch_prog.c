@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   launch_prog.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/04/22 18:14:06 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/21 13:34:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
+
+int get_pixel(t_data *img, int x, int y)
+{
+	return(*(int*)(img->addr + (y * img->line_length + (x * (img->bits_per_pixel / 8)))));
+}
 
 void set_pixel(t_data *data, int x, int y, int color)
 {
@@ -42,10 +47,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-int get_pixel(t_data *img, int x, int y)
-{
-	return(*(int*)(img->addr + (y * img->line_length + (x * (img->bits_per_pixel / 8)))));
-}
 
 //faire une fonction full square et une fonction empty square
 void	print_square_outlines(t_mem *mem, int x, int y, int color)
@@ -96,7 +97,7 @@ void	draw_map(t_mem *mem)
 {
 	int x = 1, y = 1;
 	int i = 0, j = 0;
-	set_background(mem->data->img);
+	//set_background(mem->data->img);
 	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 
 	x = 1;

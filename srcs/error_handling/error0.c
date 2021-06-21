@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   error0.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:46:34 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/08 15:46:36 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/21 13:21:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	handle_fd_errors(int fd, t_map *map)
 void	error_gnl(int fd, char **line, t_map *map)
 {
 	(void)map;
-	if (fd < 0 || fd > OPEN_MAX || !line)
+	if (fd < 0 || !line)
 	{
 		ft_putstr_fd("Error.\nSomething went wrong while getting next line.\n", 2);
 		/* fonction de free et d exit */

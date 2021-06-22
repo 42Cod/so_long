@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 16:41:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:03:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,16 @@ void	is_touching_collectibles(t_mem *mem)
 {
 	t_collectible_elem *elem;
 
+	//print_collectible_list(mem->collectibles);
 	elem = mem->collectibles->first;
+	while (elem && elem->pos_y != (int)mem->player->y && elem->pos_x && (int)mem->player->x)
+	{
+		elem = elem->next;
+	}
+	if (elem && elem->pos_y == (int)mem->player->y && elem->pos_x == (int)mem->player->x)
+	{
+		printf("touche !\n");
+		elem->is_touched = true;
+	}
 	//boucler a chaque fois
 }

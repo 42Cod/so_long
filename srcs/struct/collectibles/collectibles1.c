@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   collectibles1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:38:42 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/19 13:38:44 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/22 10:36:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int	is_collectible_char(t_mem *mem, char **map2d, int i, int j)
 /* faire une boucle pour que ca fonctionne sur tous les elements */
 void init_collectibles_images(t_mem *mem)
 {
-	mem->collectibles->first->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/collectibles.xpm", &(mem->collectibles->first->img[0].width), &(mem->collectibles->first->img[0].height));
+	mem->collectibles->first->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/collectibles1-64_st.xpm", &(mem->collectibles->first->img[0].width), &(mem->collectibles->first->img[0].height));
 	mem->collectibles->first->img[0].addr = mlx_get_data_addr(mem->collectibles->first->img[0].img, &(mem->collectibles->first->img[0].bits_per_pixel), &(mem->collectibles->first->img[0].line_length), &(mem->collectibles->first->img[0].endian));
 }

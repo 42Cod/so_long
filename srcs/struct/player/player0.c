@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   struct.c                                           :+:      :+:    :+:   */
+/*   player0.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/23 13:48:27 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/22 10:34:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,13 @@ int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 }
 
 /* Faire une boucle pour que ce soit plus intelligent */
+/* Attention a toutes les images */
 void init_player_images(t_mem *mem)
 {
-	mem->player->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1.xpm", &(mem->player->img[0].width), &(mem->player->img[0].height));
+	mem->player->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left.xpm", &(mem->player->img[0].width), &(mem->player->img[0].height));
 	mem->player->img[0].addr = mlx_get_data_addr(mem->player->img[0].img, &(mem->player->img[0].bits_per_pixel), &(mem->player->img[0].line_length), &(mem->player->img[0].endian));
-	mem->player->img[1].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse2.xpm", &(mem->player->img[1].width), &(mem->player->img[1].height));
+	mem->player->img[1].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse2-64left.xpm", &(mem->player->img[1].width), &(mem->player->img[1].height));
 	mem->player->img[1].addr = mlx_get_data_addr(mem->player->img[1].img, &(mem->player->img[1].bits_per_pixel), &(mem->player->img[1].line_length), &(mem->player->img[1].endian));
-	mem->player->img[2].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse3.xpm", &(mem->player->img[2].width), &(mem->player->img[2].height));
+	mem->player->img[2].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse3-64bottom.xpm", &(mem->player->img[2].width), &(mem->player->img[2].height));
 	mem->player->img[2].addr = mlx_get_data_addr(mem->player->img[2].img, &(mem->player->img[2].bits_per_pixel), &(mem->player->img[2].line_length), &(mem->player->img[2].endian));
 }

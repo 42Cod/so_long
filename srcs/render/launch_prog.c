@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 10:24:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:32:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,111 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
+
+
+
+
+void	draw_map(t_mem *mem)
+{
+
+	//set_background(mem->data->img);
+	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+
+	//draw_background(mem);
+	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	//int x = 1, y = 1;
+	int i = 0, j;
+
+	while (mem->map2d[i])
+	{
+		j = 0;
+		while (mem->map2d[i][j])
+		{
+			if (mem->map2d[i][j] == '1')
+				//scale_img(mem->floor, i, j, mem);
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
+			else
+				//scale_img(mem->bottom, i, j, mem);
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
+			j++;
+		}
+		i++;
+	}
+
+
+	/*
+	while (mem->map2d[i])
+	{
+		j = 0;
+		while (mem->map2d[i][j])
+		{
+			if (mem->map2d[i][j] == '1')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
+			else
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
+			j++;
+		}
+		i++;
+	}
+	*/
+}
+
+
+void	draw_characters(t_mem *mem)
+{
+	int x = 1, y = 1;
+	int i = 0, j = 0;
+
+	//player + collectibles
+	while (mem->map2d[i])
+	{
+		x = 1;
+		j = 0;
+		while (mem->map2d[i][j])
+		{
+			if (mem->map2d[i][j] == 'P')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->player->img[0].img, j * MINIMAP, i * MINIMAP);
+			else if (mem->map2d[i][j] == 'C')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
+			else if (mem->map2d[i][j] == 'E')
+				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
+			x += MINIMAP;
+			j++;
+		}
+		y += MINIMAP;
+		i++;
+	}
+}
+
+/* plus utilise
+void	print_square_outlines(t_mem *mem, int x, int y, int color)
+{
+	int i = 0;
+	while (i < MINIMAP)
+	{
+		my_mlx_pixel_put(mem->data, x + i, y, color);
+		i++;
+	}
+	i = 0;
+	while (i < MINIMAP)
+	{
+		my_mlx_pixel_put(mem->data, x + i, y + MINIMAP, color);
+		i++;
+	}
+	i = 0;
+	while (i < MINIMAP)
+	{
+		my_mlx_pixel_put(mem->data, x, y + i, color);
+		i++;
+	}
+	i = 0;
+	while (i < MINIMAP)
+	{
+		my_mlx_pixel_put(mem->data, x + MINIMAP, y + i, color);
+		i++;
+	}
+}
+*/
 
 
 /*
@@ -103,134 +208,6 @@ void	scale_img(t_data *data, int i, int j, t_mem *mem)
 				set_pixel(data, j + y, i + x, color);
 		}
 		x++;
-	}
-}
-*/
-
-
-void	draw_map(t_mem *mem)
-{
-
-	//set_background(mem->data->img);
-	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
-
-	//draw_background(mem);
-	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
-	//int x = 1, y = 1;
-	int i = 0, j;
-
-	while (mem->map2d[i])
-	{
-		j = 0;
-		while (mem->map2d[i][j])
-		{
-			if (mem->map2d[i][j] == '1')
-				//scale_img(mem->floor, i, j, mem);
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
-			else
-				//scale_img(mem->bottom, i, j, mem);
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
-			j++;
-		}
-		i++;
-	}
-
-
-	/*
-	while (mem->map2d[i])
-	{
-		j = 0;
-		while (mem->map2d[i][j])
-		{
-			if (mem->map2d[i][j] == '1')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
-			else
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
-			j++;
-		}
-		i++;
-	}
-	*/
-}
-
-
-/*
-void	img_on_main_img(t_mem *mem, int i, int j, t_data *img)
-{
-	int pixel_x;
-	int pixel_y;
-	int ratio_main;
-	int ratio_img;
-
-
-	pixel_x = 0;
-	while (pixel_x < mem->data->width)
-	{
-		pixel_y = 0;
-		while (pixel_y < mem->data->height)
-		{
-			ratio_main = (int)pixel_x * mem->data->width;
-			ratio_img = (int)pixel_x * img->width;
-
-			pixel_y++;
-		}
-		pixel_x++;
-	}
-}
-*/
-
-void	update_map(t_mem *mem)
-{
-	int x = 1, y = 1;
-	int i = 0, j = 0;
-
-	//player + collectibles
-	while (mem->map2d[i])
-	{
-		x = 1;
-		j = 0;
-		while (mem->map2d[i][j])
-		{
-			if (mem->map2d[i][j] == 'P')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->player->img[0].img, j * MINIMAP, i * MINIMAP);
-			else if (mem->map2d[i][j] == 'C')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
-			else if (mem->map2d[i][j] == 'E')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
-			x += MINIMAP;
-			j++;
-		}
-		y += MINIMAP;
-		i++;
-	}
-}
-
-/* plus utilise
-void	print_square_outlines(t_mem *mem, int x, int y, int color)
-{
-	int i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x + i, y, color);
-		i++;
-	}
-	i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x + i, y + MINIMAP, color);
-		i++;
-	}
-	i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x, y + i, color);
-		i++;
-	}
-	i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x + MINIMAP, y + i, color);
-		i++;
 	}
 }
 */

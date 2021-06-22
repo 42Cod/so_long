@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:38:42 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 17:08:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:32:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int	c_all_touched(t_mem *mem)
 	{
 		if (elem->is_touched)
 			count++;
+		elem = elem->next;
 	}
 	if (count == length)
 	{

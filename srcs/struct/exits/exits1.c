@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:07:54 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 14:19:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:27:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,47 @@ void init_exits_images(t_mem *mem)
 	}
 
 	mem->exits->img->addr = mlx_get_data_addr(mem->exits->img->img, &(mem->exits->img->bits_per_pixel), &(mem->exits->img->line_length), &(mem->exits->img->endian));
+}
+
+void	locate_exits(t_mem *mem)
+{
+	int i = 0;
+	int j = 0;
+	int found = 0;
+	while (i < mem->map->lines && j < mem->map->col_max && mem->map2d[i][j])
+	{
+		while (j < mem->map->col_max && mem->map2d[i][j])
+		{
+			if (mem->map2d[i][j] == 'E')
+			{
+				//printf("coucou\n");
+				push_end_e_list(mem, i, j);
+				found++;
+			}
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+	print_exit_list(mem->exits);
+	if (found == 0)
+	{
+		ft_putstr_fd("Error.\nThere is no exit !\n", 2);
+		exit (EXIT_FAILURE);
+	}
+	//print_collectible_list(mem->collectibles);
+}
+
+int is_exit(t_mem *mem, int i, int j)
+{
+    t_exit_elem  *elem;
+
+    elem = mem->exits->first;
+    while (elem)
+    {
+        if (elem->pos_x == i && elem->pos_y == j)
+            return (SUCCESS);
+        elem = elem->next;
+    }
+    return (ERROR);
 }

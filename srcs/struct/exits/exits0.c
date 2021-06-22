@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:26:55 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 17:22:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:27:58 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,3 @@ void	free_e_list(t_exit_list *lst)
 	free(lst);
 	lst = NULL;
 }
-
-/* Si je suis a la position d une sortie et que la liste des collectibles et touched je peux sortir */

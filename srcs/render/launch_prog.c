@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 16:08:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 16:40:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	draw_elements(t_mem *mem)
 {
 	int x = 1, y = 1;
 	int i = 0, j = 0;
+	t_collectible_elem *elem;
 
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	//player + collectibles
@@ -82,10 +83,12 @@ void	draw_elements(t_mem *mem)
 			int an = (int)((mem->frame / 14.0)) % 14;
 			if (an > 7)
 				an = 14 - an;
-
 			if (mem->map2d[i][j] == 'C') //Ajouter conditions quand ils sont touches
-				draw_on_img(mem->data, mem->collectibles->img, j * MINIMAP, i * MINIMAP - an);
-				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
+			{
+				elem = get_collectible(mem, i, j);
+				if (elem && elem->is_touched == false)
+					draw_on_img(mem->data, mem->collectibles->img, j * MINIMAP, i * MINIMAP - an);
+			}
 			else if (mem->map2d[i][j] == 'E')
 				draw_on_img(mem->data, mem->exits->img, j * MINIMAP, i * MINIMAP);
 				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
@@ -101,107 +104,3 @@ void	draw_player(t_mem *mem)
 {
 	draw_on_img(mem->data, mem->player->img, mem->player->y * MINIMAP, mem->player->x * MINIMAP);
 }
-
-/* plus utilise
-void	print_square_outlines(t_mem *mem, int x, int y, int color)
-{
-	int i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x + i, y, color);
-		i++;
-	}
-	i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x + i, y + MINIMAP, color);
-		i++;
-	}
-	i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x, y + i, color);
-		i++;
-	}
-	i = 0;
-	while (i < MINIMAP)
-	{
-		my_mlx_pixel_put(mem->data, x + MINIMAP, y + i, color);
-		i++;
-	}
-}
-*/
-
-
-/*
-void	fill_square(t_mem *mem, int x, int y, int color)
-{
-	int i = 0;
-	int j = 0;
-	while (i < MINIMAP)
-	{
-		j = 0;
-		while (j < MINIMAP)
-		{
-			my_mlx_pixel_put(mem->data, x + i, y + j, color);
-			j++;
-		}
-		i++;
-	}
-}
-*/
-
-
-/*
-void		draw_background(t_mem *mem)
-{
-	int		i;
-	int		j;
-
-	i = -1;
-	while(++i < mem->map->col_max * 64)
-	{
-		j = -1;
-		while(++j < mem->map->col_max * 64)
-		{
-			my_mlx_pixel_put((mem->data), i, j, SAND);
-		}
-	}
-}
-*/
-
-/*Va permettre d afficher chaque texture a une taille adaptee a la fenetre */
-/*
-void	scale_img(t_data *data, int i, int j, t_mem *mem)
-{
-	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, data->img, j * MINIMAP, i * MINIMAP);
-	(void)data;
-	(void)i;
-	(void)j;
-	(void)mem;
-	int res_x;
-	int res_y;
-	int x;
-	int y;
-	int color;
-
-	x = 0;
-	y = 0;
-	while (x <= i)
-	{
-		while (y <= j)
-		{
-			y++;
-			if (x == i && y == j)
-			{
-				res_x = (int)(((y * mem->map->col_length)) * data->width);
-				res_y = (int)(((x * mem->map->col_length)) * data->height);
-			}
-			color = get_pixel(data, res_x, res_y);
-			if (color != (int)BLACK)
-				set_pixel(data, j + y, i + x, color);
-		}
-		x++;
-	}
-}
-*/

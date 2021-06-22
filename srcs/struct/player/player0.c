@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 14:16:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 16:41:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,12 @@ void init_player_images(t_mem *mem)
 	mem->player->img[2].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse3-64bottom.xpm", &(mem->player->img[2].width), &(mem->player->img[2].height));
 	mem->player->img[2].addr = mlx_get_data_addr(mem->player->img[2].img, &(mem->player->img[2].bits_per_pixel), &(mem->player->img[2].line_length), &(mem->player->img[2].endian));
 	*/
+}
+
+void	is_touching_collectibles(t_mem *mem)
+{
+	t_collectible_elem *elem;
+
+	elem = mem->collectibles->first;
+	//boucler a chaque fois
 }

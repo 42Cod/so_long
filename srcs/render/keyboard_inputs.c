@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:20:35 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 15:38:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 16:40:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int		key_hook(int keycode, t_mem *mem)
 		close_clean(mem);
 		//free tout
 	}
+	is_touching_collectibles(mem);
 	printf("moves : %i\n", *(mem->moves));
 	return (SUCCESS);
 }

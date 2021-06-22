@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 15:26:07 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 16:14:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int     main(int argc, char **argv)
             exit (EXIT_FAILURE);
         }
         second_read(&line, argv, mem);
+        locate_collectibles(mem);
         //print_map2d(mem->map2d, mem);
         check_elements(mem);
         //print_collectible_stack(mem);

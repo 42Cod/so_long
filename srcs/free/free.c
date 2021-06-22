@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 15:53:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:42:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	free_mem(t_mem *mem)
 	exit (EXIT_SUCCESS);
 }
 
-void	close_clean(t_mem *mem)
+int	close_clean(t_mem *mem)
 {
 	//mlx_destroy_image(mem->vars->mlx)
 	mlx_destroy_image(mem->vars->mlx, mem->player->img->img);

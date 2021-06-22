@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 17:29:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:42:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,7 +320,7 @@ int		get_pixel(t_data *img, int x, int y);
 void	set_pixel(t_data *data, int x, int y, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	init_exits_images(t_mem *mem);
-void	close_clean(t_mem *mem);
+int		close_clean(t_mem *mem);
 void	locate_collectibles(t_mem *mem);
 t_collectible_elem	*get_collectible(t_mem *mem, int i, int j);
 void	is_touching_collectibles(t_mem *mem);

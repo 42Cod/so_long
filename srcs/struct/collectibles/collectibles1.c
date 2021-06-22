@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:38:42 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 16:32:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:08:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,31 +52,6 @@ void init_collectibles_images(t_mem *mem)
 
 void	locate_collectibles(t_mem *mem)
 {
-	/*
-	int x;
-	int y;
-	int	found;
-
-	x = 0;
-	y = 0;
-	found = 0;
-	print_map2d(mem->map2d, mem);
-	while (mem->map2d[x][y])
-	{
-		y = 0;
-		while (mem->map2d[x][y])
-		{
-			if (mem->map2d[x][y] == 'C')
-			{
-				printf("coucou\n");
-				push_end_c_list(mem, x, y);
-				found++;
-			}
-			y++;
-		}
-		x++;
-	}
-	*/
 	int i = 0;
 	int j = 0;
 	int found = 0;
@@ -115,4 +90,26 @@ t_collectible_elem	*get_collectible(t_mem *mem, int i, int j)
 		elem = elem->next;
 	}
 	return (NULL);
+}
+
+int	c_all_touched(t_mem *mem)
+{
+	t_collectible_elem *elem;
+	int					length;
+	int					count;
+
+	count = 0;
+	length = c_list_length(mem->collectibles);
+	elem = mem->collectibles->first;
+	while (elem)
+	{
+		if (elem->is_touched)
+			count++;
+	}
+	if (count == length)
+	{
+		printf("all touched\n");
+		return (SUCCESS);
+	}
+	return (ERROR);
 }

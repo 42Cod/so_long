@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/22 11:01:46 by user42           ###   ########.fr        #
+#    Updated: 2021/06/22 17:15:05 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =	./main.c \
 		./srcs/struct/exits/exits1.c \
 		./srcs/struct/collectibles/collectibles0.c \
 		./srcs/struct/collectibles/collectibles1.c \
+		./srcs/struct/collectibles/collectibles2.c \
 		./srcs/struct/player/player0.c \
 		./srcs/struct/player/player.c \
 		./srcs/struct/data/data.c \

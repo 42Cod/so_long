@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 16:52:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 17:20:41 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -324,3 +324,5 @@ void	close_clean(t_mem *mem);
 void	locate_collectibles(t_mem *mem);
 t_collectible_elem	*get_collectible(t_mem *mem, int i, int j);
 void	is_touching_collectibles(t_mem *mem);
+int		is_collectible(t_mem *mem, int i, int j);
+void    set_to_true(t_mem *mem);

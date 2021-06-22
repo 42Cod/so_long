@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 10:05:09 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:24:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,62 +52,24 @@ void	fill_square(t_mem *mem, int x, int y, int color)
 }
 */
 
+
 /*
-void	set_background(t_data *data, t_mem *mem)
-{
-	float i;
-	float j;
-
-	i =  0;
-	(void)mem;
-	while (i * MINIMAP < R_LENGTH)
-	{
-		j = 0;
-		while (j * MINIMAP < R_WIDTH)
-		{
-			my_mlx_pixel_put(data, i * MINIMAP, j * MINIMAP, SAND);
-			j++;
-		}
-		i++;
-	}
-
-}
-*/
-
 void		draw_background(t_mem *mem)
 {
-	/*
 	int		i;
 	int		j;
-	*/
 
-	int		*res_x;
-	int		*res_y;
-
-	res_x = (int *)malloc(sizeof(int));
-	res_y = (int *)malloc(sizeof(int));
-	if (!res_x || !res_y)
-	{
-		//fonction de free
-		exit(EXIT_FAILURE);
-	}
-	mlx_get_screen_size(mem->vars->mlx, res_x, res_y);
-
-	/*
 	i = -1;
-	while(++i < *res_y)
+	while(++i < mem->map->col_max * 64)
 	{
 		j = -1;
-		while(++j < *res_x)
+		while(++j < mem->map->col_max * 64)
 		{
 			my_mlx_pixel_put((mem->data), i, j, SAND);
 		}
 	}
-	*/
-	printf("res x : %i\n", *res_x);
-	printf("res x : %i\n", *res_y);
-	//free la res ? ou l ajouter a notre struct ?
 }
+*/
 
 /*Va permettre d afficher chaque texture a une taille adaptee a la fenetre */
 /*
@@ -152,7 +114,7 @@ void	draw_map(t_mem *mem)
 	//set_background(mem->data->img);
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 
-	draw_background(mem);
+	//draw_background(mem);
 	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	//int x = 1, y = 1;
 	int i = 0, j;

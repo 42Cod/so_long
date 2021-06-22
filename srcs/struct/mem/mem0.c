@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:08:49 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 09:54:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:24:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	init_floor_images(t_mem *mem)
 		//free
 		exit (EXIT_FAILURE);
 	}
-	mem->floor->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/dalle0.xpm", &(mem->floor->width), &(mem->floor->height));
+	mem->floor->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/dalle0-64.xpm", &(mem->floor->width), &(mem->floor->height));
 	mem->floor->addr = mlx_get_data_addr(mem->floor->img, &(mem->floor->bits_per_pixel), &(mem->floor->line_length), &(mem->floor->endian));
 }
 
@@ -67,6 +67,6 @@ void	init_bottom_images(t_mem *mem)
 		//free
 		exit (EXIT_FAILURE);
 	}
-	mem->bottom->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/sol.xpm", &(mem->bottom->width), &(mem->bottom->height));
+	mem->bottom->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/bottom-64.xpm", &(mem->bottom->width), &(mem->bottom->height));
 	mem->bottom->addr = mlx_get_data_addr(mem->bottom->img, &(mem->bottom->bits_per_pixel), &(mem->bottom->line_length), &(mem->bottom->endian));
 }

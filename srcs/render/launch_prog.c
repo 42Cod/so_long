@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/21 15:34:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:05:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	fill_square(t_mem *mem, int x, int y, int color)
 }
 */
 
+/*
 void	set_background(t_data *data, t_mem *mem)
 {
 	float i;
@@ -71,25 +72,45 @@ void	set_background(t_data *data, t_mem *mem)
 	}
 
 }
-
+*/
 
 void		draw_background(t_mem *mem)
 {
+	/*
 	int		i;
 	int		j;
+	*/
 
+	int		*res_x;
+	int		*res_y;
+
+	res_x = (int *)malloc(sizeof(int));
+	res_y = (int *)malloc(sizeof(int));
+	if (!res_x || !res_y)
+	{
+		//fonction de free
+		exit(EXIT_FAILURE);
+	}
+	mlx_get_screen_size(mem->vars->mlx, res_x, res_y);
+
+	/*
 	i = -1;
-	while(++i < R_LENGTH)
+	while(++i < *res_y)
 	{
 		j = -1;
-		while(++j < R_WIDTH)
+		while(++j < *res_x)
 		{
 			my_mlx_pixel_put((mem->data), i, j, SAND);
 		}
 	}
+	*/
+	printf("res x : %i\n", *res_x);
+	printf("res x : %i\n", *res_y);
+	//free la res ? ou l ajouter a notre struct ?
 }
 
 /*Va permettre d afficher chaque texture a une taille adaptee a la fenetre */
+/*
 void	scale_img(t_data *data, int i, int j, t_mem *mem)
 {
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, data->img, j * MINIMAP, i * MINIMAP);
@@ -122,6 +143,7 @@ void	scale_img(t_data *data, int i, int j, t_mem *mem)
 		x++;
 	}
 }
+*/
 
 
 void	draw_map(t_mem *mem)

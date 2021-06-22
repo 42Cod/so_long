@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/21 14:35:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 10:14:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,27 @@ int		render_next_frame(t_mem *mem)
 
 int		g_init(t_mem *mem)
 {
-	int res_x;
-	int	res_y;
+	/* verifier la resolution de l ecran une fois
+	int		*res_x;
+	int		*res_y;
 
-	mem->vars->mlx = mlx_init();
-	mlx_get_screen_size(mem->vars->mlx, &res_x, &res_y);
+
+	res_x = (int *)malloc(sizeof(int));
+	res_y = (int *)malloc(sizeof(int));
+	if (!res_x || !res_y)
+	{
+		//fonction de free
+		exit(EXIT_FAILURE);
+	}
+	mlx_get_screen_size(mem->vars->mlx, res_x, res_y);
+	*/
+
 	//Si la taille irait avec la resolution screen ?
 	/* faire un pointeur sur fonction pour looper intelligemment pour tous les elements */
-	mem->vars->win = mlx_new_window(mem->vars->mlx, R_LENGTH, R_WIDTH, "So long");
-	mem->data->img = mlx_new_image(mem->vars->mlx, R_LENGTH, R_WIDTH);
+	mem->vars->mlx = mlx_init();
+	printf("value is %i\n", mem->map->col_max);
+	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64, "So long");
+	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64);
 	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
 	/* je ne sais pas ou les mettre ? */
     init_player_images(mem);
@@ -42,6 +54,7 @@ int		g_init(t_mem *mem)
 	init_bottom_images(mem);
 	so_long_loop(mem);
 	/* fonction toujours utilisee mais uniquement pour le render */
+	//free res_y et res_x
 	return (SUCCESS);
 }
 

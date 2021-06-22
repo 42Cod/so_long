@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 15:40:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 15:59:02 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct	s_mem
 	t_map				*map;
 	char				**map2d;
 	int					*moves;
+	int					frame;
 }				t_mem;
 
 /* vu pour faire un rectangle/carre */

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 14:00:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 16:08:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,13 @@ void	draw_elements(t_mem *mem)
 		j = 0;
 		while (mem->map2d[i][j])
 		{
+
+			int an = (int)((mem->frame / 14.0)) % 14;
+			if (an > 7)
+				an = 14 - an;
+
 			if (mem->map2d[i][j] == 'C') //Ajouter conditions quand ils sont touches
-				draw_on_img(mem->data, mem->collectibles->img, j * MINIMAP, i * MINIMAP);
+				draw_on_img(mem->data, mem->collectibles->img, j * MINIMAP, i * MINIMAP - an);
 				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
 			else if (mem->map2d[i][j] == 'E')
 				draw_on_img(mem->data, mem->exits->img, j * MINIMAP, i * MINIMAP);

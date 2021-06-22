@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 14:46:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 16:00:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		render_next_frame(t_mem *mem)
 	//update_map(mem);
 	draw_elements(mem);
 	draw_player(mem);
+	mem->frame++;
 	return (0);
 }
 
@@ -78,6 +79,7 @@ int		g_init(t_mem *mem)
 
 	//Si la taille irait avec la resolution screen ?
 	/* faire un pointeur sur fonction pour looper intelligemment pour tous les elements */
+	mem->frame = 0;
 	mem->vars->mlx = mlx_init();
 	//printf("value is %i\n", mem->map->col_max);
 	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64, "So long");

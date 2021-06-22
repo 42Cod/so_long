@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 12:16:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:52:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -319,3 +319,4 @@ void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY);
 int		get_pixel(t_data *img, int x, int y);
 void	set_pixel(t_data *data, int x, int y, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	init_exits_images(t_mem *mem);

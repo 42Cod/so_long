@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 12:35:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:53:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int		render_next_frame(t_mem *mem)
 	draw_map(mem);
 	//revoir les conditions
 	//update_map(mem);
-	//draw_elements(mem);
+	draw_elements(mem);
 	//draw_player(mem);
 	return (0);
 }
@@ -85,7 +85,7 @@ int		g_init(t_mem *mem)
 	/* je ne sais pas ou les mettre ? */
     //init_player_images(mem);
 	init_floor_images(mem);
-	//init_exit_images(mem);
+	init_exits_images(mem);
 	init_collectibles_images(mem);
 	init_bottom_images(mem);
 	so_long_loop(mem);

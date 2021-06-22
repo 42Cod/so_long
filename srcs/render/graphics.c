@@ -6,20 +6,56 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 10:31:28 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 11:42:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
+{
+	int 	x;
+	int 	y;
+	float	r_x;
+	float	r_y;
+	int		color;
+	int		pos_x;
+	int		pos_y;
+	int		p_data_x;
+	int		p_data_y;
+
+	x = 0;
+	while (x < MINIMAP)
+	{
+		y = 0;
+		while (y < MINIMAP)
+		{
+			r_x = (float)x / (float)MINIMAP;
+			r_y = (float)y / (float)MINIMAP;
+
+			pos_x = r_x * s_img->width;
+			pos_y = r_y * s_img->height;
+			color = get_pixel(s_img, pos_x, pos_y);
+			p_data_x = startX + x;
+			p_data_y = startY + y;
+			set_pixel(img, p_data_x, p_data_y, color);
+			y++;
+		}
+		x++;
+	}
+}
+
 int		render_next_frame(t_mem *mem)
 {
 	(void)mem;
 
+	draw_map(mem);
 	//update_map(mem);
 	//revoir les conditions
 	//update_map(mem);
-	draw_characters(mem);
+	//draw_elements(mem);
+	//draw_player(mem);
+
 	return (0);
 }
 
@@ -53,7 +89,6 @@ int		g_init(t_mem *mem)
 	init_exit_images(mem);
 	init_collectibles_images(mem);
 	init_bottom_images(mem);
-	draw_map(mem);
 	so_long_loop(mem);
 	/* fonction toujours utilisee mais uniquement pour le render */
 	//free res_y et res_x

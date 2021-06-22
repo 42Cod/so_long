@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keyboard_inputs.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:20:35 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/04/23 10:43:29 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/22 11:15:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,10 @@ d is right - 2
 int		key_hook(int keycode, t_mem *mem)
 {
 	(void)mem;
-	printf("hey code is %i\n", keycode);
-	/*
 	if (keycode == W)
 	{
 		printf("pressed w\n");
-		mem->player->y -= mem->player->move_speed;
-		//printf("walkDirection = %f\n", img->map->player.walkDirection);
+		mem->player->y -= 1;
 	}
 	else if (keycode == A)
 	{
@@ -50,7 +47,6 @@ int		key_hook(int keycode, t_mem *mem)
 		//img->map->player.turnDirection = +0.5;
 		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
-	*/
 	//printf("Player position : x: %f, y: %f.\n", img->map->player.x, img->map->player.y);
 	//update_player(img);
 	//printf("Player position : x: %i, y: %i.\n", img->map->player.x, img->map->player.y);

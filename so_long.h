@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 10:35:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 11:37:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ typedef struct	s_map
 typedef struct	s_player
 {
 	t_data	img[3];
-	float	x;
-	float	y;
+	int		x;
+	int		y;
 	char	walk_direction;
 	float	move_speed;
 	bool	is_found;
@@ -159,7 +159,7 @@ int		key_hook(int keycode, t_mem *mem);
 int		update_player_position(t_data *img);
 int		update_player_orientation(t_data *img);
 int		init_player_rotationAngle(t_data *img);
-void	draw_player(t_mem *mem, int color);
+//void	draw_player(t_mem *mem, int color);
 
 //a refaire
 //int		description_ok(t_map *map);
@@ -310,4 +310,9 @@ void	init_bottom_images(t_mem *mem);
 void	update_map(t_mem *mem);
 void	so_long_loop(t_mem *mem);
 void	set_background(t_data *data, t_mem *mem);
-void	draw_characters(t_mem *mem);
+void	draw_elements(t_mem *mem);
+void	draw_player(t_mem *mem);
+void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY);
+int		get_pixel(t_data *img, int x, int y);
+void	set_pixel(t_data *data, int x, int y, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);

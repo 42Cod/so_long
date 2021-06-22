@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 10:34:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 11:03:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 }
 
 /* Faire une boucle pour que ce soit plus intelligent */
-/* Attention a toutes les images */
+/* rajouter toutes les images */
 void init_player_images(t_mem *mem)
 {
 	mem->player->img[0].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left.xpm", &(mem->player->img[0].width), &(mem->player->img[0].height));

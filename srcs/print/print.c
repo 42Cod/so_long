@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:34:44 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/17 14:35:09 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/22 11:14:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	print_map(t_map *map)
 
 void	print_player(t_player *player)
 {
-	printf("x : %f\n", player->x);
-	printf("y : %f\n", player->y);
+	printf("x : %i\n", player->x);
+	printf("y : %i\n", player->y);
 	printf("walk direction : %c\n", player->walk_direction);
 	printf("move speed : %f\n", player->move_speed);
 }

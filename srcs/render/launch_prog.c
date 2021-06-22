@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 10:32:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 11:41:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,36 +53,19 @@ void	draw_map(t_mem *mem)
 		while (mem->map2d[i][j])
 		{
 			if (mem->map2d[i][j] == '1')
-				//scale_img(mem->floor, i, j, mem);
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
+				draw_on_img(mem->data, mem->floor, j * MINIMAP, i * MINIMAP);
+				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
 			else
-				//scale_img(mem->bottom, i, j, mem);
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
+				draw_on_img(mem->data, mem->bottom, j * MINIMAP, i * MINIMAP);
+				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
 			j++;
 		}
 		i++;
 	}
-
-
-	/*
-	while (mem->map2d[i])
-	{
-		j = 0;
-		while (mem->map2d[i][j])
-		{
-			if (mem->map2d[i][j] == '1')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->floor->img, j * MINIMAP, i * MINIMAP);
-			else
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->bottom->img, j * MINIMAP, i * MINIMAP);
-			j++;
-		}
-		i++;
-	}
-	*/
 }
 
 
-void	draw_characters(t_mem *mem)
+void	draw_elements(t_mem *mem)
 {
 	int x = 1, y = 1;
 	int i = 0, j = 0;
@@ -94,9 +77,7 @@ void	draw_characters(t_mem *mem)
 		j = 0;
 		while (mem->map2d[i][j])
 		{
-			if (mem->map2d[i][j] == 'P')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->player->img[0].img, j * MINIMAP, i * MINIMAP);
-			else if (mem->map2d[i][j] == 'C')
+			if (mem->map2d[i][j] == 'C') //Ajouter conditions quand ils sont touches
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
 			else if (mem->map2d[i][j] == 'E')
 				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
@@ -106,6 +87,11 @@ void	draw_characters(t_mem *mem)
 		y += MINIMAP;
 		i++;
 	}
+}
+
+void	draw_player(t_mem *mem)
+{
+	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->player->img[0].img, mem->player->x * MINIMAP, mem->player->x * MINIMAP);
 }
 
 /* plus utilise

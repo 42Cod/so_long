@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 11:41:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 12:34:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	draw_map(t_mem *mem)
 	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 
 	//draw_background(mem);
-	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+
 	//int x = 1, y = 1;
 	int i = 0, j;
 
@@ -70,6 +70,7 @@ void	draw_elements(t_mem *mem)
 	int x = 1, y = 1;
 	int i = 0, j = 0;
 
+	//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	//player + collectibles
 	while (mem->map2d[i])
 	{
@@ -78,9 +79,11 @@ void	draw_elements(t_mem *mem)
 		while (mem->map2d[i][j])
 		{
 			if (mem->map2d[i][j] == 'C') //Ajouter conditions quand ils sont touches
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
+				draw_on_img(mem->data, mem->collectibles->img, j * MINIMAP, i * MINIMAP);
+				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->collectibles->first->img[0].img, j * MINIMAP, i * MINIMAP);
 			else if (mem->map2d[i][j] == 'E')
-				mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
+				draw_on_img(mem->data, mem->exits->img, j * MINIMAP, i * MINIMAP);
+				//mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->exits->first->img[0].img, j * MINIMAP, i * MINIMAP);
 			x += MINIMAP;
 			j++;
 		}

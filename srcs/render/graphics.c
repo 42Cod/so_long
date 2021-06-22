@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 11:42:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 12:35:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,12 @@ int		render_next_frame(t_mem *mem)
 {
 	(void)mem;
 
+	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	draw_map(mem);
-	//update_map(mem);
 	//revoir les conditions
 	//update_map(mem);
 	//draw_elements(mem);
 	//draw_player(mem);
-
 	return (0);
 }
 
@@ -84,9 +83,9 @@ int		g_init(t_mem *mem)
 	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64);
 	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
 	/* je ne sais pas ou les mettre ? */
-    init_player_images(mem);
+    //init_player_images(mem);
 	init_floor_images(mem);
-	init_exit_images(mem);
+	//init_exit_images(mem);
 	init_collectibles_images(mem);
 	init_bottom_images(mem);
 	so_long_loop(mem);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 11:37:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 12:16:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ typedef struct	s_player
 
 typedef struct	s_collectible_elem
 {
-	t_data						img[1];
 	int 						pos_x;
 	int							pos_y;
 	bool						is_touched;
@@ -98,11 +97,12 @@ typedef struct			s_collectible_list
 {
 	t_collectible_elem	*first;
 	bool				is_empty;
+	t_data				*img;
 }						t_collectible_list;
 
 typedef struct			s_exit_elem
 {
-	t_data				img[1];
+
 	int					pos_x;
 	int					pos_y;
 	bool				is_touched;
@@ -111,9 +111,12 @@ typedef struct			s_exit_elem
 
 typedef struct			s_exit_list
 {
+	t_data				*img;
 	t_exit_elem			*first;
 	bool				is_empty;
 }						t_exit_list;
+
+/*revoir comment gerer plusieurs elem*/
 
 /* structure generale de tout tout tout  - permettra de tout free sans perdre les refs ?*/
 typedef struct	s_mem

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:20:35 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 11:15:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:43:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,33 @@ s is down  - 1
 d is right - 2
 */
 
+/*rechercker les touches */
 int		key_hook(int keycode, t_mem *mem)
 {
-	(void)mem;
-	if (keycode == W)
+	if (mem->map2d[(int)(mem->player->x - 0.25)][(int)(mem->player->y)] != '1' && keycode == W)
 	{
-		printf("pressed w\n");
-		mem->player->y -= 1;
+		//printf("pressed w\n");
+		mem->player->x -= 0.5;
 	}
-	else if (keycode == A)
+	else if (mem->map2d[(int)(mem->player->x)][(int)(mem->player->y - 1)] != '1'&& keycode == A)
 	{
-		printf("pressed a\n");
+		mem->player->y -= 0.5;
+		//printf("pressed a\n");
 		//img->map->player.turnDirection = -0.5;
 		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}
-	else if (keycode == S)
+	else if (mem->map2d[(int)(mem->player->x + 1)][(int)(mem->player->y)] != '1' && keycode == S)
 	{
-		printf("pressed s\n");
+		mem->player->x += 0.5;
+		//printf("pressed s\n");
 		//recule
 		//img->map->player.walkDirection = -0.5;
 		//printf("walkDirection = %f\n", img->map->player.walkDirection);
 	}
-	else if (keycode == D)
+	else if (mem->map2d[(int)(mem->player->x)][(int)(mem->player->y + 1)] != '1' && keycode == D)
 	{
-		printf("pressed d\n");
+		mem->player->y += 0.5;
+		//printf("pressed d\n");
 		//img->map->player.turnDirection = +0.5;
 		//printf("turnDirection = %f\n", img->map->player.turnDirection);
 	}

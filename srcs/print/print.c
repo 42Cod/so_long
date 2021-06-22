@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 14:34:44 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 11:14:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:22:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	print_map(t_map *map)
 
 void	print_player(t_player *player)
 {
-	printf("x : %i\n", player->x);
-	printf("y : %i\n", player->y);
+	printf("x : %f\n", player->x);
+	printf("y : %f\n", player->y);
 	printf("walk direction : %c\n", player->walk_direction);
 	printf("move speed : %f\n", player->move_speed);
 }
@@ -35,8 +35,8 @@ void	print_collectible_list(t_collectible_list	*lst)
 	while (elem)
 	{
 		printf("-----elem %i--------\n", i);
-		printf("pos_x : %i\n", elem->pos_x);
-		printf("pos_y : %i\n", elem->pos_y);
+		printf("pos_x : %d\n", elem->pos_x);
+		printf("pos_y : %d\n", elem->pos_y);
 		/* Attention s'il est touched il ne faudra plus l afficher */
 		printf("is touched : %i\n", elem->is_touched);
 		elem = elem->next;
@@ -53,8 +53,8 @@ void print_exit_list(t_exit_list *lst)
 	while (elem)
 	{
 		printf("-----exit %i--------\n", i);
-		printf("pos_x : %i\n", elem->pos_x);
-		printf("pos_y : %i\n", elem->pos_y);
+		printf("pos_x : %d\n", elem->pos_x);
+		printf("pos_y : %d\n", elem->pos_y);
 		/* Attention s'il est touched il ne faudra plus l afficher */
 		printf("is touched : %i\n", elem->is_touched);
 		elem = elem->next;

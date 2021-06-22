@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 13:49:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:00:13 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void	draw_elements(t_mem *mem)
 
 void	draw_player(t_mem *mem)
 {
-	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->player->img[0].img, mem->player->x * MINIMAP, mem->player->x * MINIMAP);
+	draw_on_img(mem->data, mem->player->img, mem->player->y * MINIMAP, mem->player->x * MINIMAP);
 }
 
 /* plus utilise

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 13:53:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:18:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
 			color = get_pixel(s_img, pos_x, pos_y);
 			p_data_x = startX + x;
 			p_data_y = startY + y;
-			set_pixel(img, p_data_x, p_data_y, color);
+			if (color != (int)BLACK)
+				set_pixel(img, p_data_x, p_data_y, color);
 			y++;
 		}
 		x++;
@@ -54,7 +55,7 @@ int		render_next_frame(t_mem *mem)
 	//revoir les conditions
 	//update_map(mem);
 	draw_elements(mem);
-	//draw_player(mem);
+	draw_player(mem);
 	return (0);
 }
 
@@ -83,7 +84,7 @@ int		g_init(t_mem *mem)
 	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64);
 	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
 	/* je ne sais pas ou les mettre ? */
-    //init_player_images(mem);
+    init_player_images(mem);
 	init_floor_images(mem);
 	init_exits_images(mem);
 	init_collectibles_images(mem);

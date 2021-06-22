@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 13:52:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 13:56:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct	s_map
 
 typedef struct	s_player
 {
-	t_data	img[3];
+	t_data	*img;
 	int		x;
 	int		y;
 	char	walk_direction;

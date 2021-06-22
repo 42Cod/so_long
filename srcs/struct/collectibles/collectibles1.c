@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:38:42 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 13:41:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:19:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void init_collectibles_images(t_mem *mem)
 		//free
 		exit (EXIT_FAILURE);
 	}
-	mem->collectibles->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/collectibles1-64_st.xpm", &(mem->collectibles->img->width), &(mem->collectibles->img->height));
+	mem->collectibles->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/collectibles1-64_st-transpt.xpm", &(mem->collectibles->img->width), &(mem->collectibles->img->height));
 
 	if (!(mem->collectibles->img->img))
 	{

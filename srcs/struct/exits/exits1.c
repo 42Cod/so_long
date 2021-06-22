@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:07:54 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 13:54:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:19:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void init_exits_images(t_mem *mem)
 		//free
 		exit (EXIT_FAILURE);
 	}
-	mem->exits->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/exit-fond64t.xpm", &(mem->exits->img->width), &(mem->exits->img->height));
+	mem->exits->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/exit-fond64t-transp.xpm", &(mem->exits->img->width), &(mem->exits->img->height));
 
 	if (!(mem->exits->img->img))
 	{

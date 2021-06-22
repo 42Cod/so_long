@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_minimap_lines.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:59:14 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/23 11:00:11 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/22 15:17:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,43 +46,44 @@ int check_mini_map_chars(char *line, t_map *map)
 	return (SUCCESS);
 }
 
-int		read_all_map_lines(int fd, char **line, t_map *map)
+int		read_all_map_lines(int fd, char **line, t_mem *mem)
 {
 	int	ret;
 
 	ret = 1;
 	/* faire un free a line a chaque fois ? */
 	while (ret != 0)
-		ret = get_next_line_minimap(fd, line, map);
+		ret = get_next_line_minimap(fd, line, mem);
 	return (SUCCESS);
 }
 
 /* Determine le nombre de lignes sur la machine et check les erreurs de chars */
 /* a remettre a la norme ! */
-int		get_next_line_minimap(int fd, char **line, t_map *map)
+int		get_next_line_minimap(int fd, char **line, t_mem *mem)
 {
 	static char *s;
 	int			b_read;
 	char		*buffer;
 
-	error_gnl(fd, line, map);
+	error_gnl(fd, line, mem->map);
 	buffer = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	//revoir gestion erreur
 	if (!buffer)
-		error_malloc(map);
+		error_malloc(mem->map);
 	b_read = BUFFER_SIZE;
 	while (b_read != 0 && !(ft_hasnewline(s)))
 	{
 		b_read = read(fd, buffer, BUFFER_SIZE);
-		error_read(map, buffer, b_read);
+		error_read(mem->map, buffer, b_read);
 		buffer[b_read] = '\0';
 		s = gnl_strjoin(s, buffer);
 	}
 	free(buffer);
 	*line = ft_newline_minimap(s);
 	if (is_empty_line(*line) == -1)
-		map->lines++;
-	max_x(*line, map);
-	if (check_mini_map_chars(*line, map) == ERROR)
+		mem->map->lines++;
+	max_x(*line, mem);
+	if (check_mini_map_chars(*line, mem->map) == ERROR)
 	{
 		/*fonction de free*/
 		ft_putstr_fd("Error.\nBad character is map.\n", 2);

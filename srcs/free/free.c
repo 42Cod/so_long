@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/17 12:31:49 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/22 15:53:19 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,19 @@ void	free_mem(t_mem *mem)
 	free(mem);
 	mem = NULL;
 	exit (EXIT_SUCCESS);
+}
+
+void	close_clean(t_mem *mem)
+{
+	//mlx_destroy_image(mem->vars->mlx)
+	mlx_destroy_image(mem->vars->mlx, mem->player->img->img);
+	mlx_destroy_image(mem->vars->mlx, mem->exits->img->img);
+	mlx_destroy_image(mem->vars->mlx, mem->collectibles->img->img);
+	mlx_destroy_image(mem->vars->mlx, mem->bottom->img);
+	mlx_destroy_image(mem->vars->mlx, mem->floor->img);
+	mlx_destroy_image(mem->vars->mlx, mem->data->img);
+	mlx_destroy_window(mem->vars->mlx, mem->vars->win);
+	mlx_destroy_display(mem->vars->mlx);
+	//free tout
+	exit (EXIT_FAILURE);
 }

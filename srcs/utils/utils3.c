@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:32:51 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/17 13:32:52 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/22 15:32:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,12 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-void	max_x(char *line, t_map *map)
+void	max_x(char *line, t_mem *mem)
 {
 	int res;
 	int i;
 
+	(void)mem;
 	res = 0;
 	i = 0;
 	while (line[i] && line[i] != '\n')
@@ -40,6 +41,32 @@ void	max_x(char *line, t_map *map)
 		i++;
 	}
 	/* Attention revoir potentiellement la gestion de colonnes */
-	if (res > map->col_max)
-		map->col_max = res;
+	if (res > mem->map->col_max && mem->map->lines == 1)
+		mem->map->col_max = res;
+	else if (res != mem->map->col_max && mem->map->lines != 1)
+	{
+		ft_putstr_fd("Error.\nMap not squarred.\n", 2);
+		//free
+		exit (EXIT_FAILURE);
+	}
+	/*
+	else
+	{
+		printf("max x : %i\nmap->lines %i\nres %i\n", mem->map->col_max, mem->map->lines, res);
+		ft_putstr_fd("Error.\nThe map is not squarred.\n", 2);
+		//free
+		exit (EXIT_FAILURE);
+	}
+	*/
+
+	/* Attention revoir potentiellement la gestion de colonnes */
+	/*
+	if (res > mem->map->col_max && mem->map->lines >= 2)
+	{
+		//A revoir
+		printf("max x : %i\nmap->lines %i\nres %i\n", mem->map->col_max, mem->map->lines, res);
+		ft_putstr_fd("Error.\nMap not squarred !\n", 2);
+		exit (EXIT_FAILURE);
+	}
+	*/
 }

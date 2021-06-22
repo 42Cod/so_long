@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 14:21:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 15:40:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define W 119
 # define D 100
 # define S 115
+# define ESC 65307
 
 /* COLORS */
 # define SAND 0xF5DCA0
@@ -70,7 +71,7 @@ typedef struct	s_vars {
 typedef struct	s_map
 {
 	int	lines;
-	int line_length;
+	//int line_length;
 	//int col_length;
 	int	col_max;
 }				t_map;
@@ -130,6 +131,7 @@ typedef struct	s_mem
 	t_vars				*vars;
 	t_map				*map;
 	char				**map2d;
+	int					*moves;
 }				t_mem;
 
 /* vu pour faire un rectangle/carre */
@@ -165,15 +167,13 @@ int		init_player_rotationAngle(t_data *img);
 //void	draw_player(t_mem *mem, int color);
 
 //a refaire
-//int		description_ok(t_map *map);
-int		read_all_map_lines(int fd, char **line, t_map *map);
 int		check_empty_line(char *line);
 
 //handle_2d_map.c
 char	*ft_strdup_2d(char *s1, t_map *map, int l);
 int		initialize_2dmap(int fd, char **argv, t_mem *mem);
-int		get_next_line_minimap(int fd, char **line, t_map *map);
-void	max_x(char *line, t_map *map);
+int		get_next_line_minimap(int fd, char **line, t_mem *mem);
+void	max_x(char *line, t_mem *mem);
 
 //get_rgb_definitions.c
 int		get_floor(t_map *map, char *line);
@@ -184,8 +184,7 @@ int		get_floor(t_map *map, char *line);
 
 int		find_definitions_chars(char *line, t_map *map);
 int		get_next_line_description(int fd, char **line, t_map *map);
-
-int		read_all_map_lines(int fd, char **line, t_map *map);
+int		read_all_map_lines(int fd, char **line, t_mem *mem);
 
 
 //check_map_walls
@@ -320,3 +319,4 @@ int		get_pixel(t_data *img, int x, int y);
 void	set_pixel(t_data *data, int x, int y, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	init_exits_images(t_mem *mem);
+void	close_clean(t_mem *mem);

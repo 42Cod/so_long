@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 14:18:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 14:46:25 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void	so_long_loop(t_mem *mem)
 {
 	mlx_loop_hook(mem->vars->mlx, render_next_frame, mem);
 	mlx_hook(mem->vars->win, 2, 1L << 0, key_hook, mem);
-	mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
+	//mlx_hook(mem->vars->win, 3, 1L << 1, key_unhook, mem);
 	mlx_loop(mem->vars->mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:13:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:29:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ typedef struct			s_collectible_list
 {
 	t_collectible_elem	*first;
 	bool				is_empty;
-	t_data				*img;
+	t_data				img;
 }						t_collectible_list;
 
 /* Liste chainee pour les exits */
@@ -97,7 +97,7 @@ typedef struct			s_exit_elem
 
 typedef struct			s_exit_list
 {
-	t_data				*img;
+	t_data				img;
 	t_exit_elem			*first;
 	bool				is_empty;
 }						t_exit_list;
@@ -227,5 +227,6 @@ char	*ft_newline(char *s);
 //char	*ft_newline(char *s, t_mem *mem, int r);
 char	*ft_prep_s(char *s);
 int		get_next_line(int fd, char **line, t_mem *mem, int r);
+t_data	load_image(void *mlx, char *path);
 
 #endif

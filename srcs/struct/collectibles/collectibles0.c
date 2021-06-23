@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:17:23 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 16:19:01 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:43:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	init_collectibles_list(t_collectible_list *lst)
 {
 	lst->first = NULL;
 	lst->is_empty = true;
-	lst->img = NULL;
 }
 
 bool	is_empty_c_list(t_collectible_list *lst)
@@ -70,15 +69,15 @@ void	push_end_c_list(t_mem *mem, int x, int y)
 void	free_c_list(t_collectible_list *lst)
 {
 	t_collectible_elem	*elem;
+	t_collectible_elem	*next;
 
 	elem = lst->first;
 	while (elem)
 	{
-		lst->first = lst->first->next;
+		next = elem->next;
+		printf("c: %p\n", elem);
 		free(elem);
-		elem = NULL;
-		elem = lst->first;
+		elem = next;
 	}
 	free(lst);
-	lst = NULL;
 }

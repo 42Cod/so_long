@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:21:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:29:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,27 +50,6 @@ t_data	load_image(void *mlx, char *path)
 
 void init_player_images(t_mem *mem)
 {
-	/*
-	mem->p->img = (t_data *)malloc(sizeof(t_data));
-	if (!mem->p->img)
-		free_mem(mem);
-	*/
-/*
-	if (!(mem->p->img))
-	{
-		ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
-		free_mem(mem);
-	}
-	*/
-	/*mem->p.img.img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm", &(mem->p->img->width), &(mem->p->img->height));
-	if (!(mem->p->img.img))
-	{
-		ft_putstr_fd("Error during image loading.\n", 2);
-		free_mem(mem);
-	}
-	mem->p.img->addr = mlx_get_data_addr(mem->p.img->img, &(mem->p->img->bits_per_pixel), &(mem->p->img->line_length), &(mem->p->img->endian));
-	*/
-
 	mem->p->img = load_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm");
 	if (!(mem->p->img.img))
 	{

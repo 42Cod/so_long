@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:38:42 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 15:14:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:30:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,19 +24,12 @@ int	is_collectible_char(t_mem *mem, char **map2d, int i, int j)
 
 void init_collectibles_images(t_mem *mem)
 {
-	mem->c->img = (t_data *)malloc(sizeof(t_data));
-	if (!(mem->c->img))
+	mem->c->img = load_image(mem->vars->mlx, "./srcs/textures/collectibles1-64_st-transpt.xpm");
+	if (!(mem->c->img.img))
 	{
-		ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
+		ft_putstr_fd("Error during image loading.\n", 2);
 		free_mem(mem);
 	}
-	mem->c->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/collectibles1-64_st-transpt.xpm", &(mem->c->img->width), &(mem->c->img->height));
-	if (!(mem->c->img->img))
-	{
-		ft_putstr_fd("Error.\nError during image loading.\n", 2);
-		free_mem(mem);
-	}
-	mem->c->img->addr = mlx_get_data_addr(mem->c->img->img, &(mem->c->img->bits_per_pixel), &(mem->c->img->line_length), &(mem->c->img->endian));
 }
 
 void	locate_collectibles(t_mem *mem)

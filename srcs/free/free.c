@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:22:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:40:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int	close_clean(t_mem *mem)
 {
 	if (mem->p->img.img)
 		mlx_destroy_image(mem->vars->mlx, mem->p->img.img);
-	if (mem->e->img->img)
-		mlx_destroy_image(mem->vars->mlx, mem->e->img->img);
-	if (mem->c->img->img)
-		mlx_destroy_image(mem->vars->mlx, mem->c->img->img);
+	if (mem->e->img.img)
+		mlx_destroy_image(mem->vars->mlx, mem->e->img.img);
+	if (mem->c->img.img)
+		mlx_destroy_image(mem->vars->mlx, mem->c->img.img);
 	if (mem->bottom->img)
 		mlx_destroy_image(mem->vars->mlx, mem->bottom->img);
 	if (mem->floor->img)
@@ -83,12 +83,6 @@ int	close_clean(t_mem *mem)
 		mlx_destroy_window(mem->vars->mlx, mem->vars->win);
 	if (mem->vars->mlx)
 		mlx_destroy_display(mem->vars->mlx);
-	/*
-	if (mem->bottom)
-		free(mem->bottom);
-	if (mem->floor)
-		free(mem->floor);
-	*/
 	free_mem(mem);
 	exit (EXIT_FAILURE);
 }

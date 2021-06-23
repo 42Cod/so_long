@@ -70,5 +70,6 @@ int	close_clean(t_mem *mem)
 	mlx_destroy_display(mem->vars->mlx);
 	free(mem->bottom);
 	free(mem->floor);
+	free_mem(mem);
 	exit (EXIT_FAILURE);
 }

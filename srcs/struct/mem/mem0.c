@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:08:49 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 11:33:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 13:45:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,16 @@ t_mem	*initialize_mem(void)
 	mem->exits = (t_exit_list *)malloc(sizeof(t_exit_list));
 	init_exits_list(mem->exits);
 	mem->map = (t_map *)malloc(sizeof(t_map));
+	init_map(mem);
 	mem->map2d = NULL;
 	mem->data = (t_data *)malloc(sizeof(t_data));
+	init_data(mem);
 	mem->vars = (t_vars *)malloc(sizeof(t_vars));
-	mem->moves = (int *)malloc(sizeof(int));
-	*(mem->moves) = 0;
+	init_vars(mem);
+	mem->moves = 0;
 	if (!mem || !mem->player || !mem->collectibles || !mem->exits || !mem->map
-		|| ! mem->data || !mem->vars || !mem->moves)
-	{
+		|| ! mem->data || !mem->vars)
 		free_mem(mem);
-		exit (EXIT_FAILURE);
-	}
 	return (mem);
 }
 

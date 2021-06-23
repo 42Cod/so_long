@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 12:11:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:17:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ typedef struct	s_mem
 	t_vars				*vars;
 	t_map				*map;
 	char				**map2d;
-	int					*moves;
+	int					moves;
 	int					frame;
 }				t_mem;
 
@@ -138,19 +138,18 @@ int		get_floor(t_map *map, char *line);
 int		find_definitions_chars(char *line, t_map *map);
 int		get_next_line_description(int fd, char **line, t_map *map);
 int		read_all_map_lines(int fd, char **line, t_mem *mem);
-int		is_full_walls(char *line);
-int		check_zero_neighbors(char **map2d, t_map *map, int i, int j);
+//int		is_full_walls(char *line, t_mem *mem);
+int		check_zero_neighbors(char **map2d, t_mem *mem, int i, int j);
 int		check_one_neighbors(char **map2d, t_map *map, int i, int j);
-int		check_map_walls(char **map2d, t_map *map);
+int		check_map_walls(char **map2d, t_mem *mem);
 int		check_lines_minimap(t_map *map, char *line, int l);
-int		mini_map_all_chars(int fd, char *buffer);
-int		check_mini_map_chars(char *line, t_map *map);
+int		mini_map_all_chars(int fd, char *buffer, t_mem *mem);
+int		check_mini_map_chars(char *line, t_mem *mem);
 int     check_so_long_extension(char *str);
 int		minimap_ok(t_map *map);
 int     check_map(char *map, char *argv);
 int     valid_char_mini_map(char c);
 int		target_char_minimap(char c);
-int		mini_map_all_chars(int fd, char *buffer);
 char	**clean_2dmap(t_map *map, char **map2d);
 int		is_player_char(t_mem *mem, char **map2d, int i, int j);
 int		check_texture_definition(t_map *map, char *line);
@@ -171,11 +170,10 @@ char	*ft_strstr(const char *haystack, const char *needle);
 int		ft_isspace(char c);
 int		c_atoi(t_map *map, char *line, int *res, int *i);
 void	handle_args_error(int fd, char **argv, t_mem *mem);
-void	handle_fd_errors(int fd, t_map *map);
+void	handle_fd_errors(int fd, t_mem *mem);
 void	ft_putstr_fd(char *s, int fd);
-void	error_gnl(int fd, char **line, t_map *map);
-void	error_malloc(t_map *map);
-void	error_read(t_map *map, char *buffer, int b_read);
+void	error_gnl(int fd, char **line, t_mem *mem);
+void	error_read(t_mem *mem, char *buffer, int b_read);
 bool	is_empty_c_list(t_collectible_list *lst);
 int		c_list_length(t_collectible_list *lst);
 void	push_end_c_list(t_mem *mem, int x, int y);
@@ -222,5 +220,7 @@ void	locate_exits(t_mem *mem);
 int		is_exit(t_mem *mem, int i, int j);
 int		c_all_touched(t_mem *mem);
 void	free_resolutions(int *res_x, int *res_y);
-
+void	init_data(t_mem *mem);
+void	init_vars(t_mem *mem);
+void	init_map(t_mem *mem);
 #endif

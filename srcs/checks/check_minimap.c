@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_minimap.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:25:22 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/04/23 11:01:15 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/23 14:13:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		valid_char_mini_map(char c)
 	return (ERROR);
 }
 
-int		mini_map_all_chars(int fd, char *buffer)
+int		mini_map_all_chars(int fd, char *buffer, t_mem *mem)
 {
 	int ret;
 	int is_valid;
@@ -68,9 +68,9 @@ int		mini_map_all_chars(int fd, char *buffer)
 		is_valid = valid_char_mini_map(buffer[0]);
 		if (ret == -1 || is_valid == 0)
 		{
-			//free(buffer); //?
-			printf("Incorrect map !\n");
-			return (ERROR);
+			free(buffer);
+			ft_putstr_fd("Error.\nIncorrect map !\n", 2);
+			free_mem(mem);
 		}
 		else if (ret == 0)
 			return (SUCCESS);

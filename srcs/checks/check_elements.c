@@ -3,16 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   check_elements.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:42:21 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/19 13:42:25 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/23 14:16:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-/* Fais le tour de la map2d et tous les elements, puis dis si c est ok */
+void	check_elements_error(t_mem *mem)
+{
+	if (mem->collectibles->is_empty == true)
+	{
+		ft_putstr_fd("Error.\nMissing at least one collectible !\n", 2);
+		free_mem(mem);
+	}
+	if (mem->collectibles->is_empty == true)
+	{
+		ft_putstr_fd("Error.\nMissing at least one exit !\n", 2);
+		free_mem(mem);
+	}
+}
+
 void	check_elements(t_mem *mem)
 {
 	int	i;
@@ -35,17 +48,4 @@ void	check_elements(t_mem *mem)
 		j = 0;
 		i++;
 	}
-	if (mem->collectibles->is_empty == true)
-	{
-		ft_putstr_fd("Error.\nMissing at least one collectible !\n", 2);
-		//free
-		exit (EXIT_FAILURE);
-	}
-	if (mem->collectibles->is_empty == true)
-	{
-		ft_putstr_fd("Error.\nMissing at least one exit !\n", 2);
-		//free
-		exit (EXIT_FAILURE);
-	}
-	//printf("The map seems ok from the elements points of view !\n");
 }

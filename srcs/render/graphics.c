@@ -6,12 +6,18 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/23 12:05:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 13:52:07 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
+void	draw_player(t_mem *mem)
+{
+	draw_on_img(mem->data, mem->player->img, mem->player->y * MINIMAP, mem->player->x * MINIMAP);
+}
+
+/* refaire une fiche sur cette fonction */
 void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
 {
 	int 	x;
@@ -46,24 +52,21 @@ void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
 	}
 }
 
-int		render_next_frame(t_mem *mem)
+/* Permet d afficher en continue l'image principale sur laquelle on dessine */
+/* Obligation de retourner un int - mlx expectation */
+int	render_next_frame(t_mem *mem)
 {
-	(void)mem;
-
 	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
 	draw_map(mem);
-	//revoir les conditions
-	//update_map(mem);
 	draw_elements(mem);
 	draw_player(mem);
 	mem->frame++;
-	return (0);
+	return (SUCCESS);
 }
 
-
+/* Ouvre la fenetre, charge les images etc */
 int		g_init(t_mem *mem)
 {
-	/* verifier la resolution de l ecran une fois */
 	int		*res_x;
 	int		*res_y;
 

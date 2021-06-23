@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 12:12:35 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:14:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int     main(int argc, char **argv)
         locate_collectibles(mem);
         locate_exits(mem);
         check_elements(mem);
-        check_map_walls(mem->map2d, mem->map);
+        check_map_walls(mem->map2d, mem);
         g_init(mem);
         free_mem(mem);
     }

@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/23 11:58:15 by user42           ###   ########.fr        #
+#    Updated: 2021/06/23 13:50:21 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS =	./main.c \
 		./srcs/checks/check_elements.c \
 		./srcs/render/keyboard_inputs.c \
 		./srcs/render/graphics.c \
-		./srcs/render/launch_prog.c \
+		./srcs/render/draw.c \
 		./srcs/checks/check_minimap_lines.c \
 		./srcs/utils/utils0.c \
 		./srcs/utils/utils1.c \

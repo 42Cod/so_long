@@ -3,91 +3,70 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_walls.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:07:33 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/04/23 10:59:29 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/23 14:04:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-/* revoir toute la gestion d erreur ! */
-/* Verifie que la ligne passee en paramètre contient uniquement des murs */
-int		is_full_walls(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (ft_isspace(line[i]) == ERROR && line[i] != '1' )
-		{
-			printf("ERROR !\n");
-			exit (ERROR);
-		}
-		i++;
-	}
-	return (SUCCESS);
-}
-
-int		check_zero_neighbors(char **map2d, t_map *map, int i, int j)
+int		check_zero_neighbors(char **map2d, t_mem *mem, int i, int j)
 {
 
 	if ((map2d[i][j + 1] == '\0' || j == 0 || i == 0))
 	{
-		printf("\nMissing wall(s).");
-		exit (ERROR);
+		ft_putstr_fd("Error.\nMissing wall(s).\n", 2);
+		free_mem(mem);
 	}
-	if (i + 1 <= map->lines && map2d[i + 1])
+	if (i + 1 <= mem->map->lines && map2d[i + 1])
 	{
 		if (map2d[i + 1][j] == '\0')
 		{
-			printf("\nMissing wall(s).\n");
-			exit (ERROR);
+			ft_putstr_fd("Error.\nMissing wall(s).\n", 2);
+			free_mem(mem);
 		}
 	}
 	if (map2d[i - 1][j] != '1' && i - 1 == 0 && map2d[i])
 	{
-		printf("\nMissing wall(s). There is a zero next to a space.\n");
-		exit (ERROR);
+		ft_putstr_fd("Error.\nIssues with spaces.\n", 2);
+		free_mem(mem);
 	}
 	if ((map2d[i][j - 1] == ' ') && j - 1 > 0)
 	{
-		printf("\nMissing wall(s). There is a zero next to a space at the beginning for the line.\n");
-		exit (ERROR);
+		ft_putstr_fd("Error.\nIssues with zeros.\n", 2);
+		free_mem(mem);
 	}
 	return (SUCCESS);
 }
 
-int		check_space_neighbors(char **map2d, t_map *map, int i, int j)
+int		check_space_neighbors(char **map2d, t_mem *mem, int i, int j)
 {
 
-	if (map2d[i + 1] && i + 1 < map->lines)
+	if (map2d[i + 1] && i + 1 < mem->map->lines)
 	{
 		if (map2d[i + 1][j] == '0')
 		{
-			printf("Missing wall(s) because of 0 close to a space.\n");
-			exit (ERROR);
+			ft_putstr_fd("Error.\nIssues with walls.\n", 2);
+			free_mem(mem);
 		}
 	}
-	if (i + 1 == map->lines - 1 && map2d[i + 1][j] != '1' && map2d[i + 1])
+	if (i + 1 == mem->map->lines - 1 && map2d[i + 1][j] != '1' && map2d[i + 1])
 	{
-		printf("\nMissing wall(s) because of a space next to last map line.\n");
-		exit (ERROR);
+		ft_putstr_fd("Error.\nIssues with walls / lines.\n", 2);
+		free_mem(mem);
 	}
 	if (i > 1 &&  map2d[i - 1][j] == '0' && map2d[i])
 	{
-		printf("\nMissing wall(s) because of space(s).\n");
-		exit (ERROR);
+		ft_putstr_fd("Error.\nIssues with spaces.\n", 2);
+		free_mem(mem);
 	}
 	return (SUCCESS);
 }
 
-//tous les checks doivent etre faits au prealables
-int		check_map_walls(char **map2d, t_map *map)
+int		check_map_walls(char **map2d, t_mem *mem)
 {
-	(void)map2d;
 	int i;
 	int j;
 
@@ -96,13 +75,13 @@ int		check_map_walls(char **map2d, t_map *map)
 	while (map2d[i] != NULL)
 	{
 		j = 0;
-		while (j < map->col_max && map2d[i][j] != '\0')
+		while (j < mem->map->col_max && map2d[i][j] != '\0')
 		{
 			j++;
 			if (map2d[i][j] == '0')
-				check_zero_neighbors(map2d, map, i, j);
+				check_zero_neighbors(map2d, mem, i, j);
 			else if (map2d[i][j] == ' ')
-				check_space_neighbors(map2d, map, i, j);
+				check_space_neighbors(map2d, mem, i, j);
 		}
 		i++;
 	}

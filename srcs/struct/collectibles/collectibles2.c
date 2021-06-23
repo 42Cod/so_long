@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 17:12:45 by user42            #+#    #+#             */
-/*   Updated: 2021/06/23 15:14:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:54:00 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@ void    set_to_true(t_mem *mem)
     t_collectible_elem  *elem;
 
     elem = mem->c->first;
-    while (elem && elem->pos_y != (int)mem->p->y && (int)elem->pos_x != mem->p->x)
+    while (elem)
+    {
+        if(elem->pos_y == (int)mem->p->y && (int)elem->pos_x == mem->p->x)
+        {
+            elem->is_touched = true;
+            return ;
+        }
         elem = elem->next;
-    elem->is_touched = true;
+    }
 }

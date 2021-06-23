@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:17:23 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:43:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:45:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	free_c_list(t_collectible_list *lst)
 	while (elem)
 	{
 		next = elem->next;
-		printf("c: %p\n", elem);
 		free(elem);
 		elem = next;
 	}

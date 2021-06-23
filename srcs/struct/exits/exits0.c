@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:26:55 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:42:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:45:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	free_e_list(t_exit_list *lst)
 	while (elem)
 	{
 		next = elem->next;
-		printf("e: %p\n", elem);
 		free(elem);
 		elem = next;
 	}

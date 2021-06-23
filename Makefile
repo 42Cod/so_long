@@ -40,7 +40,7 @@ UNAME		:= $(shell uname)
 
 PATH_MLX	= mlx
 L_SOLONG	= libsolong.a
-CC 			= gcc -g
+CC 			= gcc -fsanitize=address
 CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -f
 NAME		= so_long

@@ -30,9 +30,8 @@ void    set_to_true(t_mem *mem)
 {
     t_collectible_elem  *elem;
 
+    elem = mem->c->first;
     while (elem && elem->pos_y != (int)mem->p->y && (int)elem->pos_x != mem->p->x)
-    {
         elem = elem->next;
-    }
     elem->is_touched = true;
 }

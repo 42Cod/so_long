@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:25:36 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:16:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ void	free_mem(t_mem *mem)
 	free_data(mem);
 	free(mem->map2d);
 	free(mem->map);
-	free_e_list(mem->exits);
-	free_c_list(mem->collectibles);
-	free(mem->player);
+	free_e_list(mem->e);
+	free_c_list(mem->c);
+	free(mem->p);
 	free(mem);
 	exit (EXIT_SUCCESS);
 }
@@ -60,9 +60,9 @@ void	free_resolutions(int *res_x, int *res_y)
 
 int	close_clean(t_mem *mem)
 {
-	mlx_destroy_image(mem->vars->mlx, mem->player->img->img);
-	mlx_destroy_image(mem->vars->mlx, mem->exits->img->img);
-	mlx_destroy_image(mem->vars->mlx, mem->collectibles->img->img);
+	mlx_destroy_image(mem->vars->mlx, mem->p->img->img);
+	mlx_destroy_image(mem->vars->mlx, mem->e->img->img);
+	mlx_destroy_image(mem->vars->mlx, mem->c->img->img);
 	mlx_destroy_image(mem->vars->mlx, mem->bottom->img);
 	mlx_destroy_image(mem->vars->mlx, mem->floor->img);
 	mlx_destroy_image(mem->vars->mlx, mem->data->img);

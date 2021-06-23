@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/23 14:43:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:14:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	draw_player(t_mem *mem)
 {
-	draw_on_img(mem->data, mem->player->img, mem->player->y * MINIMAP, mem->player->x * MINIMAP);
+	draw_on_img(mem->data, mem->p->img, mem->p->y * MINIMAP, mem->p->x * MINIMAP);
 }
 
 void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)

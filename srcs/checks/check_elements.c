@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:42:21 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:30:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:16:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	check_elements_error(t_mem *mem)
 {
-	if (mem->collectibles->is_empty == true)
+	if (mem->c->is_empty == true)
 	{
 		ft_putstr_fd("Error.\nMissing at least one collectible !\n", 2);
 		free_mem(mem);
 	}
-	if (mem->collectibles->is_empty == true)
+	if (mem->c->is_empty == true)
 	{
 		ft_putstr_fd("Error.\nMissing at least one exit !\n", 2);
 		free_mem(mem);
@@ -33,8 +33,8 @@ void	check_elements(t_mem *mem)
 
 	i = 0;
 	j = 0;
-	init_collectibles_list(mem->collectibles);
-	init_exits_list(mem->exits);
+	init_collectibles_list(mem->c);
+	init_exits_list(mem->e);
 	init_player(mem);
 	while (i < mem->map->lines && j < mem->map->col_max && mem->map2d[i][j])
 	{

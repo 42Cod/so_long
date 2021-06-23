@@ -3,23 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   collectibles0.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:17:23 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/17 17:17:26 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/23 15:14:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../so_long.h"
 
-/* a rechecker */
 void	init_collectibles_list(t_collectible_list *lst)
 {
 	lst->first = NULL;
 	lst->is_empty = true;
 }
 
-/* Indique si une liste est vide ou non */
 bool	is_empty_c_list(t_collectible_list *lst)
 {
 	if (lst->first == NULL && lst->is_empty == true)
@@ -27,7 +25,6 @@ bool	is_empty_c_list(t_collectible_list *lst)
 	return (false);
 }
 
-/* Indique la longueur de la liste passée en paramètre */
 int		c_list_length(t_collectible_list *lst)
 {
 	int					length;
@@ -45,36 +42,26 @@ int		c_list_length(t_collectible_list *lst)
 	return (length);
 }
 
-/* Fonction permettant d'ajouter un élément à la fin de la stack a */
 void	push_end_c_list(t_mem *mem, int x, int y)
 {
 	t_collectible_elem	*elem;
 	t_collectible_elem	*temp;
 
-	if (mem->collectibles->is_empty == true)
-		mem->collectibles->is_empty = false;
+	if (mem->c->is_empty == true)
+		mem->c->is_empty = false;
 	elem = (t_collectible_elem *)malloc(sizeof(t_collectible_elem));
-	/* Revoir la gestion des erreurs
 	if (!elem)
-		error(mem, 1, NULL, NULL);
-	*/
+		free_mem(mem);
 	elem->pos_x = x;
 	elem->pos_y = y;
 	elem->is_touched = false;
-	/*
-	if (elem == NULL)
-	{
-		exit(EXIT_FAILURE);
-		return ;
-	}
-	*/
-	if (!mem->collectibles->first)
+	if (!mem->c->first)
 	{
 		elem->next = NULL;
-		mem->collectibles->first = elem;
+		mem->c->first = elem;
 		return ;
 	}
-	temp = mem->collectibles->first;
+	temp = mem->c->first;
 	while (temp->next)
 		temp = temp->next;
 	temp->next = elem;

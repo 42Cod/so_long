@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   launch_prog.c                                      :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/23 13:50:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:16:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,10 @@ void	draw_elements(t_mem *mem)
 			{
 				elem = get_collectible(mem, i, j);
 				if (elem && elem->is_touched == false)
-					draw_on_img(mem->data, mem->collectibles->img, j * MINIMAP, i * MINIMAP);//-a pour la partie bonus
+					draw_on_img(mem->data, mem->c->img, j * MINIMAP, i * MINIMAP);//-a pour la partie bonus
 			}
 			else if (mem->map2d[i][j] == 'E')
-				draw_on_img(mem->data, mem->exits->img, j * MINIMAP, i * MINIMAP);
+				draw_on_img(mem->data, mem->e->img, j * MINIMAP, i * MINIMAP);
 			x += MINIMAP;
 			j++;
 		}

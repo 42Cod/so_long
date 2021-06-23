@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 11:46:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:14:53 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,76 +14,52 @@
 
 void	init_player(t_mem *mem)
 {
-	mem->player->x = 0;
-	mem->player->y = 0;
-	mem->player->is_found = 0;
+	mem->p->x = 0;
+	mem->p->y = 0;
+	mem->p->is_found = 0;
 }
 
 int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 {
 	if (map2d[i][j]== 'P')
 	{
-		if (mem->player->is_found == true)
+		if (mem->p->is_found == true)
 		{
-			//rediriger vers les erreurs
 			ft_putstr_fd("Error.\nToo many players found.\n", 2);
-			//free
-			exit (EXIT_FAILURE);
+			free_mem(mem);
 		}
-		mem->player->is_found = true;
-		mem->player->x = i;
-		mem->player->y = j;
+		mem->p->is_found = true;
+		mem->p->x = i;
+		mem->p->y = j;
 		return (SUCCESS);
 	}
 	return (ERROR);
 }
 
-/* Faire une boucle pour que ce soit plus intelligent */
-/* rajouter toutes les images */
 void init_player_images(t_mem *mem)
 {
-	mem->player->img = (t_data *)malloc(sizeof(t_data));
-	if (!(mem->player->img))
+	mem->p->img = (t_data *)malloc(sizeof(t_data));
+	if (!(mem->p->img))
 	{
-		//A modifier
-		ft_putstr_fd("Error during memory allocation.\n", 2);
-		//free
-		exit (EXIT_FAILURE);
+		ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
+		free_mem(mem);
 	}
-	mem->player->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm", &(mem->player->img->width), &(mem->player->img->height));
-
-	if (!(mem->player->img->img))
+	mem->p->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm", &(mem->p->img->width), &(mem->p->img->height));
+	if (!(mem->p->img->img))
 	{
-		//A modifier
 		ft_putstr_fd("Error during image loading.\n", 2);
-		//free
-		exit (EXIT_FAILURE);
+		free_mem(mem);
 	}
-
-	mem->player->img->addr = mlx_get_data_addr(mem->player->img->img, &(mem->player->img->bits_per_pixel), &(mem->player->img->line_length), &(mem->player->img->endian));
-
-	/*
-	mem->player->img[1].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse2-64left.xpm", &(mem->player->img[1].width), &(mem->player->img[1].height));
-	mem->player->img[1].addr = mlx_get_data_addr(mem->player->img[1].img, &(mem->player->img[1].bits_per_pixel), &(mem->player->img[1].line_length), &(mem->player->img[1].endian));
-	mem->player->img[2].img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse3-64bottom.xpm", &(mem->player->img[2].width), &(mem->player->img[2].height));
-	mem->player->img[2].addr = mlx_get_data_addr(mem->player->img[2].img, &(mem->player->img[2].bits_per_pixel), &(mem->player->img[2].line_length), &(mem->player->img[2].endian));
-	*/
+	mem->p->img->addr = mlx_get_data_addr(mem->p->img->img, &(mem->p->img->bits_per_pixel), &(mem->p->img->line_length), &(mem->p->img->endian));
 }
 
 void	is_touching_collectibles(t_mem *mem)
 {
 	t_collectible_elem *elem;
 
-	//print_collectible_list(mem->collectibles);
-	elem = mem->collectibles->first;
-	while (elem && elem->pos_y != (int)mem->player->y && elem->pos_x && (int)mem->player->x)
-	{
+	elem = mem->c->first;
+	while (elem && elem->pos_y != (int)mem->p->y && elem->pos_x && (int)mem->p->x)
 		elem = elem->next;
-	}
-	if (elem && elem->pos_y == (int)mem->player->y && elem->pos_x == (int)mem->player->x)
-	{
-		printf("touche !\n");
+	if (elem && elem->pos_y == (int)mem->p->y && elem->pos_x == (int)mem->p->x)
 		elem->is_touched = true;
-	}
-	//boucler a chaque fois
 }

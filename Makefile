@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/23 13:50:21 by user42           ###   ########.fr        #
+#    Updated: 2021/06/23 15:02:03 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,6 @@ SRCS =	./main.c \
 		./srcs/struct/collectibles/collectibles1.c \
 		./srcs/struct/collectibles/collectibles2.c \
 		./srcs/struct/player/player0.c \
-		./srcs/struct/player/player.c \
 		./srcs/struct/data/data.c \
 		./srcs/struct/mem/mem0.c \
 		./srcs/error_handling/error0.c \
@@ -47,13 +46,8 @@ RM			= rm -f
 NAME		= so_long
 LIB			= libso_long.a
 
-ifeq ($(UNAME), Darwin)
-FLAGS = -Imlx -L${PATH_MLX} -lmlx -framework OpenGL -framework AppKit
-LINUX = false
-else
 FLAGS= -Imlx -Lmlx -lmlx -lm -lbsd -lXext -lX11 -Wl,-rpath=./bass/,-rpath=./mlx/,-rpath=./delay/
 LINUX = true
-endif
 
 all: 		${NAME}
 
@@ -76,10 +70,3 @@ fclean: 	clean
 re: 		fclean all
 
 .PHONY:		all clean fclean re
-
-# Penser a compiler la libft lors de la compilation du reste !
-#test:
-#    gcc main.c -Lminilibx-linux/ -lmlx_Linux -lX11 -lXext -lm
-
-#attention aux regles pour compiler la lib minilibx
-#-Llmlx_Linux  -lmlx -lXext –lX11

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:42:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 15:16:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,9 @@ typedef struct	s_draw
 /* Structure generale pour ne perdre aucune reference */
 typedef struct	s_mem
 {
-	t_player			*player;
-	t_collectible_list	*collectibles;
-	t_exit_list			*exits;
+	t_player			*p;
+	t_collectible_list	*c;
+	t_exit_list			*e;
 	t_data				*data;
 	t_data				*floor;
 	t_data				*bottom;
@@ -132,27 +132,18 @@ typedef struct	s_mem
 	int					frame;
 }				t_mem;
 
-void	print_square_outlines(t_mem *mem, int x, int y, int color);
 void	draw_map(t_mem *mem);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	fill_square(t_mem *mem, int x, int y, int color);
 int		render_next_frame(t_mem *mem);
 int		g_init(t_mem *mem);
-int		key_unhook(int keycode, t_mem *mem);
 int		key_hook(int keycode, t_mem *mem);
-int		update_player_position(t_data *img);
-int		update_player_orientation(t_data *img);
-int		init_player_rotationAngle(t_data *img);
 int		check_empty_line(char *line);
 char	*ft_strdup_2d(char *s1, t_map *map, int l);
 int		initialize_2dmap(int fd, char **argv, t_mem *mem);
 int		get_next_line_minimap(int fd, char **line, t_mem *mem);
 void	max_x(char *line, t_mem *mem);
-int		get_floor(t_map *map, char *line);
-int		find_definitions_chars(char *line, t_map *map);
 int		get_next_line_description(int fd, char **line, t_map *map);
 int		read_all_map_lines(int fd, char **line, t_mem *mem);
-//int		is_full_walls(char *line, t_mem *mem);
 int		check_zero_neighbors(char **map2d, t_mem *mem, int i, int j);
 int		check_one_neighbors(char **map2d, t_map *map, int i, int j);
 int		check_map_walls(char **map2d, t_mem *mem);
@@ -160,15 +151,10 @@ int		check_lines_minimap(t_map *map, char *line, int l);
 int		mini_map_all_chars(int fd, char *buffer, t_mem *mem);
 int		check_mini_map_chars(char *line, t_mem *mem);
 int     check_so_long_extension(char *str);
-int		minimap_ok(t_map *map);
 int     check_map(char *map, char *argv);
 int     valid_char_mini_map(char c);
-int		target_char_minimap(char c);
 char	**clean_2dmap(t_map *map, char **map2d);
 int		is_player_char(t_mem *mem, char **map2d, int i, int j);
-int		check_texture_definition(t_map *map, char *line);
-int		check_rgb_floor(t_map *map);
-int		check_resolution(t_map *map);
 int		ft_strlen(const char *s);
 char	*ft_strdup(char *s1);
 int		ft_hasnewline(char *str);
@@ -199,7 +185,6 @@ void	free_e_list(t_exit_list *lst);
 void	initialize_struct_map(t_map *map);
 t_mem	*initialize_mem(void);
 t_data	*initialize_data(void);
-int		description_ok(t_map *map);
 void	free_mem(t_mem *mem);
 int		is_empty_line(char *str);
 void	handle_error_gnl2(char *line, t_mem *mem);
@@ -214,7 +199,6 @@ void	init_collectibles_images(t_mem *mem);
 void	init_exit_images(t_mem *mem);
 void	init_floor_images(t_mem *mem);
 void	init_bottom_images(t_mem *mem);
-void	update_map(t_mem *mem);
 void	so_long_loop(t_mem *mem);
 void	set_background(t_data *data, t_mem *mem);
 void	draw_elements(t_mem *mem);
@@ -222,7 +206,6 @@ void	draw_player(t_mem *mem);
 void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY);
 int		get_pixel(t_data *img, int x, int y);
 void	set_pixel(t_data *data, int x, int y, int color);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	init_exits_images(t_mem *mem);
 int		close_clean(t_mem *mem);
 void	locate_collectibles(t_mem *mem);
@@ -238,5 +221,6 @@ void	init_data(t_mem *mem);
 void	init_vars(t_mem *mem);
 void	init_map(t_mem *mem);
 void	check_res(t_mem *mem, int *res_x, int *res_y);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 17:50:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:13:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct	s_map
 
 typedef struct	s_player
 {
-	t_data	*img;
+	t_data	img;
 	float	x;
 	float	y;
 	bool	is_found;

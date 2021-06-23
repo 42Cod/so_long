@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 16:18:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:21:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	init_player(t_mem *mem)
 	mem->p->x = 0;
 	mem->p->y = 0;
 	mem->p->is_found = 0;
-	mem->p->img = NULL;
 }
 
 int		is_player_char(t_mem *mem, char **map2d, int i, int j)
@@ -37,21 +36,47 @@ int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 	return (ERROR);
 }
 
+t_data	load_image(void *mlx, char *path)
+{
+	t_data	data;
+
+	data.img = mlx_xpm_file_to_image(mlx, path, &(data.width), &(data.height));
+	if (!data.img)
+		return (data);
+	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
+		&data.line_length, &data.endian);
+	return (data);
+}
+
 void init_player_images(t_mem *mem)
 {
+	/*
 	mem->p->img = (t_data *)malloc(sizeof(t_data));
+	if (!mem->p->img)
+		free_mem(mem);
+	*/
+/*
 	if (!(mem->p->img))
 	{
 		ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
 		free_mem(mem);
 	}
-	mem->p->img->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm", &(mem->p->img->width), &(mem->p->img->height));
-	if (!(mem->p->img->img))
+	*/
+	/*mem->p.img.img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm", &(mem->p->img->width), &(mem->p->img->height));
+	if (!(mem->p->img.img))
 	{
 		ft_putstr_fd("Error during image loading.\n", 2);
 		free_mem(mem);
 	}
-	mem->p->img->addr = mlx_get_data_addr(mem->p->img->img, &(mem->p->img->bits_per_pixel), &(mem->p->img->line_length), &(mem->p->img->endian));
+	mem->p.img->addr = mlx_get_data_addr(mem->p.img->img, &(mem->p->img->bits_per_pixel), &(mem->p->img->line_length), &(mem->p->img->endian));
+	*/
+
+	mem->p->img = load_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm");
+	if (!(mem->p->img.img))
+	{
+		ft_putstr_fd("Error during image loading.\n", 2);
+		free_mem(mem);
+	}
 }
 
 void	is_touching_collectibles(t_mem *mem)

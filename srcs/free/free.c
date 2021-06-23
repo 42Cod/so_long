@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 18:23:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 19:22:24 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ void	free_mem(t_mem *mem)
 		free_c_list(mem->c);
 	if (mem->p)
 		free(mem->p);
+	if (mem->floor)
+		free(mem->floor);
+	if (mem->bottom)
+		free(mem->bottom);
 	if (mem)
 		free(mem);
 	exit (EXIT_SUCCESS);
@@ -63,8 +67,8 @@ void	free_resolutions(int *res_x, int *res_y)
 
 int	close_clean(t_mem *mem)
 {
-	if (mem->p->img->img)
-		mlx_destroy_image(mem->vars->mlx, mem->p->img->img);
+	if (mem->p->img.img)
+		mlx_destroy_image(mem->vars->mlx, mem->p->img.img);
 	if (mem->e->img->img)
 		mlx_destroy_image(mem->vars->mlx, mem->e->img->img);
 	if (mem->c->img->img)
@@ -85,7 +89,6 @@ int	close_clean(t_mem *mem)
 	if (mem->floor)
 		free(mem->floor);
 	*/
-	if (mem)
-		free_mem(mem);
+	free_mem(mem);
 	exit (EXIT_FAILURE);
 }

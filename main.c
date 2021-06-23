@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 18:25:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 18:26:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,11 @@ int     main(int argc, char **argv)
         if (!mem->map2d)
             free_mem(mem);
         second_read(&line, argv, mem);
-         /*
         locate_collectibles(mem);
         locate_exits(mem);
         check_elements(mem);
         check_map_walls(mem->map2d, mem);
         g_init(mem);
-        */
         if (mem)
             free_mem(mem);
     }

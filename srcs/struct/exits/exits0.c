@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:26:55 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 15:16:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:19:32 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	init_exits_list(t_exit_list *lst)
 {
 	lst->first = NULL;
 	lst->is_empty = true;
+	lst->img = NULL;
 }
 
 bool	is_empty_e_list(t_exit_list *lst)
@@ -47,8 +48,6 @@ void	push_end_e_list(t_mem *mem, int x, int y)
 	t_exit_elem	*elem;
 	t_exit_elem	*temp;
 
-	if (mem->e->is_empty == true)
-		mem->e->is_empty = false;
 	elem = (t_exit_elem *)malloc(sizeof(t_exit_elem));
 	if (!elem)
 		free_mem(mem);

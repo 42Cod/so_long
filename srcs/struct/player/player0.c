@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 15:14:53 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:18:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	init_player(t_mem *mem)
 	mem->p->x = 0;
 	mem->p->y = 0;
 	mem->p->is_found = 0;
+	mem->p->img = NULL;
 }
 
 int		is_player_char(t_mem *mem, char **map2d, int i, int j)

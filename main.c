@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 16:24:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 18:24:06 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,18 @@ int		initialize_2dmap(int fd, char **line,t_mem *mem)
 	int read_ret;
 
 	read_ret = 1;
+    *line = NULL;
 	while (read_ret != 0)
-		read_ret = get_next_line_2d(fd, line, mem);
+    {
+        read_ret = get_next_line_2d(fd, line, mem);
+        if (*line)
+        {
+            free(*line);
+            *line = NULL;
+        }
+        //read_ret = get_next_line(fd, line, mem, 2);
+    }
+    mem->map2d[mem->map->lines] = '\0';
 	return (SUCCESS);
 }
 
@@ -65,11 +75,13 @@ int     main(int argc, char **argv)
         if (!mem->map2d)
             free_mem(mem);
         second_read(&line, argv, mem);
+         /*
         locate_collectibles(mem);
         locate_exits(mem);
         check_elements(mem);
         check_map_walls(mem->map2d, mem);
         g_init(mem);
+        */
         if (mem)
             free_mem(mem);
     }

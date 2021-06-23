@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 15:16:32 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 17:50:54 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ERROR -1
 # define DONE 0
 # define SUCCESS 1
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 1
 # define MINIMAP 64
 # define A 97
 # define W 119
@@ -142,11 +142,11 @@ char	*ft_strdup_2d(char *s1, t_map *map, int l);
 int		initialize_2dmap(int fd, char **argv, t_mem *mem);
 int		get_next_line_minimap(int fd, char **line, t_mem *mem);
 void	max_x(char *line, t_mem *mem);
-int		get_next_line_description(int fd, char **line, t_map *map);
 int		read_all_map_lines(int fd, char **line, t_mem *mem);
 int		check_zero_neighbors(char **map2d, t_mem *mem, int i, int j);
 int		check_one_neighbors(char **map2d, t_map *map, int i, int j);
 int		check_map_walls(char **map2d, t_mem *mem);
+/* Partie gnl a revoir totalement */
 int		check_lines_minimap(t_map *map, char *line, int l);
 int		mini_map_all_chars(int fd, char *buffer, t_mem *mem);
 int		check_mini_map_chars(char *line, t_mem *mem);
@@ -160,7 +160,6 @@ char	*ft_strdup(char *s1);
 int		ft_hasnewline(char *str);
 char	*ft_prep_s(char *s);
 char	*gnl_strjoin(char *s1, char *s2);
-char	*ft_newline(char *s);
 char	*ft_newline_minimap(char *s);
 int		ft_isalnum(int c);
 int		get_next_line_2d(int fd, char **line, t_mem *mem);
@@ -222,5 +221,11 @@ void	init_vars(t_mem *mem);
 void	init_map(t_mem *mem);
 void	check_res(t_mem *mem, int *res_x, int *res_y);
 void	ft_putnbr_fd(int n, int fd);
+char	*gnl_strjoin(char *s1, char *s2);
+int		ft_hasnewline(char *str);
+char	*ft_newline(char *s);
+//char	*ft_newline(char *s, t_mem *mem, int r);
+char	*ft_prep_s(char *s);
+int		get_next_line(int fd, char **line, t_mem *mem, int r);
 
 #endif

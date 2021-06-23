@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:59:14 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:24:11 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 17:49:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,17 @@ int		read_all_map_lines(int fd, char **line, t_mem *mem)
 	int	ret;
 
 	ret = 1;
+	*line = NULL;
 	while (ret != 0)
 	{
 		ret = get_next_line_minimap(fd, line, mem);
-		free(*line);
+		//ret = get_next_line(fd, line, mem, 1);
+		//mem->map->lines++;
+		if (*line)
+		{
+			free(*line);
+			*line = NULL;
+		}
 	}
 	return (SUCCESS);
 }
@@ -80,6 +87,7 @@ int		get_next_line_minimap(int fd, char **line, t_mem *mem)
 	if (is_empty_line(*line) == -1)
 		mem->map->lines++;
 	max_x(*line, mem);
+	//Checker les char
 	if (check_mini_map_chars(*line, mem) == ERROR)
 	{
 		ft_putstr_fd("Error.\nBad character is map.\n", 2);

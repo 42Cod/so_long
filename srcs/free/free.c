@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 16:31:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 18:23:40 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,7 @@ void	free_map2d(t_mem *mem)
 void	free_data(t_mem *mem)
 {
 	if (mem->data)
-	{
-		if (mem->data->img)
-			free(mem->data->img);
-		if (mem->data->addr)
-			free(mem->data->addr);
 		free(mem->data);
-	}
 }
 
 void	free_mem(t_mem *mem)
@@ -42,6 +36,8 @@ void	free_mem(t_mem *mem)
 		free(mem->vars);
 	if (mem->data)
 		free_data(mem);
+	if (mem->map2d)
+		free_map2d(mem);
 	if (mem->map2d)
 		free(mem->map2d);
 	if (mem->map)
@@ -54,10 +50,6 @@ void	free_mem(t_mem *mem)
 		free(mem->p);
 	if (mem)
 		free(mem);
-	if (mem->bottom)
-		free(mem->bottom);
-	if (mem->floor)
-		free(mem->floor);
 	exit (EXIT_SUCCESS);
 }
 

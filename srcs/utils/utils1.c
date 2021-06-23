@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:18:58 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 13:59:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 18:22:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ char	*ft_strdup_2d(char *s1, t_map *map, int l)
 	char	*cpy;
 
 	i = 0;
+	if (!s1)
+		return (NULL);
 	while (s1[i])
 		i++;
-	if (!(cpy = (char *)malloc(sizeof(char) * (i + 1))))
+	cpy = (char *)malloc(sizeof(char) * (i + 1));
+	if (!(cpy))
 		return (NULL);
 	i = 0;
 	while (s1[i])
@@ -34,10 +37,14 @@ char	*ft_strdup_2d(char *s1, t_map *map, int l)
 		i++;
 	}
 	cpy[i] = '\0';
-	free(s1);
+	/*
+	if (s1)
+	*/
+	//	free(s1);
 	return (cpy);
 }
 
+/*
 char	*ft_newline(char *s)
 {
 	char	*new_line;
@@ -59,6 +66,7 @@ char	*ft_newline(char *s)
 	new_line[i] = '\0';
 	return (new_line);
 }
+*/
 
 char	*ft_newline_minimap(char *s)
 {
@@ -114,12 +122,14 @@ int		get_next_line_2d(int fd, char **line, t_mem *mem)
 	free(buffer);
 	*line = ft_newline_minimap(s);
 	handle_error_gnl2(*line, mem);
-	if (*line[0] == '1' || *line[0] == ' ')
+	if ((*line[0] == '1' || *line[0] == ' ') && *line)
 	{
 		mem->map2d[i] = ft_strdup_2d(*line, mem->map, i);
+		printf("%s\n", mem->map2d[i]);
+		//*line = NULL;
 		i++;
 	}
-	mem->map2d[i] = NULL;
+	//mem->map2d[i] = NULL;
 	s = ft_prep_s(s);
 	if (b_read == 0)
 		return (DONE);

@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/22 17:15:05 by user42           ###   ########.fr        #
+#    Updated: 2021/06/23 11:58:15 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,6 @@ SRCS =	./main.c \
 		./srcs/error_handling/error0.c \
 		./srcs/error_handling/error1.c \
 		./srcs/free/free.c \
-		./srcs/print/print.c \
 
 OBJS 		= ${SRCS:.c=.o}
 

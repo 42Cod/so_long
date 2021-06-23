@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 11:30:19 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 12:12:35 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ void    first_read(t_mem *mem, char **argv, char **line)
     fd = open(argv[1], O_RDONLY);
     if (fd < 0)
         exit (EXIT_FAILURE);
-    handle_args_error(fd, argv, mem->map, line);
+    handle_args_error(fd, argv, mem);
     read_all_map_lines(fd, line, mem);
     close(fd);
-    //print_map(mem->map);
 }
 
 /*Initialisation de la char **map2d */

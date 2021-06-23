@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/22 17:10:39 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 11:46:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	init_player(t_mem *mem)
 {
 	mem->player->x = 0;
 	mem->player->y = 0;
-	mem->player->walk_direction = '0';
-	mem->player->move_speed = 0.3;
 	mem->player->is_found = 0;
 }
 

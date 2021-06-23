@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:18:58 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/21 13:20:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 12:13:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int		get_next_line_2d(int fd, char **line, t_mem *mem)
 	}
 	free(buffer);
 	*line = ft_newline_minimap(s);
-	handle_error_gnl2(*line, mem, i);
+	handle_error_gnl2(*line, mem);
 	if (*line[0] == '1' || *line[0] == ' ')
 	{
 		mem->map2d[i] = ft_strdup_2d(*line, mem->map, i);

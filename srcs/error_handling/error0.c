@@ -6,30 +6,19 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:46:34 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/21 13:21:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 12:11:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
-//Gestion fine des erreurs
 
-/* des free doivent etre ajoutés */
-/* idealement faire une structure pour pouvoir tout free a la fin */
-void	handle_args_error(int fd, char **argv, t_map *map, char **line)
+void	handle_args_error(int fd, char **argv, t_mem *mem)
 {
-	(void)map;
-	(void)line;
-
 	if (fd == -1 && check_so_long_extension(argv[1]) == ERROR)
     {
 		ft_putstr_fd("Error.\nIncorrect map file specified.\n", 2);
-		/* fonction de free - exit */
-        exit (ERROR);
+		free_mem(mem);
     }
-	/*
-	if (read_all_map_lines(fd, &line, map) == ERROR)
-    	return (ERROR);
-	*/
 }
 
 void	handle_fd_errors(int fd, t_map *map)

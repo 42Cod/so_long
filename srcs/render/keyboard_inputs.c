@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 16:20:35 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 17:34:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/22 18:32:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		key_hook(int keycode, t_mem *mem)
 	}
 	if ((is_exit(mem ,(int)mem->player->x, (int)mem->player->y) == SUCCESS) && c_all_touched(mem) == SUCCESS)
 	{
-		printf("You won !\n");
+		//printf("You won !\n");
 		close_clean(mem);
 	}
 	//is_touching_collectibles(mem);

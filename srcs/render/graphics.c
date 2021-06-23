@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/22 17:41:25 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 11:12:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int		render_next_frame(t_mem *mem)
 
 int		g_init(t_mem *mem)
 {
-	/* verifier la resolution de l ecran une fois
+	/* verifier la resolution de l ecran une fois */
 	int		*res_x;
 	int		*res_y;
 
-
+	mem->vars->mlx = mlx_init();
 	res_x = (int *)malloc(sizeof(int));
 	res_y = (int *)malloc(sizeof(int));
 	if (!res_x || !res_y)
@@ -75,15 +75,21 @@ int		g_init(t_mem *mem)
 		exit(EXIT_FAILURE);
 	}
 	mlx_get_screen_size(mem->vars->mlx, res_x, res_y);
-	*/
-
+	printf("res_x = %i, res_y = %i\n", *res_x, *res_y);
+	if (*res_y < MINIMAP * mem->map->lines || *res_x < MINIMAP * mem->map->col_max)
+	{
+		ft_putstr_fd("Error.\nMap is too big for resolution.\n", 2);
+		//free tout
+		exit (EXIT_FAILURE);
+	}
+	//free
 	//Si la taille irait avec la resolution screen ?
 	/* faire un pointeur sur fonction pour looper intelligemment pour tous les elements */
 	mem->frame = 0;
-	mem->vars->mlx = mlx_init();
+
 	//printf("value is %i\n", mem->map->col_max);
-	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64, "So long");
-	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * 64, mem->map->col_max * 64);
+	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->col_max * 64, mem->map->lines * 64, "So long");
+	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * 64, mem->map->lines * 64);
 	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
 	/* je ne sais pas ou les mettre ? */
     init_player_images(mem);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 13:54:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:25:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ void	free_resolutions(int *res_x, int *res_y)
 
 int	close_clean(t_mem *mem)
 {
-	//mlx_destroy_image(mem->vars->mlx)
 	mlx_destroy_image(mem->vars->mlx, mem->player->img->img);
 	mlx_destroy_image(mem->vars->mlx, mem->exits->img->img);
 	mlx_destroy_image(mem->vars->mlx, mem->collectibles->img->img);
@@ -68,7 +67,6 @@ int	close_clean(t_mem *mem)
 	mlx_destroy_image(mem->vars->mlx, mem->floor->img);
 	mlx_destroy_image(mem->vars->mlx, mem->data->img);
 	mlx_destroy_window(mem->vars->mlx, mem->vars->win);
-	//free les pointeurs sur mem aussi !
 	mlx_destroy_display(mem->vars->mlx);
 	free(mem->bottom);
 	free(mem->floor);

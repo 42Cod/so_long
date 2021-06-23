@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 13:42:21 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:16:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:30:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,15 @@ void	check_elements(t_mem *mem)
 		}
 		j = 0;
 		i++;
+	}
+}
+
+void	check_res(t_mem *mem, int *res_x, int *res_y)
+{
+	mlx_get_screen_size(mem->vars->mlx, res_x, res_y);
+	if (*res_y < MINIMAP * mem->map->lines || *res_x < MINIMAP * mem->map->col_max)
+	{
+		ft_putstr_fd("Error.\nMap is too big for resolution.\n", 2);
+		free_mem(mem);
 	}
 }

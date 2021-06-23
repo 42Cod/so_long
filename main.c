@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:14:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:23:39 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int		initialize_2dmap(int fd, char **line,t_mem *mem)
 	return (SUCCESS);
 }
 
-/* Initialisation de la structure map qui permettra de créer la char **map2d */
 void    first_read(t_mem *mem, char **argv, char **line)
 {
     int fd;
@@ -48,7 +47,7 @@ void    second_read(char **line, char **argv, t_mem *mem)
     int fd;
 
     fd = open(argv[1], O_RDONLY);
-    handle_fd_errors(fd, mem->map);
+    handle_fd_errors(fd, mem);
     initialize_2dmap(fd, line, mem);
     close(fd);
 }
@@ -58,12 +57,13 @@ int     main(int argc, char **argv)
     t_mem   *mem;
     char    *line;
 
-    line = NULL;
     if (argc == 2)
     {
         mem = initialize_mem();
         first_read(mem, argv, &line);
         mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
+        if (!mem->map2d)
+            free_mem(mem);
         second_read(&line, argv, mem);
         locate_collectibles(mem);
         locate_exits(mem);

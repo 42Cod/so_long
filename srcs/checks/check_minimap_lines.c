@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:59:14 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:11:20 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:24:11 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,14 @@ int		read_all_map_lines(int fd, char **line, t_mem *mem)
 
 	ret = 1;
 	while (ret != 0)
+	{
 		ret = get_next_line_minimap(fd, line, mem);
+		free(*line);
+	}
 	return (SUCCESS);
 }
 
-/* Determine le nombre de lignes sur la machine et check les erreurs de chars */
+/* Determine le nombre de lignes et check les erreurs de chars */
 int		get_next_line_minimap(int fd, char **line, t_mem *mem)
 {
 	static char *s;

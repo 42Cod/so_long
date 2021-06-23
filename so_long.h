@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:17:29 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:42:03 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,20 @@ typedef struct			s_exit_list
 	t_exit_elem			*first;
 	bool				is_empty;
 }						t_exit_list;
+
+/* Variables necessaires pour le rapport de proportionnalite */
+typedef struct	s_draw
+{
+	int 	x;
+	int 	y;
+	float	r_x;
+	float	r_y;
+	int		color;
+	int		pos_x;
+	int		pos_y;
+	int		p_data_x;
+	int		p_data_y;
+}				t_draw;
 
 /* Structure generale pour ne perdre aucune reference */
 typedef struct	s_mem
@@ -223,4 +237,6 @@ void	free_resolutions(int *res_x, int *res_y);
 void	init_data(t_mem *mem);
 void	init_vars(t_mem *mem);
 void	init_map(t_mem *mem);
+void	check_res(t_mem *mem, int *res_x, int *res_y);
+
 #endif

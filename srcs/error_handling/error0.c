@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:46:34 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 14:17:13 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 14:19:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@ void	handle_args_error(int fd, char **argv, t_mem *mem)
 
 void	handle_fd_errors(int fd, t_mem *mem)
 {
-	(void)fd;
-	(void)map;
 	if (fd < 0)
     {
 		ft_putstr_fd("Error.\nCould not open the file.\n", 2);
-        exit (ERROR);
+        free_mem(mem);
     }
-    if (map->lines == 0|| map->col_max == 0)
+    if (mem->map->lines == 0|| mem->map->col_max == 0)
     {
 		ft_putstr_fd("Error.\nInvalid map.", 2);
-        exit (ERROR);
+        free_mem(mem);
     }
 }
 

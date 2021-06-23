@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:22:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/23 20:03:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 21:44:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	draw_elements_bonus(t_mem *mem)
 {
 	int x = 1, y = 1;
 	int i = 0, j = 0;
+	int an;
 	t_collectible_elem *elem;
 
 	while (mem->map2d[i])
@@ -43,16 +44,14 @@ void	draw_elements_bonus(t_mem *mem)
 		j = 0;
 		while (mem->map2d[i][j])
 		{
-			/* A mettre dans la partie bonus uniqument
-			int an = (int)((mem->frame / 14.0)) % 14;
+			an = (int)((mem->frame / 14.0)) % 14;
 			if (an > 7)
 				an = 14 - an;
-			*/
-			if (mem->map2d[i][j] == 'C') //Ajouter conditions quand ils sont touches
+			if (mem->map2d[i][j] == 'C')
 			{
 				elem = get_collectible(mem, i, j);
 				if (elem && elem->is_touched == false)
-					draw_on_img(mem->data, &(mem->c->img), j * MINIMAP, i * MINIMAP);//-a pour la partie bonus
+					draw_on_img(mem->data, &(mem->c->img), j * MINIMAP, i * MINIMAP - an);
 			}
 			else if (mem->map2d[i][j] == 'E')
 				draw_on_img(mem->data, &(mem->e->img), j * MINIMAP, i * MINIMAP);
@@ -81,7 +80,6 @@ void    g_init_bonus(t_mem *mem)
 	init_collectibles_images(mem);
 	init_bottom_images(mem);
 	so_long_loop_bonus(mem);
-	return (SUCCESS);
 }
 
 int     main(int argc, char **argv)

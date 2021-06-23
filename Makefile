@@ -6,16 +6,14 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/23 17:55:59 by user42           ###   ########.fr        #
+#    Updated: 2021/06/23 21:56:45 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	./main.c \
-		./srcs/checks/check_map_walls.c \
+SRCS =	./srcs/checks/check_map_walls.c \
 		./srcs/checks/check_minimap.c \
 		./srcs/checks/check_elements.c \
-		./srcs/checks/get_next_line.c \
-		./srcs/checks/get_next_line_utils.c \
+		./srcs/checks/read.c \
 		./srcs/render/keyboard_inputs.c \
 		./srcs/render/graphics.c \
 		./srcs/render/draw.c \
@@ -36,7 +34,13 @@ SRCS =	./main.c \
 		./srcs/error_handling/error1.c \
 		./srcs/free/free.c \
 
+SRCS_BONUS = ./bonus/main_bonus.c \
+
+SRCS_MANDATORY = ./main.c \
+
 OBJS 		= ${SRCS:.c=.o}
+OBJS_B		= ${SRCS_BONUS:.c=.o}
+OBJS_M		= ${SRCS_MANDATORY:.c=.o}
 
 UNAME		:= $(shell uname)
 
@@ -46,29 +50,29 @@ CC 			= gcc -fsanitize=address -g
 CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -f
 NAME		= so_long
-LIB			= libso_long.a
-
-FLAGS= -Imlx -Lmlx -lmlx -lm -lbsd -lXext -lX11 -Wl,-rpath=./bass/,-rpath=./mlx/,-rpath=./delay/
-LINUX = true
+FLAGS		= -Imlx -Lmlx -lmlx -lm -lbsd -lXext -lX11 -Wl,-rpath=./bass/,-rpath=./mlx/,-rpath=./delay/
 
 all: 		${NAME}
 
 .c.o:
 			${CC} ${CFLAGS} -Imlx -Ibass -c $< -o ${<:.c=.o}
 
-${LIB}:		$(OBJS)
-			ar -rc $(NAME) $(OBJS)
-
-$(NAME): 	${LIB} $(OBJS_DEFAULT)
+$(NAME): 	$(OBJS) ${OBS_M}
 			make -C $(PATH_MLX)
-			${CC} $(CFLAGS) -o $(NAME) $(OBJS) $(FLAGS)
+			${CC} $(CFLAGS) -o $(NAME) $(OBJS) ${OBJS_M} $(FLAGS)
+
+bonus:		${OBJS} ${OBJS_B}
+			make -C $(PATH_MLX)
+			${CC} ${CFLAGS} -o ${NAME} ${OBJS} ${OBJS_B} $(FLAGS)
 
 clean:
+			make -C $(PATH_MLX) clean
 			${RM} ${OBJS}
 
 fclean: 	clean
+			make -C $(PATH_MLX) clean
 			${RM} ${NAME}
 
 re: 		fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		bonus all clean fclean re

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:29:21 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 21:46:27 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,12 +221,14 @@ void	init_vars(t_mem *mem);
 void	init_map(t_mem *mem);
 void	check_res(t_mem *mem, int *res_x, int *res_y);
 void	ft_putnbr_fd(int n, int fd);
-char	*gnl_strjoin(char *s1, char *s2);
-int		ft_hasnewline(char *str);
-char	*ft_newline(char *s);
-//char	*ft_newline(char *s, t_mem *mem, int r);
-char	*ft_prep_s(char *s);
-int		get_next_line(int fd, char **line, t_mem *mem, int r);
 t_data	load_image(void *mlx, char *path);
+int	render_next_frame_bonus(t_mem *mem);
+void	so_long_loop_bonus(t_mem *mem);
+void	draw_elements_bonus(t_mem *mem);
+void    g_init_bonus(t_mem *mem);
+void    first_read(t_mem *mem, char **argv, char **line);
+void    second_read(char **line, char **argv, t_mem *mem);
+void	initialize_struct_map(t_map *map);
+int		initialize_2dmap(int fd, char **line,t_mem *mem);
 
 #endif

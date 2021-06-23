@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 16:23:30 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/23 16:31:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,14 +71,22 @@ void	free_resolutions(int *res_x, int *res_y)
 
 int	close_clean(t_mem *mem)
 {
-	mlx_destroy_image(mem->vars->mlx, mem->p->img->img);
-	mlx_destroy_image(mem->vars->mlx, mem->e->img->img);
-	mlx_destroy_image(mem->vars->mlx, mem->c->img->img);
-	mlx_destroy_image(mem->vars->mlx, mem->bottom->img);
-	mlx_destroy_image(mem->vars->mlx, mem->floor->img);
-	mlx_destroy_image(mem->vars->mlx, mem->data->img);
-	mlx_destroy_window(mem->vars->mlx, mem->vars->win);
-	mlx_destroy_display(mem->vars->mlx);
+	if (mem->p->img->img)
+		mlx_destroy_image(mem->vars->mlx, mem->p->img->img);
+	if (mem->e->img->img)
+		mlx_destroy_image(mem->vars->mlx, mem->e->img->img);
+	if (mem->c->img->img)
+		mlx_destroy_image(mem->vars->mlx, mem->c->img->img);
+	if (mem->bottom->img)
+		mlx_destroy_image(mem->vars->mlx, mem->bottom->img);
+	if (mem->floor->img)
+		mlx_destroy_image(mem->vars->mlx, mem->floor->img);
+	if (mem->data->img)
+		mlx_destroy_image(mem->vars->mlx, mem->data->img);
+	if (mem->vars->win)
+		mlx_destroy_window(mem->vars->mlx, mem->vars->win);
+	if (mem->vars->mlx)
+		mlx_destroy_display(mem->vars->mlx);
 	/*
 	if (mem->bottom)
 		free(mem->bottom);

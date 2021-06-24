@@ -6,15 +6,15 @@
 /*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/09 17:25:54 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/14 18:05:10 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/24 15:02:37 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int		ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!s)
@@ -24,7 +24,7 @@ int		ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_strdup(char *s1)
+char	*ft_strdup(char *s1, t_mem *mem)
 {
 	int		i;
 	char	*cpy;
@@ -32,8 +32,9 @@ char	*ft_strdup(char *s1)
 	i = 0;
 	while (s1[i])
 		i++;
-	if (!(cpy = (char *)malloc(sizeof(char) * (i + 1))))
-		return (NULL);
+	cpy = (char *)malloc(sizeof(char) * (i + 1));
+	if (!(cpy))
+		free_mem(mem);
 	i = 0;
 	while (s1[i])
 	{
@@ -44,7 +45,7 @@ char	*ft_strdup(char *s1)
 	return (cpy);
 }
 
-int		ft_hasnewline(char *str)
+int	ft_hasnewline(char *str)
 {
 	int	i;
 
@@ -60,7 +61,7 @@ int		ft_hasnewline(char *str)
 	return (0);
 }
 
-char	*ft_prep_s(char *s)
+char	*ft_prep_s(char *s, t_mem *mem)
 {
 	int		i;
 	int		j;
@@ -77,8 +78,9 @@ char	*ft_prep_s(char *s)
 		free(s);
 		return (NULL);
 	}
-	if (!(clean_s = (char *)malloc(sizeof(char) * (ft_strlen(s) - i + 1))))
-		return (NULL);
+	clean_s = (char *)malloc(sizeof(char) * (ft_strlen(s) - i + 1));
+	if (!(clean_s))
+		free_mem(mem);
 	i++;
 	while (s[i])
 		clean_s[j++] = s[i++];
@@ -87,16 +89,16 @@ char	*ft_prep_s(char *s)
 	return (clean_s);
 }
 
-char	*gnl_strjoin(char *s1, char *s2)
+char	*gnl_strjoin(char *s1, char *s2, t_mem *mem)
 {
 	char	*single;
 	size_t	i;
 	size_t	j;
 	size_t	l;
 
-	if ((!s1 && !s2) || !(single = (char *)malloc(sizeof(char) *
-			(ft_strlen(s1) + ft_strlen(s2) + 1))))
-		return (NULL);
+	single = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if ((!s1 && !s2) || !(single))
+		free_mem(mem);
 	i = 0;
 	j = 0;
 	l = ft_strlen(s1);

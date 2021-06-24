@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:29:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 15:47:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,13 @@ void	init_player(t_mem *mem)
 	mem->p->x = 0;
 	mem->p->y = 0;
 	mem->p->is_found = 0;
+	mem->p->smooth_x = 0;
+	mem->p->smooth_y = 0;
 }
 
-int		is_player_char(t_mem *mem, char **map2d, int i, int j)
+int	is_player_char(t_mem *mem, char **map2d, int i, int j)
 {
-	if (map2d[i][j]== 'P')
+	if (map2d[i][j] == 'P')
 	{
 		if (mem->p->is_found == true)
 		{
@@ -30,7 +32,9 @@ int		is_player_char(t_mem *mem, char **map2d, int i, int j)
 		}
 		mem->p->is_found = true;
 		mem->p->x = i;
+		mem->p->smooth_x = i;
 		mem->p->y = j;
+		mem->p->smooth_y = j;
 		return (SUCCESS);
 	}
 	return (ERROR);
@@ -44,27 +48,28 @@ t_data	load_image(void *mlx, char *path)
 	if (!data.img)
 		return (data);
 	data.addr = mlx_get_data_addr(data.img, &data.bits_per_pixel,
-		&data.line_length, &data.endian);
+			&data.line_length, &data.endian);
 	return (data);
 }
 
-void init_player_images(t_mem *mem)
+void	init_player_images(t_mem *m)
 {
-	mem->p->img = load_image(mem->vars->mlx, "./srcs/textures/nageuse1-fond-64-left-transp.xpm");
-	if (!(mem->p->img.img))
+	m->p->img = load_image(m->vars->mlx,
+			"./srcs/textures/nageuse1-fond-64-left-transp.xpm");
+	if (!(m->p->img.img))
 	{
 		ft_putstr_fd("Error during image loading.\n", 2);
-		free_mem(mem);
+		free_mem(m);
 	}
 }
 
-void	is_touching_collectibles(t_mem *mem)
+void	is_touching_collectibles(t_mem *m)
 {
-	t_collectible_elem *elem;
+	t_collectible_elem	*elem;
 
-	elem = mem->c->first;
-	while (elem && elem->pos_y != (int)mem->p->y && elem->pos_x && (int)mem->p->x)
+	elem = m->c->first;
+	while (elem && elem->pos_y != (int)m->p->y && elem->pos_x && (int)m->p->x)
 		elem = elem->next;
-	if (elem && elem->pos_y == (int)mem->p->y && elem->pos_x == (int)mem->p->x)
+	if (elem && elem->pos_y == (int)m->p->y && elem->pos_x == (int)m->p->x)
 		elem->is_touched = true;
 }

@@ -6,7 +6,7 @@
 /*   By: mahautlatinis <mahautlatinis@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:14:12 by malatini          #+#    #+#             */
-/*   Updated: 2021/04/23 10:53:59 by mahautlatin      ###   ########.fr       */
+/*   Updated: 2021/06/24 15:31:06 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	ft_isdigit(int c)
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	if (needle[0] == '\0')
@@ -48,7 +48,7 @@ char	*ft_strstr(const char *haystack, const char *needle)
 	return (NULL);
 }
 
-int		ft_isspace(char c)
+int	ft_isspace(char c)
 {
 	if (c == ' ')
 		return (SUCCESS);

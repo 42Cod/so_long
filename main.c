@@ -6,32 +6,33 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 21:55:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 16:13:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-int     main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-    t_mem   *mem;
-    char    *line;
+	t_mem	*mem;
+	char	*line;
 
-    if (argc == 2)
-    {
-        mem = initialize_mem();
-        first_read(mem, argv, &line);
-        mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
-        if (!mem->map2d)
-            free_mem(mem);
-        second_read(&line, argv, mem);
-        check_elements(mem);
-        check_map_walls(mem->map2d, mem);
-        g_init(mem);
-        if (mem)
-            free_mem(mem);
-    }
-    else
-        ft_putstr_fd("Error.\nWrong number of arguments.\n", 2);
-    return (0);
+	if (argc == 2)
+	{
+		mem = initialize_mem();
+		first_read(mem, argv, &line);
+		mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
+		if (!mem->map2d)
+			free_mem(mem);
+		second_read(&line, argv, mem);
+		check_elements(mem);
+		check_map_walls(mem->map2d, mem);
+		main_errors(mem);
+		g_init(mem);
+		if (mem)
+			free_mem(mem);
+	}
+	else
+		ft_putstr_fd("Error.\nWrong number of arguments.\n", 2);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:17:23 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:45:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 14:35:51 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ bool	is_empty_c_list(t_collectible_list *lst)
 	return (false);
 }
 
-int		c_list_length(t_collectible_list *lst)
+int	c_list_length(t_collectible_list *lst)
 {
 	int					length;
 	t_collectible_elem	*elem;

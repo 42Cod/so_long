@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/23 19:09:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 14:27:55 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 void	draw_player(t_mem *mem)
 {
-	draw_on_img(mem->data, &(mem->p->img), mem->p->y * MINIMAP, mem->p->x * MINIMAP);
+	mem->p->smooth_x += (mem->p->x - mem->p->smooth_x) * 0.5;
+	mem->p->smooth_y += (mem->p->y - mem->p->smooth_y) * 0.5;
+	draw_on_img(mem->data, &(mem->p->img), (int)(mem->p->smooth_y * M),
+		(int)(mem->p->smooth_x * M));
 }
 
 void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
@@ -22,13 +25,13 @@ void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
 	t_draw	draw;
 
 	draw.x = 0;
-	while (draw.x < MINIMAP)
+	while (draw.x < M)
 	{
 		draw.y = 0;
-		while (draw.y < MINIMAP)
+		while (draw.y < M)
 		{
-			draw.r_x = (float)draw.x / (float)MINIMAP;
-			draw.r_y = (float)draw.y / (float)MINIMAP;
+			draw.r_x = (float)draw.x / (float)M;
+			draw.r_y = (float)draw.y / (float)M;
 			draw.pos_x = draw.r_x * s_img->width;
 			draw.pos_y = draw.r_y * s_img->height;
 			draw.color = get_pixel(s_img, draw.pos_x, draw.pos_y);
@@ -46,7 +49,8 @@ void	draw_on_img(t_data *img, t_data *s_img, int startX, int startY)
 /* Obligation de retourner un int - mlx expectation */
 int	render_next_frame(t_mem *mem)
 {
-	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win, mem->data->img, 0, 0);
+	mlx_put_image_to_window(mem->vars->mlx, mem->vars->win,
+		mem->data->img, 0, 0);
 	draw_map(mem);
 	draw_elements(mem);
 	draw_player(mem);
@@ -55,23 +59,26 @@ int	render_next_frame(t_mem *mem)
 }
 
 /* Ouvre la fenetre, charge les images etc */
-int		g_init(t_mem *mem)
+int	g_init(t_mem *m)
 {
-	int		res_x;
-	int		res_y;
+	int	res_x;
+	int	res_y;
 
-	mem->vars->mlx = mlx_init();
-	check_res(mem, &res_x, &res_y);
-	mem->frame = 0;
-	mem->vars->win = mlx_new_window(mem->vars->mlx, mem->map->col_max * 64, mem->map->lines * 64, "So long");
-	mem->data->img = mlx_new_image(mem->vars->mlx, mem->map->col_max * 64, mem->map->lines * 64);
-	mem->data->addr = mlx_get_data_addr(mem->data->img, &mem->data->bits_per_pixel, &mem->data->line_length, &mem->data->endian);
-    init_player_images(mem);
-	init_floor_images(mem);
-	init_exits_images(mem);
-	init_collectibles_images(mem);
-	init_bottom_images(mem);
-	so_long_loop(mem);
+	m->vars->mlx = mlx_init();
+	check_res(m, &res_x, &res_y);
+	m->frame = 0;
+	m->vars->win = mlx_new_window(m->vars->mlx, m->map->col_max * 64,
+			m->map->lines * 64, "So long");
+	m->data->img = mlx_new_image(m->vars->mlx,
+			m->map->col_max * 64, m->map->lines * 64);
+	m->data->addr = mlx_get_data_addr(m->data->img,
+			&m->data->bits_per_pixel, &m->data->line_length, &m->data->endian);
+	init_player_images(m);
+	init_floor_images(m);
+	init_exits_images(m);
+	init_collectibles_images(m);
+	init_bottom_images(m);
+	so_long_loop(m);
 	return (SUCCESS);
 }
 

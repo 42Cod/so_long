@@ -6,48 +6,48 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:25:22 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/23 14:13:40 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 13:58:31 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int		is_empty_line(char *str)
+int	is_empty_line(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (str[i]== '\0')
+	if (str[i] == '\0')
 		return (SUCCESS);
 	return (ERROR);
 }
 
-int     check_so_long_extension(char *str)
+int	check_so_long_extension(char *str, t_mem *mem)
 {
-    int		i;
-    char	*ext;
-    int		j;
+	int		i;
+	char	*ext;
+	int		j;
 
-    ext = ft_strdup(".ber");
-    i = 0;
-    j = 0;
-    while (str[i] != '.' && str[i])
-        i++;
-    if (str[i])
-    {
-        while (str[i] == ext[j] && ext[j] && str[i])
-        {
-            i++;
-            j++;
-        }
-        if (j == 4 && str[i] == '\0')
-            return (SUCCESS);
-    }
-    free(ext);
-    return (ERROR);
+	ext = ft_strdup(".ber", mem);
+	i = 0;
+	j = 0;
+	while (str[i] != '.' && str[i])
+		i++;
+	if (str[i])
+	{
+		while (str[i] == ext[j] && ext[j] && str[i])
+		{
+			i++;
+			j++;
+		}
+		if (j == 4 && str[i] == '\0')
+			return (SUCCESS);
+	}
+	free(ext);
+	return (ERROR);
 }
 
-int		valid_char_mini_map(char c)
+int	valid_char_mini_map(char c)
 {
 	if (c == '0' || c == '1' || c == 'C' || c == 'E'
 		|| c == 'P' || c == '\n' || c == ' ')
@@ -55,10 +55,10 @@ int		valid_char_mini_map(char c)
 	return (ERROR);
 }
 
-int		mini_map_all_chars(int fd, char *buffer, t_mem *mem)
+int	mini_map_all_chars(int fd, char *buffer, t_mem *mem)
 {
-	int ret;
-	int is_valid;
+	int	ret;
+	int	is_valid;
 
 	ret = 1;
 	is_valid = 1;

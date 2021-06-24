@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:08:49 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 18:32:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 15:48:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,30 @@ t_mem	*initialize_mem(void)
 	init_data(mem);
 	mem->vars = (t_vars *)malloc(sizeof(t_vars));
 	init_vars(mem);
+	mem->floor = NULL;
+	mem->bottom = NULL;
 	mem->moves = 0;
+	mem->frame = 0;
 	if (!mem || !mem->p || !mem->c || !mem->e || !mem->map
 		|| ! mem->data || !mem->vars)
 		free_mem(mem);
 	return (mem);
 }
 
-void	init_floor_images(t_mem *mem)
+void	init_floor_images(t_mem *m)
 {
-	mem->floor = (t_data *)malloc(sizeof(t_data));
-	if (!(mem->floor))
+	m->floor = (t_data *)malloc(sizeof(t_data));
+	if (!(m->floor))
 	{
 		ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
-		free_mem(mem);
+		free_mem(m);
 	}
-	mem->floor->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/dalle0-64.xpm", &(mem->floor->width), &(mem->floor->height));
-	mem->floor->addr = mlx_get_data_addr(mem->floor->img, &(mem->floor->bits_per_pixel), &(mem->floor->line_length), &(mem->floor->endian));
+	m->floor->img = mlx_xpm_file_to_image(m->vars->mlx,
+			"./srcs/textures/dalle0-64.xpm",
+			&(m->floor->width), &(m->floor->height));
+	m->floor->addr = mlx_get_data_addr(m->floor->img,
+			&(m->floor->bits_per_pixel),
+			&(m->floor->line_length), &(m->floor->endian));
 }
 
 void	init_bottom_images(t_mem *mem)
@@ -57,6 +64,10 @@ void	init_bottom_images(t_mem *mem)
 		ft_putstr_fd("Error.\nError during memory allocation.\n", 2);
 		free_mem(mem);
 	}
-	mem->bottom->img = mlx_xpm_file_to_image(mem->vars->mlx, "./srcs/textures/bottom-64.xpm", &(mem->bottom->width), &(mem->bottom->height));
-	mem->bottom->addr = mlx_get_data_addr(mem->bottom->img, &(mem->bottom->bits_per_pixel), &(mem->bottom->line_length), &(mem->bottom->endian));
+	mem->bottom->img = mlx_xpm_file_to_image(mem->vars->mlx,
+			"./srcs/textures/bottom-64.xpm",
+			&(mem->bottom->width), &(mem->bottom->height));
+	mem->bottom->addr = mlx_get_data_addr(mem->bottom->img,
+			&(mem->bottom->bits_per_pixel),
+			&(mem->bottom->line_length), &(mem->bottom->endian));
 }

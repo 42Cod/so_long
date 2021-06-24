@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:32:51 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 15:06:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 16:07:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	long temp;
-	long nb;
+	long	temp;
+	long	nb;
 
 	nb = n;
 	if (fd < 0)
@@ -33,7 +33,7 @@ void	ft_putnbr_fd(int n, int fd)
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (fd < 0 || !s)
@@ -47,8 +47,8 @@ void	ft_putstr_fd(char *s, int fd)
 
 void	max_x(char *line, t_mem *mem)
 {
-	int res;
-	int i;
+	int	res;
+	int	i;
 
 	res = 0;
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:40:12 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 16:44:49 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,22 @@
 
 void	free_map2d(t_mem *mem)
 {
-	int i;
+	int	i;
 
+	if (!mem->map)
+		return ;
 	i = mem->map->lines;
+	if (i < 0)
+	{
+		ft_putstr_fd("Error.\nIncorrect map.\n", 2);
+		return ;
+	}
 	while (i >= 0)
 	{
-		free(mem->map2d[i]);
+		if (mem->map2d[i])
+		{
+			free(mem->map2d[i]);
+		}
 		i--;
 	}
 }
@@ -32,6 +42,8 @@ void	free_data(t_mem *mem)
 
 void	free_mem(t_mem *mem)
 {
+	if (!mem)
+		exit (EXIT_FAILURE);
 	if (mem->vars)
 		free(mem->vars);
 	if (mem->data)

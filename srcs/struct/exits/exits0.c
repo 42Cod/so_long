@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 17:26:55 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 19:45:45 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 14:44:27 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,13 @@ bool	is_empty_e_list(t_exit_list *lst)
 	return (false);
 }
 
-int		e_list_length(t_exit_list *lst)
+void	no_exit_found(t_mem *mem, int found)
 {
-	int			length;
-	t_exit_elem	*elem;
-
-	if (!lst)
-		return (0);
-	length = 0;
-	elem = lst->first;
-	while (elem)
+	if (found == 0)
 	{
-		length++;
-		elem = elem->next;
+		ft_putstr_fd("Error.\nThere is no exit !\n", 2);
+		free_mem(mem);
 	}
-	return (length);
 }
 
 void	push_end_e_list(t_mem *mem, int x, int y)

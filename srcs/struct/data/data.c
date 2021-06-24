@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:23:49 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/23 16:21:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 16:35:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	init_data(t_mem *mem)
 {
 	mem->data->img = NULL;
-	mem->data->addr =  NULL;
+	mem->data->addr = NULL;
 	mem->data->bits_per_pixel = 0;
 	mem->data->line_length = 0;
 	mem->data->endian = 0;
@@ -32,6 +32,6 @@ void	init_vars(t_mem *mem)
 
 void	init_map(t_mem *mem)
 {
-	mem->map->lines = 0;
+	mem->map->lines = -1;
 	mem->map->col_max = 0;
 }

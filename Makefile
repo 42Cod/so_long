@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/23 21:56:45 by user42           ###   ########.fr        #
+#    Updated: 2021/06/24 16:52:03 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ SRCS =	./srcs/checks/check_map_walls.c \
 		./srcs/free/free.c \
 
 SRCS_BONUS = ./bonus/main_bonus.c \
+			./bonus/itoa.c \
+			./bonus/render.c \
 
 SRCS_MANDATORY = ./main.c \
 
@@ -45,8 +47,7 @@ OBJS_M		= ${SRCS_MANDATORY:.c=.o}
 UNAME		:= $(shell uname)
 
 PATH_MLX	= mlx
-L_SOLONG	= libsolong.a
-CC 			= gcc -fsanitize=address -g
+CC 			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -f
 NAME		= so_long
@@ -57,7 +58,7 @@ all: 		${NAME}
 .c.o:
 			${CC} ${CFLAGS} -Imlx -Ibass -c $< -o ${<:.c=.o}
 
-$(NAME): 	$(OBJS) ${OBS_M}
+$(NAME): 	$(OBJS) ${OBJS_M}
 			make -C $(PATH_MLX)
 			${CC} $(CFLAGS) -o $(NAME) $(OBJS) ${OBJS_M} $(FLAGS)
 
@@ -67,7 +68,7 @@ bonus:		${OBJS} ${OBJS_B}
 
 clean:
 			make -C $(PATH_MLX) clean
-			${RM} ${OBJS}
+			${RM} ${OBJS} ${OBJS_M} ${OBJS_B}
 
 fclean: 	clean
 			make -C $(PATH_MLX) clean

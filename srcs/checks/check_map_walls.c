@@ -6,15 +6,14 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:07:33 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/23 14:04:54 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 13:55:41 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-int		check_zero_neighbors(char **map2d, t_mem *mem, int i, int j)
+int	check_zero_neighbors(char **map2d, t_mem *mem, int i, int j)
 {
-
 	if ((map2d[i][j + 1] == '\0' || j == 0 || i == 0))
 	{
 		ft_putstr_fd("Error.\nMissing wall(s).\n", 2);
@@ -41,9 +40,8 @@ int		check_zero_neighbors(char **map2d, t_mem *mem, int i, int j)
 	return (SUCCESS);
 }
 
-int		check_space_neighbors(char **map2d, t_mem *mem, int i, int j)
+int	check_space_neighbors(char **map2d, t_mem *mem, int i, int j)
 {
-
 	if (map2d[i + 1] && i + 1 < mem->map->lines)
 	{
 		if (map2d[i + 1][j] == '0')
@@ -57,7 +55,7 @@ int		check_space_neighbors(char **map2d, t_mem *mem, int i, int j)
 		ft_putstr_fd("Error.\nIssues with walls / lines.\n", 2);
 		free_mem(mem);
 	}
-	if (i > 1 &&  map2d[i - 1][j] == '0' && map2d[i])
+	if (i > 1 && map2d[i - 1][j] == '0' && map2d[i])
 	{
 		ft_putstr_fd("Error.\nIssues with spaces.\n", 2);
 		free_mem(mem);
@@ -65,10 +63,10 @@ int		check_space_neighbors(char **map2d, t_mem *mem, int i, int j)
 	return (SUCCESS);
 }
 
-int		check_map_walls(char **map2d, t_mem *mem)
+int	check_map_walls(char **map2d, t_mem *mem)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -87,4 +85,3 @@ int		check_map_walls(char **map2d, t_mem *mem)
 	}
 	return (SUCCESS);
 }
-

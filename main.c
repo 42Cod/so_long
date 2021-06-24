@@ -6,21 +6,26 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 21:59:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 22:09:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
 
-int check_so_long_extension(char *str)
+int	to_upper(int c)
 {
-	char	*ext;
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}
+
+int check_so_long_extension(char *str, char *ext)
+{
 	int		i;
 	int		j;
 
 	i = 0;
 	j = 0;
-	ext = ".ber";
 	while (str[i] && str[i] != '.')
 		i++;
 	if (!str[i])
@@ -28,10 +33,9 @@ int check_so_long_extension(char *str)
 		ft_putstr_fd("Error.\nWrong extension or path specified.\n", 2);
 		exit (EXIT_FAILURE);
 	}
-
 	while (true)
 	{
-		if (str[i + j] == ext[j])
+		if (to_upper(str[i + j]) == to_upper(ext[j]))
 			j++;
 		else
 			break;
@@ -50,7 +54,8 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
-		check_so_long_extension(argv[1]);
+		check_so_long_extension(argv[1], ".ber");
+		//check_so_long_extension(argv[1], ".BER");
 		mem = initialize_mem();
 		first_read(mem, argv, &line);
 		mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));

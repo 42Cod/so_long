@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 12:31:47 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 16:44:49 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/24 21:34:16 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ int	close_clean(t_mem *mem)
 		mlx_destroy_window(mem->vars->mlx, mem->vars->win);
 	if (mem->vars->mlx)
 		mlx_destroy_display(mem->vars->mlx);
+	if (mem->vars->mlx)
+		free(mem->vars->mlx);
 	free_mem(mem);
 	exit (EXIT_FAILURE);
 }

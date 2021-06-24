@@ -6,15 +6,15 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 15:46:34 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 14:14:33 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/24 21:42:31 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../so_long.h"
 
-void	handle_args_error(int fd, char **argv, t_mem *mem)
+void	handle_args_error(int fd, t_mem *mem)
 {
-	if (fd == -1 && check_so_long_extension(argv[1], mem) == ERROR)
+	if (fd == -1)
 	{
 		ft_putstr_fd("Error.\nIncorrect map file specified.\n", 2);
 		free_mem(mem);

@@ -6,11 +6,42 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 16:13:46 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 21:59:57 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
+
+int check_so_long_extension(char *str)
+{
+	char	*ext;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	ext = ".ber";
+	while (str[i] && str[i] != '.')
+		i++;
+	if (!str[i])
+	{
+		ft_putstr_fd("Error.\nWrong extension or path specified.\n", 2);
+		exit (EXIT_FAILURE);
+	}
+
+	while (true)
+	{
+		if (str[i + j] == ext[j])
+			j++;
+		else
+			break;
+	}
+	j--;
+	if (ext[j] == '\0' && str[i + j] == '\0')
+		return (SUCCESS);
+	ft_putstr_fd("Error.\nWrong extension or path specified.\n", 2);
+	exit (EXIT_FAILURE);
+}
 
 int	main(int argc, char **argv)
 {
@@ -19,6 +50,7 @@ int	main(int argc, char **argv)
 
 	if (argc == 2)
 	{
+		check_so_long_extension(argv[1]);
 		mem = initialize_mem();
 		first_read(mem, argv, &line);
 		mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));

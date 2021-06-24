@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 13:48:14 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/24 21:42:29 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,7 +161,7 @@ int					check_map_walls(char **map2d, t_mem *mem);
 int					check_lines_minimap(t_map *map, char *line, int l);
 int					mini_map_all_chars(int fd, char *buffer, t_mem *mem);
 int					check_mini_map_chars(char *line, t_mem *mem);
-int					check_so_long_extension(char *str, t_mem *mem);
+int					check_so_long_extension(char *str);
 int					check_map(char *map, char *argv);
 int					valid_char_mini_map(char c);
 char				**clean_2dmap(t_map *map, char **map2d);
@@ -179,7 +179,7 @@ int					ft_isdigit(int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 int					ft_isspace(char c);
 int					c_atoi(t_map *map, char *line, int *res, int *i);
-void				handle_args_error(int fd, char **argv, t_mem *mem);
+void				handle_args_error(int fd, t_mem *mem);
 void				handle_fd_errors(int fd, t_mem *mem);
 void				ft_putstr_fd(char *s, int fd);
 void				error_gnl(int fd, char **line, t_mem *mem);

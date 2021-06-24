@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:25:22 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/24 13:58:31 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/24 21:41:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,30 +22,6 @@ int	is_empty_line(char *str)
 	return (ERROR);
 }
 
-int	check_so_long_extension(char *str, t_mem *mem)
-{
-	int		i;
-	char	*ext;
-	int		j;
-
-	ext = ft_strdup(".ber", mem);
-	i = 0;
-	j = 0;
-	while (str[i] != '.' && str[i])
-		i++;
-	if (str[i])
-	{
-		while (str[i] == ext[j] && ext[j] && str[i])
-		{
-			i++;
-			j++;
-		}
-		if (j == 4 && str[i] == '\0')
-			return (SUCCESS);
-	}
-	free(ext);
-	return (ERROR);
-}
 
 int	valid_char_mini_map(char c)
 {

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 21:48:07 by user42            #+#    #+#             */
-/*   Updated: 2021/06/24 16:41:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/24 21:43:08 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	first_read(t_mem *mem, char **argv, char **line)
 		ft_putstr_fd("Error.\nBad file descriptor.\n", 2);
 		free_mem(mem);
 	}
-	handle_args_error(fd, argv, mem);
+	handle_args_error(fd, mem);
 	read_all_map_lines(fd, line, mem);
 	close(fd);
 }

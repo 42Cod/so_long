@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:22:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/24 12:23:55 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 09:59:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int ar, char **av)
 
 	if (ar == 2)
 	{
+		check_so_long_extension(av[1], ".ber");
 		m = initialize_mem();
 		first_read(m, av, &line);
 		m->map2d = (char **)malloc(sizeof(char *) * (m->map->lines + 1));

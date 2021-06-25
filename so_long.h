@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 09:22:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 12:29:42 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ typedef struct s_map
 typedef struct s_player
 {
 	t_data	img;
-	t_data	img2;
 	int		x;
 	int		y;
 	float	smooth_x;
@@ -254,6 +253,7 @@ void				no_collectible(t_mem *mem, int found);
 void				no_exit_found(t_mem *mem, int found);
 void				check_line(char *line, t_mem *mem, int *i);
 void				main_errors(t_mem *mem);
+int					to_upper(int c);
 int					to_upper(int c);
 
 #endif

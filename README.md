@@ -1,3 +1,9 @@
+# So long 🐬
+
+So long sera probablement votre premier projet graphique (avec la minilibX). C'est un bon exercice pour vous préparer pour cub3d. Les parsings sont similaires (mais celui de so_long est plus court/simple). Vous devrez uniquement gérer la vue 2D (top view). L'objectif est de récupérer tous les collectibles puis d'accéder au point de sortie "avec le moins de mouvements possibles". Nous devrons compter et afficher chaque mouvement. La difficulté se trouve principalement dans la découverte de la MLX.
+
+![malatini](/screen.png)
+
 #### https://harm-smits.github.io/42docs/libs/minilibx
 
 ## Textures
@@ -21,4 +27,4 @@ Une fois les fichiers xpm créés / trouvés, une fonction de la MLX vous permet
 * Tester sans argument 
 * Tester avec trop d'arguments
 
-![malatini](/screen.png)
+Credits to labintei et ttranche pour mes magnifiques textures 😘

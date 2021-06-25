@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 22:07:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 09:00:46 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ int					check_empty_line(char *line);
 char				*ft_strdup_2d(char *s1, t_mem *mem);
 int					initialize_2dmap(int fd, char **argv, t_mem *mem);
 int					get_next_line_minimap(int fd, char **line, t_mem *mem);
-void				max_x(char *line, t_mem *mem);
+void				max_x(char *line, int i, t_mem *mem);
 int					read_all_map_lines(int fd, char **line, t_mem *mem);
 int					check_zero_neighbors(char **map2d, t_mem *mem,
 						int i, int j);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 22:09:16 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 09:18:56 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ int check_so_long_extension(char *str, char *ext)
 		ft_putstr_fd("Error.\nWrong extension or path specified.\n", 2);
 		exit (EXIT_FAILURE);
 	}
-	while (true)
+	while (str[i + j] && ext[j])
 	{
 		if (to_upper(str[i + j]) == to_upper(ext[j]))
 			j++;
 		else
 			break;
 	}
-	j--;
 	if (ext[j] == '\0' && str[i + j] == '\0')
 		return (SUCCESS);
 	ft_putstr_fd("Error.\nWrong extension or path specified.\n", 2);
@@ -55,7 +54,6 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		check_so_long_extension(argv[1], ".ber");
-		//check_so_long_extension(argv[1], ".BER");
 		mem = initialize_mem();
 		first_read(mem, argv, &line);
 		mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));

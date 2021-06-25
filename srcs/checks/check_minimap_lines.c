@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:59:14 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 14:00:33 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 09:01:38 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	get_next_line_minimap(int fd, char **line, t_mem *mem)
 	static char	*s;
 	int			b_read;
 	char		*buffer;
+	static	int	i;
 
 	error_gnl(fd, line, mem);
 	buffer = malloc_buffer(mem);
@@ -82,7 +83,8 @@ int	get_next_line_minimap(int fd, char **line, t_mem *mem)
 	*line = ft_newline_minimap(s, mem);
 	if (is_empty_line(*line) == -1)
 		mem->map->lines++;
-	max_x(*line, mem);
+	max_x(*line, i, mem);
+	i++;
 	handle_bad_char(mem, *line);
 	s = ft_prep_s(s, mem);
 	if (b_read == 0)

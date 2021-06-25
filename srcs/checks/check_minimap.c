@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:25:22 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/25 10:01:44 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 15:48:33 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	is_empty_line(char *str)
 int	valid_char_mini_map(char c)
 {
 	if (c == '0' || c == '1' || c == 'C' || c == 'E'
-		|| c == 'P' || c == '\n' || c == ' ')
+		|| c == 'P' || c == '\n')
 		return (SUCCESS);
 	return (ERROR);
 }

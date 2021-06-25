@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 16:25:22 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/25 15:48:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:02:17 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	to_upper(int c)
 	return (c);
 }
 
-int check_so_long_extension(char *str, char *ext)
+int	check_so_long_extension(char *str, char *ext)
 {
 	int		i;
 	int		j;
@@ -38,7 +38,7 @@ int check_so_long_extension(char *str, char *ext)
 		if (to_upper(str[i + j]) == to_upper(ext[j]))
 			j++;
 		else
-			break;
+			break ;
 	}
 	if (ext[j] == '\0' && str[i + j] == '\0')
 		return (SUCCESS);
@@ -55,7 +55,6 @@ int	is_empty_line(char *str)
 		return (SUCCESS);
 	return (ERROR);
 }
-
 
 int	valid_char_mini_map(char c)
 {

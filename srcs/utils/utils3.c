@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:32:51 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 14:23:59 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:17:32 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	max_x(char *line, int nb, t_mem *mem)
 
 void	ft_bzero(void *s, int n)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (n == 0)

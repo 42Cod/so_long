@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 10:01:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 14:25:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(int argc, char **argv)
 		mem->map2d = (char **)malloc(sizeof(char *) * (mem->map->lines + 1));
 		if (!mem->map2d)
 			free_mem(mem);
+		ft_bzero(mem->map2d, sizeof(char *) * (mem->map->lines + 1));
 		second_read(&line, argv, mem);
 		check_elements(mem);
 		check_map_walls(mem->map2d, mem);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:07:33 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/24 13:55:41 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 14:13:05 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_zero_neighbors(char **map2d, t_mem *mem, int i, int j)
 		ft_putstr_fd("Error.\nMissing wall(s).\n", 2);
 		free_mem(mem);
 	}
-	if (i + 1 <= mem->map->lines && map2d[i + 1])
+	if (map2d[i + 1] && i + 1 <= mem->map->lines)
 	{
 		if (map2d[i + 1][j] == '\0')
 		{
@@ -27,7 +27,7 @@ int	check_zero_neighbors(char **map2d, t_mem *mem, int i, int j)
 			free_mem(mem);
 		}
 	}
-	if (map2d[i - 1][j] != '1' && i - 1 == 0 && map2d[i])
+	if (map2d[i] && map2d[i - 1][j] != '1' && i - 1 == 0)
 	{
 		ft_putstr_fd("Error.\nIssues with spaces.\n", 2);
 		free_mem(mem);
@@ -50,12 +50,12 @@ int	check_space_neighbors(char **map2d, t_mem *mem, int i, int j)
 			free_mem(mem);
 		}
 	}
-	if (i + 1 == mem->map->lines - 1 && map2d[i + 1][j] != '1' && map2d[i + 1])
+	if (map2d[i + 1] && i + 1 == mem->map->lines - 1 && map2d[i + 1][j] != '1')
 	{
 		ft_putstr_fd("Error.\nIssues with walls / lines.\n", 2);
 		free_mem(mem);
 	}
-	if (i > 1 && map2d[i - 1][j] == '0' && map2d[i])
+	if (map2d[i] && i > 1 && map2d[i - 1][j] == '0')
 	{
 		ft_putstr_fd("Error.\nIssues with spaces.\n", 2);
 		free_mem(mem);

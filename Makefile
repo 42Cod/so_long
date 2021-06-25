@@ -6,7 +6,7 @@
 #    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/07 22:58:48 by mahautlat         #+#    #+#              #
-#    Updated: 2021/06/25 13:52:54 by user42           ###   ########.fr        #
+#    Updated: 2021/06/25 14:10:40 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ OBJS_M		= ${SRCS_MANDATORY:.c=.o}
 UNAME		:= $(shell uname)
 
 PATH_MLX	= mlx
-CC 			= gcc -g
+CC 			= gcc -g -fsanitize=address
 CFLAGS		= -Wall -Wextra -Werror
 RM			= rm -f
 NAME		= so_long

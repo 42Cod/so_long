@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:18:58 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 15:11:42 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 14:17:18 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	ft_isalnum(int c)
 
 void	check_line(char *line, t_mem *mem, int *i)
 {
-	if ((line[0] == '1' || line[0] == ' ') && line)
+	if (line)//line[0] == '1' || line[0] == ' ') &&
 	{
 		mem->map2d[*i] = ft_strdup_2d(line, mem);
 		*i += 1;

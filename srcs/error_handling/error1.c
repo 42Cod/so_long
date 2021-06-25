@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 11:59:18 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 09:12:51 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 14:18:14 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
 
 void	handle_error_gnl2(char *line, t_mem *mem, int *i)
 {
-	/*
-	if (is_empty_line(line) == 1)
-	{
-		ft_putstr_fd("Error.\nThere is an empty line.\n", 2);
-		free_mem(mem);
-	}
-	*/
-	if (line[0] == '0')
+	if (line[0] != '1')
 	{
 		ft_putstr_fd("Error.\nMap line staring with a 0. Missing wall(s).\n", 2);
 		free_mem(mem);

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 14:07:33 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/25 14:13:05 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 16:27:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,12 @@ int	check_map_walls(char **map2d, t_mem *mem)
 		while (j < mem->map->col_max && map2d[i][j] != '\0')
 		{
 			j++;
-			if (map2d[i][j] == '0')
+			if ((map2d[i][j] == '0' && i == 0) || (map2d[i][j] == '0' && i == mem->map->lines - 1))
+			{
+				ft_putstr_fd("Error.\nInvalid map.\n", 2);
+				free_mem(mem);
+			}
+			else if (map2d[i][j] == '0')
 				check_zero_neighbors(map2d, mem, i, j);
 			else if (map2d[i][j] == ' ')
 				check_space_neighbors(map2d, mem, i, j);

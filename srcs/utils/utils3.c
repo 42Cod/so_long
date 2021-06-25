@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:32:51 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 16:17:32 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 16:58:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,22 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
+int		count_correct_lines(t_mem *mem)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (mem->map2d[i])
+	{
+		if (*(mem->map2d[i]) != '\0')
+			count++;
+		i++;
+	}
+	return (count);
+}
+
 void	max_x(char *line, int nb, t_mem *mem)
 {
 	int	res;
@@ -62,7 +78,7 @@ void	max_x(char *line, int nb, t_mem *mem)
 		mem->map->col_max = res;
 	if (res != mem->map->col_max && nb != mem->map->lines)
 	{
-		if (nb < mem->map->lines)
+		if (nb < mem->map->lines && *line != '\0')
 		{
 			ft_putstr_fd("Error.\nMap not rectangular.\n", 2);
 			free_mem(mem);

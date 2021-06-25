@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: malatini <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/24 13:16:54 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 13:16:56 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 17:03:20 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ void	g_init_bonus(t_mem *m)
 	check_res(m, &res_x, &res_y);
 	m->frame = 0;
 	m->vars->win = mlx_new_window(m->vars->mlx, m->map->col_max * 64,
-			m->map->lines * 64, "So long");
+			m->map->correct_lines * 64, "So long");
 	m->data->img = mlx_new_image(m->vars->mlx, m->map->col_max * 64,
-			m->map->lines * 64);
+			m->map->correct_lines * 64);
 	m->data->addr = mlx_get_data_addr(m->data->img,
 			&m->data->bits_per_pixel, &m->data->line_length, &m->data->endian);
 	init_player_images(m);

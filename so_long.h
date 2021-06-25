@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 15:22:02 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:00:26 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef struct s_vars {
 typedef struct s_map
 {
 	int	lines;
+	int correct_lines;
 	int	col_max;
 }				t_map;
 
@@ -257,5 +258,6 @@ int					to_upper(int c);
 int					to_upper(int c);
 int					key_hook(int key, t_mem *m);
 void				ft_bzero(void *s, int n);
+int					count_correct_lines(t_mem *mem);
 
 #endif

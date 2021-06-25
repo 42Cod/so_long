@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 16:44:11 by mahautlat         #+#    #+#             */
-/*   Updated: 2021/06/25 14:04:18 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:01:21 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int	g_init(t_mem *m)
 	m->vars->mlx = mlx_init();
 	m->frame = 0;
 	m->vars->win = mlx_new_window(m->vars->mlx, m->map->col_max * 64,
-			m->map->lines * 64, "So long");
+			m->map->correct_lines * 64, "So long");
 	m->data->img = mlx_new_image(m->vars->mlx,
-			m->map->col_max * 64, m->map->lines * 64);
+			m->map->col_max * 64, m->map->correct_lines * 64);
 	m->data->addr = mlx_get_data_addr(m->data->img,
 			&m->data->bits_per_pixel, &m->data->line_length, &m->data->endian);
 	init_player_images(m);

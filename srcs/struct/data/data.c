@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 18:23:49 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 16:35:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 17:00:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	init_map(t_mem *mem)
 {
 	mem->map->lines = -1;
 	mem->map->col_max = 0;
+	mem->map->correct_lines = 0;
 }

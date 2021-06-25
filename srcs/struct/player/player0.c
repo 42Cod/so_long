@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 10:31:31 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 12:31:24 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 15:25:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	init_player_images(t_mem *m)
 			"./srcs/textures/nageuse1-fond-64-left-transp.xpm");
 	if (!(m->p->img.img))
 	{
-		ft_putstr_fd("Error during image loading.\n", 2);
+		ft_putstr_fd("Error.\n Error during image loading.\n", 2);
 		free_mem(m);
 	}
 }

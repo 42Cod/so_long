@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 11:59:18 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 14:18:14 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 15:46:34 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	handle_error_gnl2(char *line, t_mem *mem, int *i)
 {
-	if (line[0] != '1')
+	if (line[0] != '1' && *i > mem->map->lines)
 	{
-		ft_putstr_fd("Error.\nMap line staring with a 0. Missing wall(s).\n", 2);
+		ft_putstr_fd("Error.\nInvalid map.\n", 2);
 		free_mem(mem);
 	}
 	check_line(line, mem, i);

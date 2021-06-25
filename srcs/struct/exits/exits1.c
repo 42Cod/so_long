@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/19 14:07:54 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/24 14:50:37 by malatini         ###   ########.fr       */
+/*   Updated: 2021/06/25 15:37:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	init_exits_images(t_mem *mem)
 			"./srcs/textures/exit-fond64t-transp.xpm");
 	if (!(mem->e->img.img))
 	{
-		ft_putstr_fd("Error during image loading.\n", 2);
+		ft_putstr_fd("Error.\nError during image loading.\n", 2);
 		free_mem(mem);
 	}
 }

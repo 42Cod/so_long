@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 12:29:42 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/25 14:07:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,5 +255,6 @@ void				check_line(char *line, t_mem *mem, int *i);
 void				main_errors(t_mem *mem);
 int					to_upper(int c);
 int					to_upper(int c);
+int					key_hook(int key, t_mem *m);
 
 #endif

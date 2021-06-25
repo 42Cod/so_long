@@ -27,4 +27,9 @@ Une fois les fichiers xpm créés / trouvés, une fonction de la MLX vous permet
 * Tester sans argument 
 * Tester avec trop d'arguments
 
+### Game play
+* Les collectibles doivent disparaitre lorsqu'ils sont touchés.
+* Il doit y avoir une "collision avec les murs". Comprenez que le player ne doit pas passer a travers. 
+* Le player doit pouvoir sortir uniquement lorsque les collectibles ont tous été recupérés.
+
 Credits to labintei et ttranche pour mes magnifiques textures 😘

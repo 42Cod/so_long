@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 21:48:07 by user42            #+#    #+#             */
-/*   Updated: 2021/06/24 21:43:08 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 09:15:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	initialize_2dmap(int fd, char **line, t_mem *mem)
 			*line = NULL;
 		}
 	}
-	mem->map2d[mem->map->lines] = '\0';
+	mem->map2d[mem->map->lines] = NULL;
 	return (SUCCESS);
 }
 

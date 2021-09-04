@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 11:52:17 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 17:01:03 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 09:41:10 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	main(int argc, char **argv)
 			free_mem(mem);
 		ft_bzero(mem->map2d, sizeof(char *) * (mem->map->lines + 1));
 		second_read(&line, argv, mem);
+		mem->map->correct_lines = count_correct_lines(mem);
 		check_elements(mem);
 		check_map_walls(mem->map2d, mem);
 		main_errors(mem);
-		mem->map->correct_lines = count_correct_lines(mem);
 		g_init(mem);
 		if (mem)
 			free_mem(mem);

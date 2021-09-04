@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 18:22:03 by user42            #+#    #+#             */
-/*   Updated: 2021/06/25 17:03:00 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 10:23:23 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	main(int ar, char **av)
 		if (!m->map2d)
 			free_mem(m);
 		second_read(&line, av, m);
+		m->map->correct_lines = count_correct_lines(m);
 		check_elements(m);
 		check_map_walls(m->map2d, m);
-		m->map->correct_lines = count_correct_lines(m);
 		g_init_bonus(m);
 		if (m)
 			free_mem(m);

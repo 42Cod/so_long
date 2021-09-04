@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/08 12:13:20 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 17:00:26 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 08:29:34 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ typedef struct s_vars {
 typedef struct s_map
 {
 	int	lines;
-	int correct_lines;
+	int	correct_lines;
 	int	col_max;
 }				t_map;
 

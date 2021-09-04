@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 13:32:51 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 16:58:34 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 08:31:35 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-int		count_correct_lines(t_mem *mem)
+int	count_correct_lines(t_mem *mem)
 {
-	int i;
-	int count;
+	int	i;
+	int	count;
 
 	i = 0;
 	count = 0;

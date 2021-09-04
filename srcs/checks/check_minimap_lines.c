@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 13:59:14 by malatini          #+#    #+#             */
-/*   Updated: 2021/06/25 16:53:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/06/28 08:30:32 by malatini         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	get_next_line_minimap(int fd, char **line, t_mem *mem)
 	}
 	free(buffer);
 	*line = ft_newline_minimap(s, mem);
-	//if (is_empty_line(*line) == -1)
 	mem->map->lines++;
 	max_x(*line, i++, mem);
 	handle_bad_char(mem, *line);
